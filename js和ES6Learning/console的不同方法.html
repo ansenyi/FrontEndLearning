@@ -24,8 +24,13 @@
 			  { name: "TypeScript", fileExtension: ".ts" },
 			  { name: "CoffeeScript", fileExtension: ".coffee" }
 			];
-			
+			//console.table() 方法用于在控制台输出表格信息（数组或对象）。
 			console.table(languages);
+			var site1 = { name : "Runoob", site : "www.runoob.com" }
+			var site2 = { name : "Google", site : "www.google.com" }
+			var site3 = { name : "Taobao", site : "www.taobao.com" }
+			console.table([site1, site2, site3]);
+			console.table({ name : "菜鸟教程", site : "www.runoob.com" });
 			/*
 			%s 字符串
 			%d 整数
