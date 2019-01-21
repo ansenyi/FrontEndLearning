@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<p>改变函数内部的this指向的三种方法：call(),apply(),bind()</p>
+			<p>相同点：都可以改变this指向。</p>
+			<p>不同点：接收参数的方式不同。</p>
+		</div>
+		<script>
+//			call()方法使用示例：
+//			语法： 函数.call(this, arg1, arg2, arg3, arg4)
+//			第一个参数用来指定函数内部的this指向，后面的参数是函数执行时所需的实参。
+            //例1
+			window.color = 'red';
+			document.color = 'yellow';
+			  
+			var s1 = {color: 'blue' };
+			function changeColor(){
+			    console.log(this.color);
+			}
+			  
+			changeColor.call(); //red (默认传递参数)
+			changeColor.call(window); //red
+			changeColor.call(document); //yellow
+			changeColor.call(this); //red
+			changeColor.call(s1); //blue
+			//例2
+			var Pet={
+				word:"6666",
+				speak:function(say){
+					console.log(say+this.word);
+				}
+			}
+			Pet.speak("叫");
+			var Dog={
+				word:"汪汪汪"
+			};
+			//将this的指向改变成了Dog
+			Pet.speak.call(Dog,'狂叫');//狂叫汪汪汪
+		</script>
+	</body>
+</html>
