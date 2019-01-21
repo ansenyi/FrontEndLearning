@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 700px;
+				height: 400px;
+				background-color: gold;
+				display: flex;  /*这句话是重点，利用flex布局*/
+	            justify-content: center;/*实现水平居中*/
+	            align-items:center; /*实现垂直居中*/
+				font-size: 40px;
+				font-family:"微软雅黑";
+				color: white;
+			}
+			.heading span{
+				cursor: pointer;
+				display: inline-block;
+				transition: transform 0.2s;
+			}
+			.heading span:hover{
+				/*color: red;*/
+				transform: translateY(-20px) rotate(10deg)scale(2);
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2 class="heading">ABCDEFG</h2>
+		</div>
+		<script>
+			const heading=document.querySelector('.heading');
+			function wrapWithSpan(word){
+				return [...word].map(letter=>`<span>${letter}</span>`).join('');
+			}
+			console.log(wrapWithSpan(heading.textContent));
+			heading.innerHTML=wrapWithSpan(heading.textContent);
+		</script>
+	</body>
+</html>

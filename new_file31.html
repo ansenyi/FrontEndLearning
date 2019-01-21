@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="inLocal"/>
+		<button onclick="saveLocal()">保存Local数据</button>
+		<button onclick="showLocal()">显示Local数据</button>
+		<span id="showLocal"></span><br />
+		<input type="text" id="inSession"/>
+		<button onclick="saveSession()">保存Session数据</button>
+		<button onclick="showSession()">显示Session数据</button>
+		<span id="showSession"></span>
+		<script type="text/javascript">
+			function saveLocal(){
+				window.localStorage.name=document.getElementById("inLocal").value;
+			}
+			function showLocal(){
+				
+				document.getElementById("showLocal").innerText=localStorage.name;	
+			}
+			function saveSession(){
+				sessionStorage.name=document.getElementById("inSession").value;
+			}
+			function showSession(){
+				
+				document.getElementById("showSession").innerText=sessionStorage.name;	
+			}
+		</script>
+	</body>
+</html>

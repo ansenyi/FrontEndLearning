@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{a}}
+			<button v-on:click="change()">更新</button>
+		</div>
+		<script>
+			var myVue=new Vue({
+				el:"#app",
+				data:{
+					a:"Vue.js"
+				},
+				methods:{
+					change:function(){
+						this.a="更新后的a数据";
+					}
+				},
+				beforeCreate:function(){
+					console.log("创建之前");
+					console.log(this.a);          
+					console.log(this.$el);  
+				},
+				created:function(){
+					console.log("创建之后");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				beforeMount:function(){
+					console.log("挂载之前");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				mounted:function(){
+					console.log("挂载之后");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				beforeUpdate:function(){
+					console.log("更新之前");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				updated:function(){
+					console.log("更新之后");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				beforeDestroy:function(){
+					console.log("销毁之前");
+					console.log(this.a);          
+					console.log(this.$el);
+				},
+				destroyed:function(){
+					console.log("销毁之后");
+					console.log(this.a);          
+					console.log(this.$el);
+				}
+			});
+		</script>
+	</body>
+</html>

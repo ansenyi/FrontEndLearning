@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="">
+    <title></title>
+    <link id="ico" rel="icon" href="" type="image/x-icon">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" id="main-css" href="http://qa.tmslink.com/truck-saas/css/truck-main.css?v=3.0.20.216" />
+    <link rel="stylesheet" href="http://qa.tmslink.com/truck-saas/../common/css/vender.css" /><link rel="stylesheet" href="http://qa.tmslink.com/truck-saas/css/cost-setting.css?v=3.0.20.216" />
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "//piwik.driverglobe.com/piwik/";
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = u + 'piwik.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Piwik Code -->
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 浏览器检测
+
+        Array.prototype.myForEach = function myForEach(callBack, context) {
+            typeof context === "undefined" ? context = window : null;
+            if ("forEach" in Array.prototype) {
+                this.forEach(callBack, context);
+                return;
+            }
+            for (var i = 0; i < this.length; i++) {
+                typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
+            }
+        };
+
+        var u_agent = navigator.userAgent
+        var result = false
+        var lowest_version = '45.0.2454.101' //最低内核版本号
+        var core_version = []
+        if (Array.prototype.filter) {
+            core_version = u_agent.split(' ').filter(function(val) {
+                return !val.indexOf('Chrome')
+            })
+        } else {
+            var list = u_agent.split(' ')
+            list.myForEach(function(item) {
+                if (item.indexOf('Chrome')) core_version.push(item)
+            })
+        }
+
+
+        //手机浏览器
+        if (u_agent.match(/Android/i) || (u_agent.indexOf('iPhone') != -1) || (u_agent.indexOf('iPod') != -1) || (u_agent.indexOf('iPad') != -1)) {
+            //不支持IE
+            if (u_agent.indexOf('Trident') > -1 && u_agent.indexOf('rv:11') > -1 || u_agent.indexOf('MSIE') > -1 && u_agent.indexOf('Trident') > -1 || u_agent.indexOf('MSIE') > -1) {
+                result = false
+            } else {
+                result = true
+            }
+        } else { //PC浏览器
+            if (core_version.length != 0) {
+                if ((u_agent.indexOf('Chrome') > -1 || u_agent.indexOf('360') > -1 || u_agent.indexOf('Safari') > -1) && core_version[0].split('/')[1] >= lowest_version) {
+                    result = true
+                }
+            }
+        }
+        if (!result) {
+            var div = document.createElement('div')
+            div.id = 'browser-incompatible'
+            document.body.appendChild(div)
+            div = document.createElement('div')
+            div.id = 'browser-incompatible-popup'
+            div.className = 'popup'
+            document.getElementById('browser-incompatible').appendChild(div)
+            div = document.createElement('div')
+            div.className = 'incompatible-content'
+            div.innerHTML = 'hi, 您当前的浏览器不兼容，建议升级浏览器：'
+            var a1 = document.createElement('a')
+            var a2 = document.createElement('a')
+            a1.className = 'incompatible-btn btn download-btn'
+            a2.className = 'incompatible-btn btn download-btn'
+            a1.target = '_blank'
+            a2.target = '_blank'
+            a1.href = 'http://down.360safe.com/se/360se8.1.1.248.exe'
+            a2.href = 'http://sw.bos.baidu.com/sw-search-sp/software/1c5131aea1842/ChromeStandalone_56.0.2924.87_Setup.exe'
+            a1.innerHTML = '360浏览器'
+            a2.innerHTML = '谷歌浏览器'
+            document.getElementById('browser-incompatible-popup').appendChild(div)
+            document.getElementById('browser-incompatible-popup').appendChild(a1)
+            document.getElementById('browser-incompatible-popup').appendChild(a2)
+        } else {
+            if (!window.ES) {
+                window.ES = {}
+            }
+            ES.version = '3.0.20.216'
+            ES.context = '/truck-saas'
+            ES.secures = '[]'
+            ES.deploy = ''
+            ES.tongji = 'e7af4b84a864a3a424a458657258c6f7'
+            ES.lang = 'zh-cn'
+            if (ES.context && ES.context != '/') {
+                ES.context += '/'
+            }
+            (function() {
+                var secures = ES.secures.split('","')
+                var protocol = window.location.protocol
+                var path = window.location.pathname
+                path = path.replace(ES.deploy, '').replace(ES.context, '').replace('/', '')
+                var shouldBe = 'http:'
+                for (var i = 0; i < secures.length; i++) {
+                    if (path && secures[i].indexOf(path) >= 0) {
+                        shouldBe = 'https:'
+                    }
+                }
+                if (protocol !== shouldBe) {
+                    console.log(path)
+                    var context = ES.context
+                    if (ES.context === '/root/') {
+                        context = '/'
+                    }
+                    console.log(shouldBe + '//' + window.location.host + ES.deploy + context + path)
+                    window.location.href = shouldBe + '//' + window.location.host + ES.deploy + context + path
+                }
+            })()
+        }
+    </script>
+    <script type="text/x-handlebars-template" id="breadcrumb-tpl">
+        <div class="breadcrumb-left">
+            <div class="parent-node node">
+                <i class="fa fa-map-marker"></i>
+                <span>{{parent-node}}</span>
+                <i class="fa fa-angle-right"></i>
+            </div>
+            <div class="child-node node">{{child-node}}</div>
+            <div class="clear"></div>
+        </div>
+        <div class="breadcrumb-right">
+            </div>
+    </script>
+    <script type="text/x-handlebars-template" id="breadcrumb-detail-tpl">
+        <div class="breadcrumb-left">
+            {{#each items}} {{#if @first}}
+            <div class="parent-node node">
+                <i class="fa fa-map-marker"></i> {{#if url}}<a href="http://qa.tmslink.com/truck-saas{{url}}">{{name}}</a>{{else}}<span>{{name}}</span>{{/if}}
+                <i class="fa fa-angle-right"></i>
+            </div>
+            {{else}} {{#if @last}}
+            <div class="node current">
+                {{#if url}}<a href="http://qa.tmslink.com/truck-saas{{url}}">{{name}}</a>{{else}}<span>{{name}}</span>{{/if}}
+            </div>
+            {{else}}
+            <div class="node">
+                {{#if url}}<a href="http://qa.tmslink.com/truck-saas{{url}}">{{name}}</a>{{else}}<span>{{name}}</span>{{/if}}
+                <i class="fa fa-angle-right"></i>
+            </div>
+            {{/if}} {{/if}} {{/each}}
+
+            <div class="clear"></div>
+        </div>
+        <div class="breadcrumb-right">
+            </div>
+    </script>
+    <div id="shell-header">
+        <div id="shell-header-inner">
+            <div class="shell-header-logo">
+                <!-- <a class="" id="login-head"></a>
+                <div class="clear"></div> -->
+            </div>
+            <!-- <div class="shell-header-company"></div> -->
+            <div id="shell-nav-wrap">
+                <div class="shell-nav">
+                    <ul>
+                        <!--<li id="unfoucscurrent">
+								<a href="http://qa.tmslink.com/truck-saas/../truck-saas/index.html">首页</a>
+							</li>
+                            <li>
+                                <a href="http://qa.tmslink.com/truck-saas/../jyGateway.html">账户管理</a>
+                            </li>
+							<li>
+								<a href="http://qa.tmslink.com/truck-saas/../supplier-logistics.html">消息</a>
+							</li>-->
+                    </ul>
+                </div>
+                <div class="tracking_item">
+                    <input name="trackingNo" id="trackingNo" />
+                </div>
+            </div>
+            <div id="shell-header-language">
+                <a href="javascript:void(0)" data-value="en-us">ENGLISH</a>
+            </div>
+            <div class="shell-header-user">
+                <span class="welcome">欢迎登录</span>
+            </div>
+            <!-- <div style="float: right; margin: 16px 15px 0 0; height: 30px; line-height: 30px;">
+                <a id="notify">
+
+                </a>
+            </div> -->
+            <div class="shell-phone-logo">
+                <img class="phone-img" src="http://qa.tmslink.com/truck-saas/../truck-saas/img/custom_call.png" alt="客服热线" title="客服热线" />
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="shell-wrap">
+        <script src="http://qa.tmslink.com/truck-saas/../common/js/lib/handlebars.js"></script>
+        <div id="shell-wrap-inner">
+            <div id="to-top">
+                <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDA4MTE4NF8zNjU2NzNfODAwMDgxMTg0XzJf"><img src="http://qa.tmslink.com/truck-saas/../common/img/qq.png" alt="Eshipping"></a>
+                <a href="javascript:void(0)"><i class="fa fa-angle-up"></i></a>
+                <a href="javascript:void(0)" class="app_icon_link">
+                    <i class="app_icon"></i>
+                </a>
+                <i class="app_code"></i>
+            </div><div id="personal-info-left">
+</div>
+
+<div class="below" id="personal-info-right">
+    <div class="bread-crumbs">
+        <div class="breadcrumb-left">
+            <div class="parent-node node"><i class="fa fa-map-marker"></i><span>平台管理</span><i
+                    class="fa fa-angle-right"></i></div>
+            <div class="child-node node">基础数据</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="maskContaniner">
+
+        <div id="search-form" class="form-wrap search-form">
+            <input type="text" id="name" name="chargeItemName"/>
+            <select id="isRevenueCommonlyUsed" name="isRevenueCommonlyUsed"></select>
+            <select id="isCostCommonlyUsed" name="isCostCommonlyUsed"></select>
+            <select id="isCapitalCommonlyUsed" name="isCapitalCommonlyUsed"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="table-toolbar">
+            <a id="new_writeoff_btn" class="operation-btn">新增</a>
+            <div class="notation"><span></span></div>
+        </div>
+
+
+        <div class="clear"></div>
+
+        <div id="result-form" class="admin-table-list"></div>
+
+
+        <div id="data-paging"></div>
+
+
+    </div>
+</div>
+
+
+<script type="text/x-handlebars-template" id="cost-setting-result-template">
+    <div class="admin-table">
+        <table class="table-list" id="sort">
+            <thead>
+            <tr>
+                <th class="col-1">序号</th>
+                <th class="col-1">费用名称</th>
+                <th class="col-3">应收对象类型</th>
+                <th class="col-3">应付对象类型</th>
+                <th class="col-3">公司成本对象类型</th>
+                <th class="col-3">应收常用</th>
+                <th class="col-3">应付常用</th>
+                <th class="col-3">公司成本常用</th>
+                <th class="col-5">含税</th>
+                <th class="col-5">代收代付</th>
+                <th class="col-10 congealBar" data-value="right">操作</th>
+            </tr>
+            </thead>
+            <tbody id="cost-setting-tbody">
+            {{#each objs}}
+            <tr data-value="{{id}}" class="cost-setting-list" style="display:{{isdisplay}}">
+                <td class="index moves-style">{{seq}}</td>
+                <td class="moves-style">{{name}}</td>
+                <td>{{chargeTypeName}}</td>
+                <td>{{costTypeName}}</td>
+                <td>{{capitalTypeName}}</td>
+                <td>{{#if isRevenueCommonlyUsed}}<i class="fa fa-check"></i>{{/if}}</td>
+                <td>{{#if isCostCommonlyUsed}}<i class="fa fa-check"></i>{{/if}}</td>
+                <td>{{#if isCapitalCommonlyUsed}}<i class="fa fa-check"></i>{{/if}}</td>
+                <td>{{#if isVatIncluded}}<i class="fa fa-check"></i>{{/if}}</td>
+                <td>{{#if isDollarInOut}}<i class="fa fa-check"></i>{{/if}}</td>
+                <td>
+                    <a class="cost-setting_modify" data-value="{{id}}">编辑</a>
+                    <a class="cost-setting_delete" data-value="{{id}}">删除</a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" id="oper-template">
+    <div id="oper-info">
+        <input  type="text" class="number" id="seq" name="seq" />
+        <input  type="text" id="costName" name="chargeItemName" />
+        <select id="chargeItemSettlementCategory" name="chargeItemSettlementCategory"></select>
+        <select id="costItemSettlementCategory" name="costItemSettlementCategory" ></select>
+
+        <select id="capitalItemSettlementCategory" name="capitalItemSettlementCategory" ></select>
+
+        <input type="checkbox" id="isRevenue" name="isRevenueCommonlyUsed" />
+        <input type="checkbox" id="isCost" name="isCostCommonlyUsed" />
+
+        <input type="checkbox" id="isCapital" name="isCapitalCommonlyUsed" />
+
+        <input type="checkbox" id="isVatIncluded" name="isVatIncluded" />
+        <input type="checkbox" id="collectionAndPayment" name="isDollarInOut" />
+
+    </div>
+</script>
+
+
+<script type="text/x-handlebars-template" id="oper-delete">
+    <div id="oper-delete">
+        <label>确定删除?</label>
+    </div>
+</script>
+
+
+<script data-main="http://qa.tmslink.com/truck-saas/js/cost-setting.js?v=3.0.20.216" src="http://qa.tmslink.com/truck-saas/../common/js/lib/require.js"></script></div>
+    </div>
+    <div id="shell-footer">
+        <div id="shell-footer-copyright">
+            <div class="shell-footer-item">
+                <p>
+                    <!--Copyright © 2016 <span>拖车通</span> V3.0.20.216-->
+                    <!--<br>-->
+                    <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">沪ICP备14054451号</a>
+                </p>
+            </div>
+        </div>
+    </div>
+        <div id="shell-notify" class="auth-hide">
+            <div class="shell-notify-content">
+                有新费用产生，点击<a href="http://qa.tmslink.com/truck-saas/fee-application-list.html" target="_blank">查看详情</a>
+            </div>
+            <span>x</span>
+		</div>
+
+
+    <script type="text/x-handlebars-template" id="latest-announcement-tpl">
+        <div id="latest-announcement">
+            {{#each objs}}
+            <div class="announcement-item">
+                <div class="announcement-title"><i class="fa fa-plus" aria-hidden="true"></i>
+                    <div class="kkk">{{title}}</div>
+
+                    <div class="publish-time">{{createTime}}</div>
+
+                    <div class="publish-person">{{createName}}</div>
+
+                    <div class="clear"></div>
+
+                </div>
+                <div class="announcement-detail">
+
+
+                    <div class="announcement-content"><span>{{content}}</span></div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </script>
+
+    <script type="text/x-handlebars-template" id="edit-remark-template">
+        <div class="popover editable-container editable-popup fade in top" role="tooltip">
+            <div class="arrow" style="left: 50%;"></div>
+            <div class="popover-title">编辑备注</div>
+            <div class="popover-content">
+                <div>
+                    <div class="editable-form-loading" style="display: none;"></div>
+                    <form class="form-inline editable-form" style="">
+                        <div class="form-group">
+                            <div>
+                                <div class="editable-input">
+                                    <textarea class="form-control" rows="7">{{remark}}</textarea>
+                                </div>
+                                <div class="editable-buttons editable-buttons-bottom">
+                                    <button type="button" class="btn blue editable-submit"><i class="fa fa-check"></i></button>
+                                    <button type="button" class="btn default editable-cancel"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="editable-error-block help-block" style="display: none;"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--可以和上面的合并-->
+    <script type="text/x-handlebars-template" id="popup-edit-template">
+        <div class="popover editable-container editable-popup fade in top" role="tooltip">
+            <div class="arrow" style="left: 50%;"></div>
+            <div class="popover-title">{{title}}</div>
+            <div class="popover-content">
+                <div>
+                    <div class="editable-form-loading" style="display: none;"></div>
+                    <form class="form-inline editable-form" style="">
+                        <div class="form-group">
+                            <div>
+                                <div class="editable-input">
+                                    <textarea class="form-control" rows="7">{{remark}}</textarea>
+                                </div>
+                                <div class="editable-buttons editable-buttons-bottom">
+                                    <button type="button" class="btn blue editable-submit"><i class="fa fa-check"></i></button>
+                                    <button type="button" class="btn default editable-cancel"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="editable-error-block help-block" style="display: none;"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+
+</html>

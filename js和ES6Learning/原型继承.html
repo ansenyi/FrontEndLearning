@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function User(name,email){
+				this.name=name;
+				this.email=email;
+				this.showInfo=function(){
+					console.log(`hello,my name is ${this.name},my email is ${this.email}`);
+				}
+			}
+			User.prototype.showInfo1=function(){
+				console.log('原型上增加的方法');
+			}
+			const user1=new User('user1','123@163.com');
+			console.log(user1);
+			user1.showInfo();
+			user1.showInfo1();
+		</script>
+	</body>
+</html>

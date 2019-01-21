@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		  <title>jQuery UI Progressbar - Default functionality</title>
+		  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		  <link rel="stylesheet" href="/resources/demos/style.css">
+		  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		  <script>
+		  	var current=0;
+		  	var max=100;
+		  	
+			$( function() {
+			    $( "#progressbar" ).progressbar({
+			        max:100
+			    });
+			    setInterval(changePb,100);
+			} );
+		    function changePb(){
+			  	current++;
+			  	if(current>=100){
+			  		current=0
+			  	}
+			  	$( "#progressbar" ).progressbar("option","value",current);
+			 }
+		  </script>
+	</head>
+	<body>
+		<div id="progressbar"></div>
+	</body>
+</html>

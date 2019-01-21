@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p style="color: red;">
+			some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。<br />
+			some() 方法会依次执行数组的每个元素：<br />
+			如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。<br />
+			如果没有满足条件的元素，则返回false。<br />
+			注意： some() 不会对空数组进行检测。<br />
+			注意： some() 不会改变原始数组。
+		</p>
+		<p>点击按钮检测数组中是否有元素大于输入框中输入的数字。</p>
+		<p>最小年龄: <input type="number" id="ageToCheck" value="18"></p>
+		<button onclick="myFunction()">点我</button>
+		<p>判断结果: <span id="demo"></span></p>
+		<script>
+			var ages = [4, 12, 16, 20,25];
+			function checkAdult(age) {
+			    return age >= document.getElementById("ageToCheck").value;
+			}
+			function myFunction() {
+			    document.getElementById("demo").innerHTML = ages.some(checkAdult)== true?'有':'没有';
+			}
+		</script>
+	</body>
+</html>

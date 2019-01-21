@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请选择一个文件：<input type="file" id="fileinput" />
+		<script type="text/javascript">
+			var fileinput=document.querySelector("#fileinput");
+			fileinput.onchange=function(){
+				var file=fileinput.files[0];
+				var filereader=new FileReader();
+				filereader.readAsArrayBuffer(file);
+				filereader.onload=function(){
+					console.log(filereader.result);
+				}
+			}
+		</script>
+	</body>
+</html>

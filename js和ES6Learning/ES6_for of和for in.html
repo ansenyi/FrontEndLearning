@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			for...of循环可以使用的范围（拥有迭代器对象）包括数组、Set 和 Map 结构、某些类似数组的对象（比如arguments对象、DOM NodeList 对象）以及字符串。<br />
+			for(let value of target){}循环遍历<br />
+			1、遍历数组；<br />
+			2、遍历Set；<br />
+			3、遍历Map；<br />
+			4、遍历字符串；<br />
+			5、遍历伪数组<br />
+		</p>
+		<p>
+			for...in 语句用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。<br />
+		          数组中有几个元素，for..in语句就循环执行多少次、每次执行时，将当前数组元素的下标存放到变量i中。<br/>
+		    for...in更适合遍历对象,不能用于Set和Map。	
+		</p>
+		<script>
+			var arr=['A','B','C'];
+			var arr1=new Array(1,2,3);
+			console.log(arr1);
+			var s=new Set(['A','B','C']);
+			var m=new Map([['name', '张三'],['title', 'Author']]);
+			//遍历数组
+			for(var item of arr){
+				console.log(item);
+			}  //for of遍历的是数组元素值
+			for(var index in arr){
+				console.log(index);
+			}   //for in遍历的是数组的索引
+			
+			var myObject={
+			　　name:'ansenyi',
+			　　sex:'man',
+			　　age:20
+			}
+			for (var key in myObject) {
+			  console.log(key);
+			}
+		</script>
+	</body>
+</html>

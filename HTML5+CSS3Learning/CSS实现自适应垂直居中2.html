@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#outer{
+				width: 500px;
+				height: 500px;
+	            background-color: green;
+	            display: flex;  /*这句话是重点，利用flex布局*/
+	            justify-content: center;/*实现水平居中*/
+	            align-items:center; /*实现垂直居中*/
+	        }
+	        #center-in-center{ 
+	            width: 100px;
+	            height: 100px;
+	            background-color: gold;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="center-in-center"></div>
+		</div>
+	</body>
+</html>

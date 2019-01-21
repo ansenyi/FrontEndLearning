@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			方法的定义：<br />
+			JSON.stringify ( value [, replacer] [ , space] )；<br />
+			参数：<br />
+			（1）value：必选，要转换的值（包括所有的数据类型，通常是对象或者数组）；<br />
+			（2）replacer：可选，用于要转换结果的函数或者数组；如果replace是数组，仅仅是转换具有该键值的成员，成员的转换顺序和键在数组中的顺序一致；如果replace是函数，会传入每一个成员的键和值，使用的是返回值而不是原始值，如果函数返回的是undefined，则排除该成员。<br />
+			（3）space：可选， 向返回值JSON 文本添加缩进、空格和换行符以使其更易于读取。<br />
+                                 如果省略space，则将生成返回值文本，而没有任何额外空格。<br />
+			　如果 space是一个数字，则返回值文本在每个级别缩进指定数目的空格。 如果 space 大于 10，则文本缩进 10 个空格。<br />
+			　如果 space是一个非空字符串（例如“\t”），则返回值文本在每个级别中缩进字符串中的字符。<br />
+			　如果 space 是长度大于 10个字符的字符串，则使用前 10 个字符。
+		</p>
+		<hr />
+		<script>
+			let str = {"name":"菜鸟教程", "site":"http://www.runoob.com"};
+			let str_pretty1 = JSON.stringify(str); //将json转化为字符串
+			console.log(str_pretty1);
+			document.write( "只有一个参数情况：" );
+			document.write( "<br>" );
+			document.write("<pre>" + str_pretty1 + "</pre>" );
+			document.write( "<br>" );
+			console.log(str.name);
+			let str_pretty2 = JSON.stringify(str,456789, 4) //使用四个空格缩进
+			console.log(str_pretty2);
+			document.write( "使用参数情况：" );
+			document.write( "<br>" );
+			document.write("<pre>" + str_pretty2 + "</pre>" ); // pre 用于格式化输出
+			console.log('*****************************');
+			console.log(JSON.stringify({}));       // '{}'
+			console.log(JSON.stringify(true));     // 'true'
+			console.log(JSON.stringify("food"));                     // '"foo"'
+			console.log(JSON.stringify([1, "false", false]));       // '[1,"false",false]'
+			console.log(JSON.stringify({ x: 5 }));                  // '{"x":5}'
+			
+			console.log(JSON.stringify({x: 5, y: 6}));              
+			// "{"x":5,"y":6}"
+			
+			console.log(JSON.stringify([new Number(1), new String("false"), new Boolean(false)])); 
+			// '[1,"false",false]'
+			
+			console.log(JSON.stringify({x: undefined, y: Object, z: Symbol("")})); 
+			// '{}'
+			
+			console.log(JSON.stringify([undefined, Object, Symbol("")]));          
+			// '[null,null,null]' 
+			
+			console.log(JSON.stringify({[Symbol("foo")]: "foo"}));                 
+			// '{}'
+			
+			console.log(JSON.stringify({[Symbol.for("foo")]: "foo"}, [Symbol.for("foo")]));
+			// '{}'
+			
+			console.log(JSON.stringify(
+			    {[Symbol.for("foo")]: "foo"}, 
+			    function (k, v) {
+			        if (typeof k === "symbol"){
+			            return "a symbol";
+			        }
+			    }
+			));
+			
+			
+			// undefined 
+			
+			// 不可枚举的属性默认会被忽略：
+			console.log(JSON.stringify( 
+			    Object.create(
+			        null, 
+			        { 
+			            x: { value: 'x', enumerable: false }, 
+			            y: { value: 'y', enumerable: true } 
+			        }
+			    )
+			));
+			
+			// "{"y":"y"}"
+		</script>
+	</body>
+</html>

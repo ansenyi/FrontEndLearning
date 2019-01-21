@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//ES6中的class和let、const一样，没有变量提升 
+			class Animal{
+				constructor(type,num){
+					this.type=type;
+					this.num=num;
+				}
+				says(what){
+					console.log(`${this.type} says ${what}`);
+				}
+				static staticFunc(){//经塔器方法不会被实例继承，只有类本身可以使用
+					console.log('静态方法只能通过类名来调用，不能通过实例来调用');
+				}
+			}
+			let Dog=new Animal('dog','10');
+			Dog.says("I am a dog");
+			Animal.staticFunc();
+			class Cat extends Animal{
+			 	constructor(type,num){
+			 		super(type);
+			 		this.favorite='fish';
+			 	}
+			 	static catStaticFunc(){
+			 		console.log("进入了Cat类的静态方法");
+			 		super.staticFunc(); //父类的静态方法可以被子类继承
+			 	}
+			 }
+			 let cat=new Cat('cat','5');
+			 cat.says("I am a cat");
+			 Cat.catStaticFunc();
+			 //Animal(); //TypeError: class constructors must be invoked with |new|
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o={};
+			Object.defineProperty(o,'a',{
+				value:37,
+				writable:true,
+				enumerable:true,
+				configurable:true
+			});
+			console.log(o.a);
+//			在 descriptor 中不能 同时设置访问器 (get 和 set) 和 wriable 或 value，否则会错
+			var bValue = 38;
+			Object.defineProperty(o, 'b', {
+			  get: function() { 
+			  	return bValue; 
+			  },
+			  set: function(newValue) { 
+			  	bValue = newValue; 
+			  },
+			  enumerable: true,
+			  configurable: true
+			});
+			console.log(o.b);
+			o.b=100;
+			console.log(o.b);
+
+		</script>
+	</body>
+</html>

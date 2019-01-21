@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		留言：<input type="text" id="message"/>
+		<input type="button" value="点击提交留言" id="submit" onclick="addEl()"/>
+		<script type="text/javascript">
+			var message1=document.getElementById("message").value;
+			alert(message1);
+			var mesageElement=document.getElementById("message");
+			console.log(mesageElement);
+			function addEl(){
+				alert("1"+message1);
+				alert(document.getElementById("message").value);
+				var message2=document.getElementById("message").value;
+				console.log(mesageElement.value);
+				console.log(message1 + "为什么获取的内容为空？");
+				console.log(message2);	
+			}
+		</script>
+	</body>
+</html>

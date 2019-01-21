@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">  
+    		<select v-model="selected" style="width: 100px;">  
+        		<option v-for="item in items" v-bind:value="item.value">{{item.text}}</option>  
+    		</select>  
+    		<span>{{selected}}</span>  
+		</div>  
+		<script src="../img/vue.js"></script>  
+		<script>  
+    	new Vue({  
+        	el:'#app',  
+       	    data:{  
+           	   items:[
+            	{text:'A',value:'选择了A'},
+            	{text:'B',value:'选择了B'},
+            	{text:'C',value:'选择了C'}],
+               selected:''  
+       		}  
+    	});  
+		</script> 
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var GLOBAL_OBJECT = this;  
+  
+			/*  `foo` 是 Global object 的一个 property. 
+			    是通过变量声明创建的,因此拥有 DontDelete 标志. 
+			    这就是为什么不能被删除的原因. */  
+			var foo = 1;  
+			console.log(delete foo); // false  
+			console.log(typeof foo); // "number"  
+			  
+			/*  `bar` 是 Global object 的一个 property. 
+			    是通过 function 声明创建的,因此拥有 DontDelete 标志. 
+			    这也是为什么不能被删除的原因. */  
+			function bar(){}  
+			console.log(delete bar); // false  
+			console.log(typeof bar) // "function"  
+			  
+			/*  `baz` 同样是 Global object 的一个 property. 
+			    但是通过 property 赋值创建的,However,因此没有 DontDelete 标志. 
+			    这是为什么可以被删除的原因. */  
+			GLOBAL_OBJECT.what = 'blah';  
+			console.log(delete GLOBAL_OBJECT.what); // true  
+			console.log(typeof GLOBAL_OBJECT.what); // "undefined"  
+			
+			var Employee = {
+			  age: 28,
+			  name: 'abc',
+			  designation: 'developer'
+			}
+			
+			console.log(delete Employee.name);   // returns true
+			console.log(delete Employee.age);    // returns true
+			
+			// 当试着删除一个不存在的属性时
+			// 同样会返回true
+			console.log(delete Employee.salary); // returns true
+			
+			//注意一下三者的区别
+			var trees = ["redwood","bay","cedar","oak","maple"];
+			delete trees[3];
+			console.log(trees);
+			trees[4]=undefined;
+			console.log(trees);
+			var trees1 = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+			trees1.splice(3,1);
+			console.log(trees1); 
+		</script>
+	</body>
+</html>

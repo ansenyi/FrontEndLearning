@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+        1<a href="#" onclick="insert(this);return false;">点</a><br/>
+        2<a href="#" onclick="insert(this);return false;">点</a><br/>
+        3<a href="#" onclick="insert(this);return false;">点</a><br/>
+        4<a href="#" onclick="insert(this);return false;">点</a><br/>
+	    </div>
+		<script type="text/javascript">
+    	function insert(obj){
+        	var div=document.createElement('div');
+          	    div.id='ok';
+                div.innerHTML='插入的内容';
+              	obj.appendChild(div);
+        }
+       </script>
+    
+	</body>
+</html>

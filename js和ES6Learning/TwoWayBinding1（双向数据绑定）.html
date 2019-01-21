@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="in">
+		<div>输入框的内容：
+			<input type="text" id="show">
+		</div>
+		<script type="text/javascript">
+		    var user = {};
+		    var foo = document.getElementById("in");
+		    var showvalue = document.getElementById("show");
+		    Object.defineProperty(user, 'name', {
+		        get: function () {
+		            return document.getElementById('in').value;
+		        },
+		        set: function (newValue) {
+		            //console.log(newValue);
+		            document.getElementById('in').value = newValue;
+		        },
+		        configurable: true
+		    });
+		    foo.oninput = function () {
+		        show.value = user.name;
+		    }
+		    showvalue.oninput = function () {
+		        user.name = show.value;
+		        show.innerHTML = user.name;
+		    }
+		</script>
+	</body>
+</html>

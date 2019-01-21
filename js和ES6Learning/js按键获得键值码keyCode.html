@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+
+		<p>在输入框中按下键盘上的按键获取字符和数字。 </p>
+		<input type="text" size="40" onkeyup="myFunction(event)">
+		<p id="demo"></p>
+		<script>
+			function myFunction(event) {
+			    var x = event.keyCode;               // 获取 Unicode 值
+			    var y = String.fromCharCode(x);      // 将值转换为字符
+			    document.getElementById("demo").innerHTML = "keyCode: " + x + "<br/>字符: " + y;
+			}
+		</script>
+		
+	</body>
+</html>

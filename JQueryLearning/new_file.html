@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table id="test1">
+		  <tbody>
+		    <tr>
+		      <td>click me (#test1)</td>
+		    </tr>
+		  </tbody>
+		</table>
+		<table id="test2">
+		  <tbody>
+		    <tr>
+		      <td>click me (#test2)</td>
+		    </tr>
+		  </tbody>
+		</table>
+		<table id="test3">
+		  <tbody>
+		    <tr>
+		      <td>click me (#test3)</td>
+		    </tr>
+		  </tbody>
+		</table>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			document.onclick = function(e){
+			  e = e || window.event;
+			  src = e.target || e.srcElement;
+			  var table = parents(src , 'table');//这样可以拿到当前点击的这个元素的table
+			  var tr = parents(src , 'tr');//这样拿到当前点击的元素的父亲(tr);
+			  alert(table.id);//table的id
+			}
+			 
+			//查找父节点
+			function parents(el , parentName){
+			  var parent = el.parentNode;
+			  if(!parent)return null;//如果根本就没有父节点，那么返回null
+			   
+			  do{
+			    if(parent.tagName.toLowerCase() == parentName.toLowerCase()){
+			      //如果这个就是想要找的节点，就返回这个
+			      //在jq的校验里还可以校验class名称和其它的属性校验等
+			      //这个简化版就直接校验标签名称
+			      return parent;
+			    }
+			  }while(parent = parent.parentNode);//递归一直查找父亲的父亲。。
+			   
+			  return null;//如果没有找到，也返回null
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="main" style="width: 900px;height: 600px;"></div>
+		<script src="../js/echarts.min.js"></script>
+		<script type="text/javascript">
+			var myChart=echarts.init(document.getElementById('main'));
+			var option={
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: [{
+			        data: [820, 932, 901, 934, 1290, 1330, 1320],
+			        type: 'line',
+			        areaStyle: {}
+			    }]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

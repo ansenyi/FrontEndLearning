@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let obj={
+				_name:"安森一",
+				get name(){
+					return this._name;
+				},
+				set name(val){
+					this._name=val;
+				}
+			};
+			console.log(obj.name);
+			obj.name="ansenyi";
+			console.log(obj.name);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		var str = 'abcdef';
+		Array.prototype.forEach.call(str, function(item, index, array) {
+			console.log( item + ':' + index);
+		});
+		
+		var sum = 0;
+		var arr=[1, 2, 3, 4,5,6];
+		arr.forEach(function (item, index, array) {
+			sum += item;
+		});
+		console.log(sum);//10
+		</script>
+	</body>
+</html>

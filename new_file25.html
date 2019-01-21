@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="example-2">
+		    <template v-if="greeting">
+		        <h1>标题</h1>
+		        <p>段落1</p>
+		        <p>段落2</p>
+		    </template>
+		    <p v-else="greeting">这是另外一种情况</p>
+		</div>
+		
+		<script type="text/javascript">
+		    var exampleVM2 = new Vue({
+		        el: '#example-2',
+		        data: {
+		            greeting:false
+		        }
+		    })
+		</script>
+	</body>
+</html>

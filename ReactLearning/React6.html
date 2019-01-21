@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/react.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<div id="container"></div>
+			<script type="text/jsx">
+				var Search = React.createClass({
+			        render: function() {
+			          return (
+			            <div>
+			               {this.props.searchType}:<input type="text" />
+			               <button>Search</button>
+			            </div>
+			          );
+			        }
+			      });
+			      var Page = React.createClass({
+			        render: function() {
+			          return (
+			            <div>
+			               <h1>Welcome!</h1>
+			               <Search searchType="Title" />
+			               <Search  searchType="Content" />
+			            </div>
+			          );
+			        }
+			      });
+			      React.render(
+			        <Page />,
+			        document.getElementById('container')
+			      );
+		      
+		</script>
+	</body>
+</html>

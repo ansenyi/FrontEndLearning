@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				perspective: 500px;  /*使旋转有立体感*/
+			}
+			img{                         
+				height: 500px;
+				margin: 50px;
+				transition: all 4s;
+				
+			}
+			.x:hover{
+				transform: rotateX(360deg); /*绕X轴旋转*/
+			}
+			.y:hover{
+				transform: rotateY(360deg); /*绕X轴旋转*/
+			}   
+			.z:hover{
+				transform: rotateZ(360deg); /*绕X轴旋转*/
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../img/image2.jpg" class="x"/>
+		<img src="../img/image2.jpg" class="y"/>
+		<img src="../img/image2.jpg" class="z"/>
+	</body>
+</html>

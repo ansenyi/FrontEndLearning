@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+			}
+			.div1{
+				background-color: pink;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				position: fixed; /*相对于浏览器固定*/
+			}
+			.div2{
+				background-color: greenyellow;
+				top: 100px;
+				left: 100px;
+			}
+			.div3{
+				background-color: blueviolet;
+				top: 200px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='app' class='container'>
+		    <input type="checkbox" name="" id="allId" v-model="allData.parCheck" @change="allSelect()">
+		    <label for="allId">{{allData.text}}</label> {{allData.parCheck}}
+		    <ul>
+		        <li v-for="item in checkData">
+		            <input type="checkbox" name="" @change="singleSelect()" v-model="item.isChecked" :id="item.id">
+		            <label :for="item.id">{{item.value}}</label> {{item.isChecked}}
+		        </li>
+		    </ul>
+	    </div>
+	<script src="../js/vue.js"></script>
+	<script>
+	 var app = new Vue({
+	    el: '#app',
+	    data: {
+	    allData: {
+	        parCheck: false,
+	        text: '全选'
+	    },
+	    checkData: [{
+	        id: '1',
+	        value: '香蕉',
+	        isChecked: false
+	    }, {
+	        id: '2',
+	        value: '苹果',
+	        isChecked: false
+	    }, {
+	        id: '3',
+	        value: '梨子',
+	        isChecked: false
+	    }, {
+	        id: '4',
+	        value: '菠萝',
+	        isChecked: false
+	    }, {
+	        id: '5',
+	        value: '西瓜',
+	        isChecked: false
+	    }]
+	 },
+	 methods: {
+	    allSelect() {
+	        var vm = this;
+	        vm.checkData.forEach(item => {
+	            item.isChecked = vm.allData.parCheck
+	        })
+	    },
+	    singleSelect() {
+	        var vm = this;
+	        var selectData = vm.checkData.filter(item => {
+	            return item.isChecked == true
+	        })
+	
+	        selectData.length == vm.checkData.length ? vm.allData.parCheck = true : vm.allData.parCheck = false;
+	    }
+	 }
+	})
+	 </script>
+	</body>
+</html>

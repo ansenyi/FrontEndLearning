@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>格式化当前日期</h1>
+			{{showTime()}}
+		</div>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app',
+				data:{
+					date:new Date()
+					
+				},
+				methods:{
+					showTime(){
+						let today=this.date;
+					    let strYear=today.getFullYear();
+						let strMonth = today.getMonth() + 1;//月
+						let strDate = today.getDate();//日
+						let strHour = today.getHours();//时
+						let strMin = today.getMinutes();//分
+						let strSec = today.getSeconds();//秒
+						if(strMonth>=1&&strMonth<=9){
+							strMonth="0"+strMonth;
+						}
+						if(strDate>=1&&strDate<=9){
+							strDate="0"+strDate;
+						}
+						if(strHour>=1&&strHour<=9){
+							strHour="0"+strHour;
+						}
+						if(strMin>=1&&strMin<=9){
+							strMin="0"+strMin;
+						}
+						if(strSec>=1&&strSec<=9){
+							strSec="0"+strSec;
+						}
+						let currentTime=strYear+'-'
+						+strMonth+'-'
+						+strDate+' '
+						+strHour+':'
+						+strMin+':'
+						+strSec;
+						return currentTime;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

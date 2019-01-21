@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Foo () {
+			  this.tmp = 'b'
+			}
+			var a = new Foo()
+			console.log(Object.getPrototypeOf(a) === Foo.prototype); // true
+			console.log(a.tmp );// 'b'
+			console.log(Foo.prototype.constructor === Foo) // true
+			console.log(a.constructor === Foo) // true
+
+		</script>
+	</body>
+</html>

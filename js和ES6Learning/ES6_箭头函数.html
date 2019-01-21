@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			箭头函数有几个使用注意点:
+			<br />
+		         （1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+			<br />
+			（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+			<br />
+			（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+			<br />
+			（4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+		</div>
+		<script>
+			function fn(a){
+				return a*10;
+			}
+			let fn2=(a)=>{
+				return a*10;
+			};
+			console.log(fn2(10));
+			//以下为简写形式
+			let fn1=a=>a*10;
+			console.log(fn1(10));
+			
+			function fnc(a){
+				return function(b){
+					return a+b;
+				}
+			}
+			let fnc1=a=>b=>a+b;
+			console.log(fnc1(2)(3));
+			
+			let fnc2=(...arg)=>{
+				//console.log(arguments);//arguments is not defined
+				console.log(...arg);
+			};
+			fnc2(10,20,30);
+			console.log(new fnc2());//报错，fnc2 is not a constructor
+		</script>
+	</body>
+</html>

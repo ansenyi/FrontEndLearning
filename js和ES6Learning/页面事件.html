@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var handle=function(result){
+//				console.log(result);
+//			};
+//			document.addEventListener("keypress",handle);
+		    var str="";
+			document.addEventListener("keypress",function(result){
+				console.log(result.key);
+				str+=result.key;
+				document.body.innerHTML=str;
+			});
+		</script>
+	</body>
+</html>

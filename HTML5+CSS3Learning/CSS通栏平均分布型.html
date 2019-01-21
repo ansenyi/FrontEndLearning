@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.top{
+				height: 60px;
+				background-color: gold;
+				text-align: center;
+			}
+			.banner{
+				width: 960px;
+				height: 400px;
+				background-color: greenyellow;
+				margin: 20px auto 0px; /*左右的margin设置为auto*/
+				text-align: center;
+			}
+			.main{
+				width: 960px;
+				height: 200px;
+				margin: 0 auto;
+				background-color: darkgoldenrod;
+			}
+			ul{
+				list-style: none;
+			}
+			ul li{
+				width: 25%;
+				height: 200px;
+				float: left;
+			}
+			ul li:nth-child(2n){ /*或者even*/
+				background-color: palevioletred;
+			}
+			.footer{
+				height: 60px;
+				background-color: darkolivegreen;
+				margin-top: 20px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top">top</div>
+		<div class="banner">banner</div>
+		<div class="main">
+			<ul>
+				<li>第一项</li>
+				<li>第二项</li>
+				<li>第三项</li>
+				<li>第四项</li>
+			</ul>
+		</div>
+		<div class="footer">footer</div>
+	</body>
+</html>

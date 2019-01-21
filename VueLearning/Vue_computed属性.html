@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="example">  
+    		a={{a}},b={{b}}
+		</div>  
+		<script src="../img/vue.js"></script>  
+		<script>  
+    	var vm = new Vue({
+			 el: '#example',
+			 data: {
+			 	a: 10
+				},
+			 computed: {//计算属性中的方法执行时间：1、初始化的的时候；2、相关data属性值改变的时候
+			 // 一个计算属性的 getter
+			 	b: function () {
+			 // `this` 指向 vm 实例
+				 return this.a*10;
+			 	}
+			 }
+			})
+ 
+		</script> 
+	</body>
+</html>

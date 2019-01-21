@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//第一个方式
+			function add(a=10,b=20){
+				return a+b;
+			}
+			console.log(add());
+			//第二种方式
+			function add1(a,b){   
+			  a = arguments[0] ? arguments[0] : 10;//设置参数a的默认值为1   
+			  b = arguments[1] ? arguments[1] : 20;//设置参数b的默认值为2   
+			  return a+b;   
+			}   
+			console.log(add1());
+			//第三种方式
+			function show(name,age){  
+			  name=name||'貂蝉';  
+			  age=age||21;  
+			  console.log('你好！我是'+name+'，今年'+age+'岁。');  
+			}  
+			show('安森一',22);
+		</script></s>
+	</body>
+</html>

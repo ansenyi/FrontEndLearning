@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="这是一个文本框" />
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script>
+			var domObject=document.getElementById('txt');
+			var jqueryObject=$(domObject);//DOM对象转化为JQuery对象
+			alert(domObject.value);
+			alert(jqueryObject.value);//undefined，jQuery对象没有value属性
+			alert(jqueryObject.val());
+			var jqueryObj=$("#txt");
+			console.log(jqueryObj);//获得的是一个DOM对象数组，根据id只能获取有一个元素的数组
+			var domObj=jqueryObj[0];
+			console.log(domObj.value);
+		</script>
+	</body>
+</html>

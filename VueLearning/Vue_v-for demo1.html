@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				list-style-type: decimal;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="example-1">
+  			<li v-for="(item,index,key) in items">
+   			 {{ item.message }}----这是第{{index}}个；
+  			</li>
+  			------------------------
+  			of也可以  			
+  			<li v-for="(item,index) of items">
+   			 {{ item.message }}----这是第{{index}}个；
+  			</li>
+  			<li v-for="item in items">
+  				{{item}}
+  			</li>
+		</ul>
+		<script src="../js/vue.js" ></script>
+		<script type="text/javascript">
+			var example1 = new Vue({
+ 			 el: '#example-1',
+ 			 data: {
+   				 items: [
+     			 	{message:'Foo' },
+      				{message:'Bar' },
+      				{message:'安森一'},
+      				{message:'安森二'},
+      				{message:'安森三'}
+      				
+   				 ]
+  				}
+			});
+			example1.items.push({message:'安森四'});
+			example1.items.push({message:'安森五'});
+			console.log(example1.items.pop({message:'安森五'}));
+		</script>
+	</body>
+</html>

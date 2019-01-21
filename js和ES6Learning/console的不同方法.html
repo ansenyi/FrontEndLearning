@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function cat(name, age, score){
+			     this.name = name;
+			     this.age = age;
+			     this.score = score;
+			}
+			var c = new cat("miao", 2, [6,8,7]);
+			//dir方法用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。
+			console.dir(c);
+			console.log("这是一个log");
+			//console.info()和console.debug()都是console.log方法的别名，用法完全一样。只不过console.info方法会在输出信息的前面，加上一个蓝色图标。
+			console.info("这是一个info");
+			console.warn("这是一个警告");
+			console.error("这是一个错误");
+			var languages = [
+			  { name: "JavaScript", fileExtension: ".js" },
+			  { name: "TypeScript", fileExtension: ".ts" },
+			  { name: "CoffeeScript", fileExtension: ".coffee" }
+			];
+			
+			console.table(languages);
+			/*
+			%s 字符串
+			%d 整数
+			%i 整数
+			%f 浮点数
+			%o 对象的链接
+			%c CSS格式字符串
+			*/
+			var number = 11 * 9;
+			var color = 'red';
+			console.log('%d %s balloons', number, color);
+			console.log('%cThis text is styled!',
+			  'color: red; background: yellow; font-size: 24px;'
+		    );
+		</script>
+	</body>
+</html>

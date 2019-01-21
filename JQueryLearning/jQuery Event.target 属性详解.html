@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1" style="height: 100px; background: red;" >
+			div标签区域
+		    <br>
+		    <p id="p1" style="background: blue;" >p标签区域<br>
+		        <span id="s1" style="background: green ;" >span标签区域</span>
+		    </p>
+		</div>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script>
+			$("div").click( function(event) {
+			    alert("触发事件的标签名是:" + event.target.tagName.toLowerCase() + "，id是" + event.target.id);  
+			} );
+			
+			// 点击span元素区域，弹出："最初触发事件的是:SPAN#n3"
+			// 点击p元素自身区域，弹出："最初触发事件的是:P#n2"
+			// 点击div元素自身区域，弹出："最初触发事件的是:DIV#n1"
+		</script>
+	</body>
+</html>

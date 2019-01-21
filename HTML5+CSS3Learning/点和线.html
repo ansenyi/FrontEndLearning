@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<hr color="red" size="10" width="200px" align="right" style="display: inline-block;" >&#9679
+		<span style="color: green;margin-top:-10px;">&#9679</span>
+		<p>&#10000</p>
+		<canvas id="canvas1" width="200" height="40" style="border:1px solid #c3c3c3;">
+		</canvas>
+		<script type="text/javascript">
+			var c=document.getElementById("canvas1");
+			var cxt=c.getContext("2d");
+			cxt.fillStyle="darkblue";
+			cxt.beginPath();
+			cxt.arc(10,18,5,0,Math.PI*2,true);
+			cxt.closePath();
+			cxt.fill();
+			cxt.moveTo(10,18);
+			cxt.lineTo(150,18);
+			cxt.strokeStyle="darkblue";
+			cxt.stroke();
+		</script>
+	</body>
+</html>

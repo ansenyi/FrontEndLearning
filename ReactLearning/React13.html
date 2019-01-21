@@ -1,0 +1,34 @@
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/react-with-addons.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<script type="text/jsx">
+		var ReactLink = React.createClass({
+			    mixins:[React.addons.LinkedStateMixin],  
+			    getInitialState:function(){
+			        return {message:''}
+			    },
+			    render:function(){
+			        return (
+			                <div>
+			                   <input type="text" valueLink = {this.linkState('message')}/>
+			                   <br />
+			                   <b>{this.state.message}</b>
+			                </div>
+			        )
+			    }
+			});
+			
+			
+			React.render(<ReactLink />,document.body);
+			</script>
+	</body>
+</html>

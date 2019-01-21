@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(Object.prototype.toString.call(true)); //"[object Boolean]"
+			console.log(Object.prototype.toString.call(1));//"[object Number]"
+			console.log(Object.prototype.toString.call(null));// "[object Null]"
+			console.log(Object.prototype.toString.call(undefined));//"[object Undefined]"
+			console.log(Object.prototype.toString.call('undefined')); //"[object String]"
+			console.log(Object.prototype.toString.call([]));//"[object Array]"
+			console.log(Object.prototype.toString.call({}));//"[object Object]"
+			console.log(Object.prototype.toString.call(alert));//"[object Function]"
+			console.log(Object.prototype.toString.call(/[a-z]/));//	"[object RegExp]"
+			console.log("***************");
+		    //typeof,只能返回的数据类型6个：number,string,boolean,function,object,undefined
+		    console.log(typeof true);//"boolean"
+			console.log(typeof 1);//"number"
+			console.log(typeof null);//"object"
+			console.log(typeof undefined);//"undefined"
+			console.log(typeof 'undefined');//"string"
+			console.log(typeof []);//"object"
+			console.log(typeof {});//"object"
+			console.log(typeof alert);//"function"
+			console.log(typeof /[a-z]/);//"object"
+		</script>
+	</body>
+</html>

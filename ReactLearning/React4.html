@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/react.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<p>点击下面的按钮可以改变文本框是否可用的状态</p>
+		<div id="container"></div>
+		<script type="text/jsx">
+		var InputState = React.createClass({
+	        getInitialState: function() {
+	          return {enable: false};
+	        },
+	        handleClick: function(event) {
+	          this.setState({enable: !this.state.enable});
+	        },
+	        render: function() {
+	          
+	          return (
+	            <p>
+	               <input type="text" disabled={this.state.enable} />
+	               <button onClick={this.handleClick}>Change State</button>
+	            </p>
+	          );
+	        }
+	      });
+	
+	      React.render(
+	        <InputState />,
+	        document.getElementById('container')
+	      );
+	      
+     </script>
+	</body>
+</html>

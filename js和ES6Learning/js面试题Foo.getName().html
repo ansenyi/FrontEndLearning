@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			先来理解下题目，首先创建了一个Foo()函数，然后在给Foo函数增添一个函数属性getName,在Foo原型上增添一个getName函数属性，然后再以函数表达式和函数声明分别创建了一个同名函数getName。
+		</p>
+		<h2>第一问：Foo.getName()返回2。</h2>
+		<h2></h2>
+		<script>
+			function Foo() {
+				getName = function () { 
+					console.log (1); 
+				};
+				console.log('this is'+this)
+			    return this;
+			}
+			Foo.getName = function () { 
+				console.log (2); 
+			};
+			Foo.prototype.getName = function () { 
+				console.log(3); 
+			};
+			var getName = function () { 
+				console.log (4);
+			};
+			function getName() { 
+				console.log (5);
+			}
+		 
+			// 请写出一下的输出结果
+			Foo.getName(); //2
+			getName();  //4
+			Foo().getName();  //1
+			getName();  //1
+			new Foo.getName();  //2
+			new Foo().getName();  //3
+			new new Foo().getName(); //3
+			
+			
+		</script>
+	</body>
+</html>

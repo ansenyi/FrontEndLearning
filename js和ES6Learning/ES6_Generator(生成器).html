@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function* listColors(){
+				yield 'red';
+				yield 'blue';
+				yield 'green';
+			}
+			const colors=listColors();
+			console.log(colors);
+			for(let value of colors){
+				console.log(value);
+			}
+			console.log(colors.next());
+			console.log(colors.next());
+			console.log(colors.next());
+			console.log(colors.next());
+			
+			let obj={};
+			obj[Symbol.iterator]=listColors;
+			for(let i of obj){
+				console.log(i);
+			}
+		</script>
+	</body>
+</html>

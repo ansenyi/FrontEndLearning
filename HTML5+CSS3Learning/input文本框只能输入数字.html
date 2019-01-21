@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	   此文本框只能输入数字：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" /> 
+	  <input type="text" onkeypress="return event.keyCode>=48&&event.keyCode<=57" />
+	</body>
+</html>

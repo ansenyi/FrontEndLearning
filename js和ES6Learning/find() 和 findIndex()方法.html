@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。</p>
+		<p>
+			<pre>
+			findIndex() 方法为数组中的每个元素都调用一次函数执行：
+			当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。
+			如果没有符合条件的元素返回 -1
+			</pre>
+		</p>
+		<p>
+			注意: findIndex() 对于空数组，函数是不会执行的。<br />
+			注意: findIndex() 并没有改变数组的原始值。
+		</p>
+		<p> find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。</p>
+		<p>如果你需要找到一个元素的位置或者一个元素是否存在于数组中，使用Array.prototype.indexOf() 或 Array.prototype.includes()。</p>
+		<script type="text/javascript">
+			var ages = [3, 10,12, 30,18, 20,22];
+ 
+			function checkAdult(age) {
+			    return age >= 18;
+			}
+			console.log(ages.findIndex(checkAdult));
+			
+			var objArr = [{id:1, name:'jiankian'}, 
+						{id:23, name:'anan'}, 
+						{id:188, name:'superme'}, 
+						{id:233, name:'jobs'}, 
+						{id:288, name:'bill', age:89}, 
+						{id:333}] ;
+			var ret2 = objArr.findIndex((v) => {
+			    return v.id == 333;
+			});
+			console.log(ret2);
+			
+			//查找数组中首个质数元素的索引
+			function isPrime(element, index, array) {
+			  var start = 2;
+			  while (start <= Math.sqrt(element)) {
+			    if (element % start++ < 1) {
+			      return false;
+			    }
+			  }
+			  return element > 1;
+			}
+			
+			console.log([4, 6, 8, 12].findIndex(isPrime)); // -1, not found
+			console.log([4, 6, 7, 12].findIndex(isPrime)); // 2
+			
+			function isBigEnough(element) {
+			    return element >= 15;
+			}
+			
+			var ret1 = [12, 5, 8, 130, 44].find(isBigEnough);
+			console.log(ret1);
+			// 130
+			var objArr = [{id:1, name:'jiankian'}, {id:23, name:'anan'}, {id:188, name:'superme'}, {id:233, name:'jobs'}, {id:288, name:'bill', age:89}, {id:333}] ;
+			var ret2 = objArr.find((v) => {
+			    return v.id == 233;
+			});
+			console.log(ret2);
+			// return {id:233, name:'jobs'}
+			
+			var inventory = [
+			    {name: 'apples', quantity: 2},
+			    {name: 'bananas', quantity: 0},
+			    {name: 'cherries', quantity: 5}
+			];
+			
+			function findCherries(fruit) { 
+			    return fruit.name === 'cherries';
+			}
+			
+			console.log(inventory.find(findCherries)); // { name: 'cherries', quantity: 5 }
+			
+			// Declare array with no element at index 2, 3 and 4
+			var a = [0,1,,,,5,6];
+			
+			// Shows all indexes, not just those that have been assigned values
+			a.find(function(value, index) {
+			  console.log('Visited index ' + index + ' with value ' + value); 
+			});
+			
+			// Shows all indexes, including deleted
+			a.find(function(value, index) {
+			
+			  // Delete element 5 on first iteration
+			  if (index == 0) {
+			    console.log('Deleting a[5] with value ' + a[5]);
+			    delete a[5];  // 注：这里只是将a[5]设置为undefined，可以试试用a.pop()删除最后一项，依然会遍历到被删的那一项
+			  }
+			  // Element 5 is still visited even though deleted
+			  console.log('Visited index ' + index + ' with value ' + value); 
+			});
+		</script>
+	</body>
+</html>

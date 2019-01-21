@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var Processbar={
+				step:10,
+				stop:100,
+				loading:function(){
+					for(var i=0;i<=this.stop;i+=this.step){
+						setTimeout(function(){
+							//var i=10;
+							//alert("loading：",i,"%");
+							console.log("loading:",i,"%");
+						});
+					}
+				}
+				
+				
+			};
+			Processbar.loading();
+			for (var i = 0; i <3; i++) {
+			    setTimeout(function() { 
+			    	console.log(i);
+			    },0);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="app"> 
+			<my-component v-if="message" :message="message"></my-component> 
+			<div class="actions"> 
+				<button @click="update">更新</button> 
+				<button @click="uninstall">卸载</button> 
+				<button @click="install">安装</button> 
+			</div> 
+		</div>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript">
+			
+			Vue.directive('hello', { // 只调用一次，指令第一次绑定到元素时调用 
+				bind: function (el) { 
+					console.log('触发bind钩子函数！') 
+				}, // 被绑定元素插入父节点时调用 
+				inserted: function (el) { 
+					console.log('触发inserted钩子函数！') 
+				}, // 所在组件的`VNode`更新时调用，但是可能发生在其子元素的`VNode`更新之前 
+				update: function (el) { 
+					console.log('触发update钩子函数！') 
+				}, // 所在组件的`VNode`及其子元素的`VNode`全部更新时调用 
+				componentUpdated: function (el) { 
+					console.log('触发componentUpdated钩子函数！') 
+				}, // 只调用一次，指令与元素解绑时调用
+				unbind: function (el) { 
+					console.log('触发unbind钩子函数！') 
+				} 
+			}) ;
+			var myComponent = { 
+				template: '<h1 v-hello>{{ message }}</h1>', 
+				props: { message: String }
+			},
+
+			app=new Vue({ 
+				el: '#app', 
+				data:{
+						message: 'Hello! 大漠摸（默认加载的文本）' 
+				}, 
+				components: { 
+					myComponent: myComponent 
+				}, 
+				methods: { 
+					update: function () { 
+						this.message = '点击更新按钮后显示的文本';
+					}, 
+					uninstall: function () { 
+						this.message = ''; 
+					}, 
+					install: function () { 
+						this.message = '点击安装按钮后显示的文本';
+					} 
+				}
+			});
+			
+		</script>
+	</body>
+</html>

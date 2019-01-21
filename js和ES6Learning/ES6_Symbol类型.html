@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 没有参数的情况
+			let a=Symbol();
+			let b=Symbol();
+			console.log(a,b);
+			console.log(a===b);//false，任意一个Symbol()得到的值都是不同的
+			console.log(typeof a);//symbol
+			// 有参数的情况
+			let s1 = Symbol("foo");
+			let s2 = Symbol("foo");
+			console.log(s1===s2); //false
+			console.log(s1,s2);  
+			console.log(s1.toString());
+			
+			//Symbol.for机制有点类似于单例模式，首先在全局中搜索有没有以该参数作为名称的Symbol值，
+			//如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。
+			let s3 = Symbol.for('foo');
+			let s4 = Symbol.for('foo');
+			console.log(s3===s4);   //true
+			
+			//Symbol.keyFor方法返回一个已登记的Symbol类型值的key。
+			//实质就是检测该Symbol是否已创建
+			let s5 = Symbol.for("这是内容");
+			console.log(Symbol.keyFor(s5)) // "这是内容"
+			let s7 = Symbol.for("这是内容");
+			console.log(Symbol.keyFor(s7)) // "这是内容"	
+			let s6 = Symbol("foo");
+			console.log(Symbol.keyFor(s6)) // undefined
+			
+			console.log('------------------');
+			const classroom={
+				[Symbol('ansen1')]:{score:90,gender:'女'},
+				[Symbol('ansen2')]:{score:80,gender:'男'},
+				[Symbol('ansen3')]:{score:85,gender:'女'},
+				[Symbol('ansen4')]:{score:95,gender:'女'}
+			}
+			console.log(classroom);
+			const symsNames=Object.getOwnPropertySymbols(classroom);
+			const symsValues=Object.getOwnPropertySymbols(classroom).map(sym=>classroom[sym]);
+			console.log(symsNames,symsValues);
+			
+		   console.log('------------------');
+		   const java=Symbol();
+		   const js=Symbol();
+		   let lang=js;
+		   if(lang==java){
+		   	console.log('这是java');
+		   }else if(lang==js){
+		   	console.log('这是js');
+		   }else{
+		   	console.log('这是别的');
+		   }
+		</script>
+	</body>
+</html>

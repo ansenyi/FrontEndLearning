@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let peo={
+				name:'安森一',
+				sex:'男',
+				age:25
+			};
+			let {name:n,sex:s,height='180cm'}=peo;
+			console.log(n);
+			console.log(s);
+			console.log(height);
+			let obj={
+				a:{
+					b:{
+						c:123
+					}
+				}
+			};
+			let {a}=obj;
+			let {a:x}=obj;
+			let {a:{b}}=obj;
+			let {a:{b:{c}}}=obj;
+			console.log(a);
+			console.log(x);
+			console.log(b);
+			console.log(c);
+			
+			function ajax({url=new Error('No url'),type='get',data='xxx'}){
+				console.log(url,type,data);
+			}
+			ajax({
+				url:'https://www.bilibili.com/video/av25438199/?p=2',
+				type:'post'
+			});
+			
+			//使用对象的解构赋值的形式，如果等号右面不是对象，默认转化为对象，再进行赋值
+			let {__proto__:aa}=1;
+			console.log(aa);
+			console.log(Object(1));
+			let {length:bb}="12345";
+			console.log(Object("12345"));
+			console.log("字符串的长度为："+bb);
+		</script>
+	</body>
+</html>

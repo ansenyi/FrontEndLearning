@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj1={  
+			    fn:function(){  
+			        console.log(this);  
+			    }  
+			}  
+			obj1.fn();//object
+			var obj={  
+			    fn:function(){  
+			        setTimeout(function(){ 
+			            console.log(this);  
+			        });  
+			    }  
+			}  
+			obj.fn();//window 
+			var obj2={  
+			    fn:function(){  
+			        setTimeout(() => {  
+			            console.log(this);  
+			        });  
+			    }  
+			}  
+			obj2.fn();//object 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function f1(){
+				var a=10;
+				function f2(){
+					console.log(a);
+				}
+				return f2;
+			}
+			//console.log(a); //a is not defined,报错
+			//为了访问方法中内部变量的值，可以通过闭包来实现
+			var f=f1();
+			f();
+			
+			
+			function add(){
+				var count=0; //函数add中的count变量会一直保存在内存中
+				function addInner(){
+					count++;
+					console.log(count);
+				}
+				return addInner;
+			}
+			var result=add();
+			result();//1
+			result();//2
+			result();//3
+		</script>
+	</body>
+</html>

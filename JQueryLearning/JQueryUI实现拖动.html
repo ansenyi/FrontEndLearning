@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+  		<style>
+		  #draggable { width: 150px; height: 150px; padding: 0.5em;background-color: gold; }
+		</style>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		  $( function() {
+		    $( "#draggable" ).draggable();
+		  } );
+		</script>
+	</head>
+	<body>
+		<div id="draggable">
+			<p>请用鼠标拖动我</p>
+		</div>
+	</body>
+</html>

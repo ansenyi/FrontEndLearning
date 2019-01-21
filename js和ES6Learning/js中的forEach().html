@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>forEach方法中的function回调有三个参数：第一个参数是遍历的数组内容，第二个参数是对应的数组索引，第三个参数是数组本身</p>
+		<script type="text/javascript">
+			var arr = [10,20,30,40];
+			arr.forEach(console.log);
+			
+			function logArrayElements(element, index, array) {
+			    console.log("a[" + index + "] = " + element);
+			}
+			
+			// 注意索引2被跳过了，因为在数组的这个位置没有项
+			[2, 5, ,9].forEach(logArrayElements);
+			
+			// a[0] = 2
+			// a[1] = 5
+			// a[3] = 9
+			
+			[2, 5,"" ,9].forEach(logArrayElements);
+			// a[0] = 2
+			// a[1] = 5
+			// a[2] = 
+			// a[3] = 9
+			
+			[2, 5, undefined ,9].forEach(logArrayElements);
+			// a[0] = 2
+			// a[1] = 5
+			// a[2] = undefined
+			// a[3] = 9
+			
+			
+			let xxx;
+			// undefined
+			[2, 5, xxx ,9].forEach(logArrayElements);
+			// a[0] = 2
+			// a[1] = 5
+			// a[2] = undefined
+			// a[3] = 9
+		</script>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<p>Proxy是ES6提供的代理器可以起到拦截作用，写法形式如 var proxy = new Proxy(target,handler);
+				参数target表示要拦截的目标对象，handler是用来定制拦截行为。</p>
+			
+		</div>
+		<script type="text/javascript">
+			const person={name:'ansenyi',age:24};
+			const personProxy=new Proxy(person,{
+				get(target, key){
+					console.log(arguments);
+					console.log(target);//原对象，Object
+					console.log(key);//所取对象的属性
+					console.log(target[key]);//所取对象的属性值
+					console.log("以下是返回结果：");
+					if(typeof target[key]==String){
+					    return target[key].toUpperCase();	
+					}else{
+						return target[key].toString();
+					}
+					
+				},
+				set(target, key, value) {
+					if(typeof vlaue==='String'){
+						target[key]=value.trim();	//去除字符串两边的空格
+					}
+			   }
+			});
+			console.log(personProxy.name);
+			console.log("*********************");
+			console.log(personProxy.age);
+			personProxy.name='   ansenyi  ';
+			console.log(personProxy.name);
+			console.log('-------------------');
+			var target = {
+			   name: 'obj'
+			 };
+			 var logHandler = {
+			   get(target, key) {
+			     console.log(`${key} 被读取`);
+			     return target[key];
+			   },
+			   set(target, key, value) {
+			     console.log(`${key} 被设置为 ${value}`);
+			     target[key] = value;
+			   }
+			 }
+			 var targetWithLog = new Proxy(target, logHandler);
+			 console.log(targetWithLog.name); // 控制台输出：name 被读取
+			 targetWithLog.name = 'others'; // 控制台输出：name 被设置为 others
+			console.log(target.name); // 控制台输出: others
+			
+			var proxy = new Proxy({},{ 
+			    get(target,property) { 
+			        return 'This is Proxy!'; 
+			    } 
+			}); 
+			console.log(proxy.b);    //This is Proxy!
+			
+			let validator = { 
+			    set(obj,prop,value) { 
+			        if(prop === 'age'){ 
+			            if(!Number.isInteger(value)){ 
+			                throw new TypeError('年龄必须是数字！'); 
+			            } 
+			            if( value > 100){ 
+			                throw new TypeError('请输入有效年龄'); 
+			            } 
+			        }else{ 
+			            console.log("输入错误！！请检查"); 
+			        } 
+			    obj[prop] = value ; 
+			    }
+			}; 
+			let person1 = new Proxy({},validator); 
+			console.log(person1.sss=100);        //100
+			console.log(person1.age=100);        //100    
+		</script>
+	</body>
+</html>

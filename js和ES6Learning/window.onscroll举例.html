@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cry1{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<p onclick="this.style.color='red';console.log(this);" onmouseenter="this.style.backgroundColor='#ccc'" onmouseleave="this.style.backgroundColor='white'">Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<p>Resize the window</p>
+		<p>to a very small size,</p>
+		<p>and use the scrollbars</p>
+		<p>to move around the page content</p>
+		<p>in the window.</p>
+		<img src="../img/cry1.jpg" id="cry1"/>
+		<script type="text/javascript">
+		window.onscroll = function(){
+		 console.log("检测到页面滚动事件:"+window.pageXOffset+" "+window.pageYOffset);
+		 // 注意: window.innerWidth 和 window.innerHeight 可以获得页面可见区域的宽和高.
+		 document.title=document.documentElement.scrollTop;
+		}
+		
+		var imgcry1=document.getElementById("cry1");
+		document.onmousemove=function(event){
+			imgcry1.style.left=event.clientX+'px';
+			imgcry1.style.top=event.clientY+'px';
+		}
+		</script>
+	</body>
+</html>

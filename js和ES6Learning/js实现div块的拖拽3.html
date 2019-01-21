@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>  
+	        #mov{  
+	            background-color: green;  
+	            width: 200px;  
+	            height: 200px;    
+	            top: 100px;  
+	            left: 100px;    
+	            position: absolute;  
+	        }  
+	    </style>
+	</head>
+	<body>
+		<div id="mov">
+			按下鼠标左键以拖动
+		</div>
+		<script type="text/javascript">   
+	        var div = document.getElementById("mov");
+			var isDown = false;
+			var changePosition=function(x,y){
+				if(isDown){
+					mov.style.left=x-100+'px';
+					mov.style.top=y-100+'px';
+				}
+			};	
+			mov.addEventListener('mousedown',function(){
+				this.style.cursor = "move";
+				isDown=true;
+			});
+			mov.addEventListener('mouseup',function(){
+				this.style.cursor = "default";
+				isDown=false;
+			});
+			document.body.addEventListener('mousemove',function(result){
+				changePosition(result.clientX,result.clientY);
+			})
+		</script>
+	</body>
+</html>

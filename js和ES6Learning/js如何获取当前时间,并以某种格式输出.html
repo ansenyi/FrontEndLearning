@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var myDate = new Date();//获取系统当前时间
+			console.log(myDate.toLocaleDateString());//获取当前日期，2018/3/26
+			console.log(myDate.toLocaleTimeString());//获取当前时间，下午10:41:19
+			console.log(myDate.toLocaleString());//获取当前日期和时间，2018/3/26 下午10:42:08
+			var today=new Date();
+			var strYear=today.getFullYear();
+			var strMonth = today.getMonth() + 1;//月
+			var strDate = today.getDate();//日
+			var strHour = today.getHours();//时
+			var strMin = today.getMinutes();//分
+			var strSec = today.getSeconds();//秒
+			if(strMonth>=1&&strMonth<=9){
+				strMonth="0"+strMonth;
+			}
+			if(strDate>=1&&strDate<=9){
+				strDate="0"+strDate;
+			}
+			if(strHour>=1&&strHour<=9){
+				strHour="0"+strHour;
+			}
+			if(strMin>=1&&strMin<=9){
+				strMin="0"+strMin;
+			}
+			if(strSec>=1&&strSec<=9){
+				strSec="0"+strSec;
+			}
+			var currentTime=strYear+'-'
+			+strMonth+'-'
+			+strDate+' '
+			+strHour+':'
+			+strMin+':'
+			+strSec;
+			console.log(currentTime);
+			let someTime=new Date(2017,10,10);
+			console.log(someTime);
+		</script>
+	</body>
+</html>

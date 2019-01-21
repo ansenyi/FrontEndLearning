@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.redText{
+				color:red;
+			}
+		</style>
+		<script src="../js/react.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/jsx">
+			var ClickApp=React.createClass({
+				getInitialState:function(){
+					return{
+						clickCount:0
+					}
+				},
+				handleClick:function(){
+					console.log("点击了按钮");
+					this.setState({
+						clickCount:this.state.clickCount+1
+					})
+				},
+				render:function(){
+					return(
+					<div>
+						<h2 className="redText">点击下面的按钮</h2>
+						<button onClick={this.handleClick}>请点击我</button>
+						<p>{this.props.name}你一共点击了{this.state.clickCount}次！</p>
+					</div>
+					)
+				}
+			});
+			React.render(<ClickApp name="点击按钮"/>,
+				document.getElementById('app'),
+				function(){
+					console.log("渲染完成了！");
+				}
+			);
+		</script>
+	</body>
+</html>

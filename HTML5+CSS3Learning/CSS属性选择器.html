@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div[disabled]{
+				color: yellow;
+			}
+			div[class="font2"]{
+				color: green;
+			}
+			div[class^="font1"]{ /* ^=表示以某值开头*/
+				color: red;
+			}
+			div[class$="font"]{ /* ^=表示以某值结尾*/
+				color: blueviolet;
+			}
+			div[class*="www"]{ /* ^=表示含有某值*/
+				color: blue;
+			}
+			input[type="reset"]{
+				background-color: gold;
+			}
+		</style>
+	</head>
+	<body>
+		<div disabled="">属性选择器</div>
+		<div class="font1">属性选择器</div>
+		<div class="font2">属性选择器</div>
+		<div class="font12">属性选择器</div>
+		<div class="font3">属性选择器</div>
+		<div class="123font">属性选择器</div>
+		<div class="ansenyifont">属性选择器</div>
+		<div class="12www3">属性选择器</div>
+		<div class="nameiswww666">属性选择器</div>
+		<input type="text" placeholder="这是一个文本框"/>
+		<input type="reset" />
+	</body>
+</html>

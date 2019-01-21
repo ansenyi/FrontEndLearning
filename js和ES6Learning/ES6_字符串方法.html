@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>ES6新增的几个操作字符串的方法includes(),startsWith(),endsWith()、padStart()、padEnd()</p>
+		<ul>
+			<li>includes() : 返回布尔值，表示是否找到了参数字符串。</li>
+			<li>startsWith() : 返回布尔值，表示参数字符串是否在原字符串的头部。</li>
+			<li>endsWith() : 返回布尔值，表示参数字符串是否在原字符串的头部。</li>
+		</ul>
+		<ul>
+			<li>str.includes("a",3)  //返回布尔值，针对从第n个位置直到字符串的结束字符</li>
+			<li>str.startsWith("a",3)  //返回布尔值，针对从第n个位置直到字符串的结束字符</li>
+			<li>str.endsWith("a",3)   //返回布尔值，n 它针对前n个字符</li>
+		</ul>
+		<p>ES2017 引入了字符串补全长度的功能。
+			如果某个字符串不够指定长度，会在头部或尾部补全。
+			padStart()用于头部补全，padEnd()用于尾部补全。</p>
+		<p>padStart()和padStart()一共接受两个参数，第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。</p>
+		<p>如果原字符串的长度，等于或大于指定的最小长度，则返回原字符串。</p>
+		<p>如果用来补全的字符串与原字符串，两者的长度之和超过了指定的最小长度，则会截去超出位数的补全字符串。</p>
+		<p>如果省略第二个参数，默认使用空格补全长度。</p>
+		<p>padStart()的常见用途是为数值补全指定位数。另一个用途是提示字符串格式。</p>
+		<script>
+			let str1='x'.padStart(5, 'ab');
+			let str2='x'.padStart(4, 'ab');
+			console.log(str1,str2);
+			let str3='x'.padEnd(5, 'ab');
+			let str4='x'.padEnd(4, 'ab');
+			console.log(str3,str4);
+			let str5='abc'.padStart(10, '0123456789');
+			console.log(str5);
+			let str6='1'.padStart(10, '0');
+			let str7='123'.padStart(10, '0');
+			console.log(str6,str7);
+			console.log('x'.repeat(3));//xxx
+			console.log('x'.repeat(0));//''
+			console.log('x'.repeat(0.99999));//''   （-1，1）区间的数值，对数值取整
+			console.log('x'.repeat(-0.99));//''
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			class MyArray extends Array{
+				constructor(){
+					super();
+				}
+			}
+			const colors=new MyArray();
+			colors[0]='red';
+			console.log(colors);
+			colors.length=0;
+			console.log(colors);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="myForm">
+			<button onclick="requestData()">向后台请求数据</button>
+		</form>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="../js/vue.min.js"></script>
+		<script type="text/javascript">
+			function requestData(){
+				/*axios.post('http://www.qiyuexinxi.com/bussinesslive/api/login', {
+				    account: 'hww',
+				    password: 'hww'
+				  })
+				  .then(function (response) {
+				    console.log(response);
+				    console.log("运行成功");
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				    console.log("运行失败");
+				  });*/ 
+				   console.log("到这里了");
+					axios.get('http://www.qiyuexinxi.com/bussinesslive/api/liveroom/list', {
+					    params: {
+					      limit: 2,
+					      page:1,
+					      token:'1eb10f426950dc506400c6cb7083c742'
+					    }
+					  })
+					  .then(function (response) {
+					    console.log(response);
+				    	console.log("运行成功");
+					  })
+					  .catch(function (error) {
+					    console.log(error);
+					    console.log("运行失败");s
+					  });
+               
+			}
+		</script>
+	</body>
+</html>

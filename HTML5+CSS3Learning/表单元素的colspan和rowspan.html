@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			colspan用来指定单元格横向跨越的列数：colspan就是和并列，colspan=2就是合并两列。<br />
+			rowspan用来指定单元格纵向跨越的行数：rowspan就是合并行，rowspan=2就是合并两行。
+			
+		</p>
+		<table border="1" width="300">
+		    <tr>
+		        <td>1</td>
+		        <td>2</td>
+		        <td>3</td>
+		    </tr>
+		    <tr>
+		        <td>4</td>
+		        <td>5</td>
+		        <td>6</td>
+		    </tr>
+		</table>
+		</br>
+		<table border="1" width="300">
+		    <tr>
+		        <td colspan=3>合并第一行的三列</td>
+		    </tr>
+		    <tr>
+		        <td>4</td>
+		        <td>5</td>
+		        <td>6</td>
+		    </tr>
+		</table>
+		</br>
+		<table border="1" width="300">
+		    <tr>
+		        <td rowspan="2">合并第一列的两行</td>
+		        <td>2</td>
+		        <td>3</td>
+		    </tr>
+		    <tr>
+		        <td>5</td>
+		        <td>6</td>
+		    </tr>
+		</table>
+	</body>
+</html>

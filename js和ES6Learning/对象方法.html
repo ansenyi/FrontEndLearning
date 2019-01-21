@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(firstName) {
+			  this.firstName = firstName;
+			}
+			
+			Person.prototype.sayHello = function() {
+			  alert("Hello, I'm " + this.firstName);
+			};
+			
+			var person1 = new Person("Alice");
+			var person2 = new Person("Bob");
+			var helloFunction = person1.sayHello;
+			
+			person1.sayHello();                                 // alerts "Hello, I'm Alice"
+			person2.sayHello();                                 // alerts "Hello, I'm Bob"
+			helloFunction();                                    // alerts "Hello, I'm undefined" (or fails
+			                                                    // with a TypeError in strict mode)
+			console.log(helloFunction === person1.sayHello);          // logs true
+			console.log(helloFunction === Person.prototype.sayHello); // logs true
+			helloFunction.call(person1); 
+		</script>
+	</body>
+</html>

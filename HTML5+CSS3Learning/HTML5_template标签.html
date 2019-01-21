@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<template id="tem">
+	    	<div id="app">
+	    		<h1 id="title">hello world!</h1>
+	    		<h2>默认情况下，<template>是隐藏的，实际是默认其display属性为none</h2>
+	    	</div>
+	    </template>
+		<script type="text/javascript">
+		    var tem =document.getElementById("tem");//获取template标签
+		    console.log(tem);
+		    console.log(tem.innerHTML);  //
+		    var title = tem.content.getElementById("title"); 
+		    //在template标签内部内容，必须要用.content属性才可以访问到
+		    console.log(title);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<h3>
+				基本数据类型有哪些，number,string,boolean,null,undefined五类。<br />
+				引用数据类型(Object类)有常规名值对的无序对象{a:1}，数组[1,2,3]，以及函数等。
+			</h3>
+		</div>
+		<script>
+			let a=[0,1,2,3,4],
+			    b=a;
+			console.log(a===b);//true
+			a[0]=1;
+			console.log(a,b);
+			
+			//深拷贝函数
+			function deepClone(obj){
+			    let objClone = Array.isArray(obj)?[]:{};
+			    if(obj && typeof obj==="object"){
+			        for(key in obj){
+			            if(obj.hasOwnProperty(key)){
+			                //判断ojb子元素是否为对象，如果是，递归复制
+			                if(obj[key]&&typeof obj[key] ==="object"){
+			                    objClone[key] = deepClone(obj[key]);
+			                }else{
+			                    //如果不是，简单复制
+			                    objClone[key] = obj[key];
+			                }
+			            }
+			        }
+			    }
+			    return objClone;
+			}    
+			let a1=[1,2,3,4],
+			    b1=deepClone(a1);
+			a1[0]=2;
+			console.log(a1,b1);
+			
+			let obj = [
+			    {
+			        name:'melin1',
+			        job:'111'
+			    },
+			    {
+			        name:'melin2',
+			        job:'222'
+			    }
+			];
+			let copy = obj.slice(0);
+			copy[1].name = 'tom';
+			console.log(obj[1].name); //tom
+			console.log(copy[1].name); //tom
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h1 > strong{
+				background-color: red;
+			}
+			p ~ ul{
+				background-color: green;/*为所有相同的父元素中位于 p元素之后的所有 ul元素设置背景*/
+			}
+		</style>
+	</head>
+	<body>
+		<h1>这 <strong>非常</strong> <strong>非常</strong> 重要。</h1>
+		<h1>这 <em>真的 <strong>非常</strong></em> 重要。</h1>
+		<h1 class="c1"></h1>
+		<ul>
+		　　<li>快乐</li>
+		　　<li>快乐</li>
+		　　<li>快乐</li>
+		</ul>
+		<p>快乐生活</p>
+		<ul>
+		　　<li>生活</li>
+		　　<li>生活</li>
+		　　<li>生活</li>
+		</ul>
+	</body>
+</html>

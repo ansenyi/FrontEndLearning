@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<input type="text" id="input1" placeholder="请输入内容"/>
+		</div>
+		<script type="text/javascript">
+			var focusEvent=function(){
+				console.log('触发了focus事件');
+			}
+			var blurEvent=function(){
+				console.log('触发了blur事件');
+			}
+			var inputEvent=function(){
+				console.log('触发了input事件');
+			}
+			var inp=document.getElementById("input1");
+			inp.addEventListener("focus",focusEvent);
+			inp.addEventListener("blur",blurEvent);
+			inp.addEventListener("input",inputEvent);
+
+			
+		</script>
+	</body>
+</html>

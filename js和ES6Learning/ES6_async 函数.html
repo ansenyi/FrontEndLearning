@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//async函数的返回值是 Promise 对象,可以使用then方法添加回调函数。
+		    //当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
+		    async function f() {
+		      //throw new Error("出错了");
+			  return 'hello world';
+			  //return出的内容就是成功回调的参数
+			  //如果有错误就被catch捕获到
+		    }
+		    f().then(v => {
+		    	console.log(v);//执行成功
+		    }).catch((e)=>{
+		    	console.log(e);//执行失败
+		    });
+			//正常情况下，await命令后面是一个 Promise 对象，返回该对象的结果。
+			//如果不是 Promise 对象，就直接返回对应的值。
+			async function f1() {
+			  try {
+			    await Promise.reject('出错了');
+			  } catch(e) {
+			  }
+			  return await Promise.resolve('执行成功');
+			}
+			
+			f1().then(v => {
+				console.log(v)
+			});
+			
+			async function f2() {
+			  await new Promise((resolve, reject)=> {
+			    throw new Error('出错了');
+			  });
+			}
+			
+			f2().then(v => console.log(v))
+			.catch(e => console.log(e));
+		</script>
+	</body>
+</html>

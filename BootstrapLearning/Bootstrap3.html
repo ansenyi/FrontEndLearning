@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/bootstrap.js"></script>
+	</head>
+	<body>
+		<nav>
+			<ul class="pager">
+				<li>
+					<a href="Bootstrap1.html">向左</a>
+				</li>
+				<li>
+					<a href="Bootstrap1.html">向右</a>
+				</li>
+			</ul>
+			<ul class="pagination">
+				<li class="active">
+					<a href="Bootstrap1.html">
+						第一页
+					</a>
+				</li>
+				<li>
+					<a href="Bootstrap1.html">
+						第二页
+					</a>
+				</li>
+				<li>
+					<a href="Bootstrap1.html">
+						第三页
+					</a>
+				</li>
+				<li>
+					<a href="Bootstrap1.html">
+						第四页
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item list-group-item-danger">
+					列表第一项
+				</li>
+				<li class="list-group-item list-group-item-info">
+					列表第二项
+				</li>
+				<li class="list-group-item list-group-item-success">
+					列表第三项
+				</li>
+				<li class="list-group-item list-group-item-warning">
+					列表第四项
+				</li>
+			</ul>
+		</div>
+		
+		<h2>创建模态框（Modal）</h2>
+		<!-- 按钮触发模态框 -->
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			开始演示模态框
+		</button>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							<span>&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							模态框（Modal）标题
+						</h4>
+					</div>
+					<div class="modal-body">
+						在这里添加一些文本
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="alert('提交成功');">
+							提交更改
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<button class="btn btn-default btn-lg"  data-toggle="modal" data-target="#wodal">
+			测试按钮
+		</button>
+		<div id="wodal">这是测试内容呢</div>
+	</body>
+</html>

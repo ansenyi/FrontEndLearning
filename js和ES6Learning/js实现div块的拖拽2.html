@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>  
+	        #mov{  
+	            background-color: green;  
+	            width: 200px;  
+	            height: 200px;    
+	            top: 100px;  
+	            left: 100px;    
+	            position: absolute;  
+	        }  
+	    </style>  
+	    
+	</head>
+	<body>
+		<div id="mov" onmousedown="mouseDown(this,event)" onmousemove="mouseMove(event)" onmouseup="mouseUp(event)">
+			
+		</div> 
+		<script>    
+	        var mouseX, mouseY;    
+	        var objX, objY;    
+	        var isDowm = false;   
+	        var div = document.getElementById("mov");
+	        function mouseDown(obj, e) {    
+	            obj.style.cursor = "move";    
+	            objX = div.offsetLeft;  
+	            objY = div.offsetTop;  
+	            mouseX = e.clientX;    
+	            mouseY = e.clientY;    
+	            isDowm = true;    
+	        }    
+	        function mouseMove(e) {   
+	            var x = e.clientX;    
+	            var y = e.clientY;    
+	            if (isDowm) {    
+	                div.style.left = parseInt(objX) + parseInt(x) - parseInt(mouseX) + "px";    
+	                div.style.top = parseInt(objY) + parseInt(y) - parseInt(mouseY) + "px";    
+	            }    
+	        }    
+	        function mouseUp(e) {    
+	            if (isDowm) {    
+	                var x = e.clientX;    
+	                var y = e.clientY;   
+	                div.style.left = parseInt(objX) + parseInt(x) - parseInt(mouseX) + "px";    
+	                div.style.top = parseInt(objY) + parseInt(y) - parseInt(mouseY) + "px";    
+	                div.style.cursor = "default";    
+	                isDowm = false;    
+	            }    
+	        }    
+	    </script>  
+	</body>
+</html>

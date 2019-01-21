@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取所有 type为checkbox的元素</title>
+	</head>
+	<body>
+		<input type="text">
+        <input type="checkbox">
+        <input type="button" name="" value="按钮">
+        <input type="checkbox" name="">
+        <input type="checkbox" >
+        <input type="radio" name="">
+        <script>
+        	var inputs=document.getElementsByTagName("input");  //获取所有的input标签对象
+		    var checkboxArray=[];   //初始化空数组，用来存放checkbox对象
+		    for(var i=0;i<inputs.length;i++){
+		        var obj=inputs[i];
+		        if(obj.type=='checkbox'){
+		            checkboxArray.push(obj);
+		            obj.checked=true;            
+		        }
+		    }
+        </script>
+	</body>
+</html>

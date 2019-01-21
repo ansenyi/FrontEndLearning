@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>  
+		<div>
+			<p class="pc1">第一个段落</p>
+			<p id="p2">第二个段落</p>
+			<button id="btn1">按钮1</button>
+			<button id="btn2">按钮1</button>
+			<button id="btn3">按钮1</button>
+		</div>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#btn1").click(function(){
+					$("p").text("两个段落的文本都被改变了");
+				});
+				$("#btn2").click(function(){
+					$("#p2").text("第二个段落的文本都被改变了");
+				});
+				$("#btn3").click(function(){
+					$(".pc1").text("第一个段落的文本都被改变了");
+				});
+			});
+		</script>
+	</body>
+</html>

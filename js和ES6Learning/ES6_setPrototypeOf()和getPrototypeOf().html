@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			'use strict';
+			class User{
+				constructor(){
+					
+				}
+			}
+			var p={
+				getName(){
+					return this.name='安森一';
+				}
+			};
+			var user=new User();
+			console.log(user.__proto__);
+			console.log(User.prototype);
+			console.log(user.__proto__===User.prototype);
+			
+			user.__proto__=p;
+			console.log(user.getName());
+			
+			Object.setPrototypeOf(user,p);
+			var proto=Object.getPrototypeOf(user);
+			console.log(proto);
+			console.log(proto===user.__proto__);
+		</script>
+	</body>
+</html>

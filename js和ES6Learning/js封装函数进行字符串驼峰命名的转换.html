@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str="get-element-by-id";
+			var arr=str.split("-");
+			console.log(arr);
+			for(var i=1;i<arr.length;i++){ //索引从1开始
+				arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+			}
+			console.log(arr);
+			console.log(arr.join(''));//将数组元素连接起来
+			console.log(arr.join('_'));
+			
+			function strFormat(str){
+				var arr=str.split("-");
+				for(var i=1;i<arr.length;i++){
+					arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+				}	
+				return arr.join('');
+			}
+			console.log(strFormat("get-element-by-class"));
+		</script>
+	</body>
+</html>

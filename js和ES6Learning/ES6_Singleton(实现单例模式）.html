@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			class Singleton{
+				constructor(){
+					this.name="ansenyi";
+					this.instance=null;
+				}
+				static getInstance(){
+					if(!this.instance){
+						this.instance=new Singleton();
+					}
+					return this.instance;					
+				}
+			}
+			let s1=Singleton.getInstance();
+			console.log(s1.name);
+			s1.name="安森一 ";
+			let s2=Singleton.getInstance();
+			console.log(s2.name);
+			console.log(s2===s1);
+		</script>
+	</body>
+</html>

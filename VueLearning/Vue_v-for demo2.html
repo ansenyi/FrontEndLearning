@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="v-for-object">
+  			<li v-for="(value,key,index) in object">
+  			{{index}}--{{key}}:{{ value}}
+ 		    </li>
+		</ul>
+		<script type="text/javascript" src="../js/vue.min.js" ></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#v-for-object',
+				data:{
+					object:{
+						name:'安森一',
+						age:22,
+						sex:'男'
+					}
+				},
+				 mounted: function() {
+                //$(container).data('value', 'inited');
+                delete this.object.sex;
+                //document.write("你好呀");
+            	}
+			});
+			
+		</script>
+	</body>
+</html>

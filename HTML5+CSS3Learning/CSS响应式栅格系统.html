@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			@media only screen and (max-width: 768px) {
+				/*手机 small*/
+				.col-small-1{
+					width: 25%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-small-2{
+					width: 50%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-small-3{
+					width: 75%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-small-4{
+					width: 100%;
+					box-sizing: border-box;
+					float: left;
+				}
+			}
+			@media only screen and (min-width: 768px) {
+				/*电脑 big*/
+				.col-big-1{
+					width: 25%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-big-2{
+					width: 50%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-big-3{
+					width: 75%;
+					box-sizing: border-box;
+					float: left;
+				}
+				.col-big-4{
+					width: 100%;
+					box-sizing: border-box;
+					float: left;
+				}
+			}
+			.dd{
+				height: 200px;
+				border: solid black 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dd col-big-4 col-small-4">
+			主导航栏
+		</div>
+		<div class="dd col-big-3 col-small-4">
+			内容区
+		</div>
+		<div class="dd col-big-1 col-small-4">
+			右导航栏
+		</div>
+	</body>
+</html>

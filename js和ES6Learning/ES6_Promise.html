@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			const promise1 = new Promise(function(resolve, reject) {
+			  if (10<5){
+			    resolve("success");
+			  } else {
+			    reject("error");
+			  }
+			});
+			promise1.then((value)=>{
+			  // success
+			  console.log(value);//成功的回调
+			},(error)=>{
+			  // failure
+			  console.log(error);//失败的回调
+			});
+		</script>
+	</body>
+</html>

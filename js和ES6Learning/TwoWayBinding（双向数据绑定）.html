@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="in"/>
+		<span id="out">{{hello}}</span>
+		<script type="text/javascript">
+		    var obj = {};
+		    Object.defineProperty(obj,'hello',{
+		        set:function(val){
+		            document.getElementById('out').innerHTML = val;
+		            document.getElementById('in').value = val;
+		        }
+		    });
+		    document.getElementById('in').onkeyup = function(event){
+		        obj.hello = event.target.value;
+		    };
+		    obj.hello = "";
+		
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{input}}</p>
+			<p v-for="m in messages">{{m}}</p>
+			<input v-model="input" />
+			<button @click="add">添加</button><br />
+			{{nums}}
+		</div>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript">
+			let vm=new Vue({
+				el:'#app',
+				data:{
+					input:'',
+					messages:['Hello vue.js',123],
+					nums:[1,2,3,4,5],
+					date:new Date()
+				},
+				methods:{
+					add(){
+						this.messages.push(this.input);
+						console.log(this.date.toLocaleString());//显示当前的日期和时间
+					}
+				}
+			});
+			//可以改变数组的方法：pop、push、shift、unshift。reverse、splice、sort、map、filter
+			vm.nums=vm.nums.map(item=>item*2);
+		</script>
+	</body>
+</html>

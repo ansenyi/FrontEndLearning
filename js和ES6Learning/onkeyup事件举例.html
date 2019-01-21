@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span>此文本框只能输入大写字母：</span>
+		<input type="text" id="verify" value="abcde">
+	</body>
+	<script type="text/javascript">
+		var inp=document.getElementById("verify");
+		inp.onkeyup=function(){
+			this.value=this.value.toUpperCase();
+		}
+	</script>
+</html>

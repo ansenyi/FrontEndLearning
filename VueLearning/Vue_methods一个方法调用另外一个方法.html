@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="test2()">点击test2按钮</button>
+			<button @click="test3()">点击test3按钮</button>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			//$("#app").html(data.message);
+			var app=new Vue({
+				//绑定视图
+				el:"#app",
+				//绑定数据
+				data:{
+					test1Data:'我是test1'
+				},
+				methods: {
+			        test1(){
+			        	console.log("进入了test1方法");
+			            console.log(this.test1Data); //在test2方法调用时打印的是undefined
+			        },
+			        test2(){
+			            this.$options.methods.test1();//在test2中调用test1的方法
+			        },
+			        test3(){
+			        	this.test1();
+			        }
+			   }
+			});
+		</script>
+	</body>
+</html>

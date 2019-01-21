@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function unique(arr){
+				var arr2 = arr.sort();
+				var res = [arr2[0]];
+				for(var i=1;i<arr2.length;i++){
+                	if(arr2[i] !== res[res.length-1]){
+						res.push(arr2[i]);
+					}
+				}
+				return res;
+			}
+			function unique1(arr){
+　　				var newarr = [arr[0]];
+　　				for(var i=1;i<arr.length;i++){
+　　　				　var repeat = false;
+					for(var j=0;j<newarr.length;j++){
+						if(arr[i] == newarr[j]){
+							repeat = true;
+							break;
+						　}
+
+　　　　				}
+					if(!repeat){
+						newarr.push(arr[i]);
+					 }
+					}
+				　return newarr;
+			}
+			//var array=["a", "a","b","c"];
+			var array=[1,5,4,3,3,2,3,4,4,2,3];
+			document.write(unique1(array));
+		</script>
+	</body>
+</html>

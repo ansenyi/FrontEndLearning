@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const map=new Map([
+				['F','no'],
+				['T','yes'],
+			]);
+			for(let key of map.keys()){
+				console.log(key);
+			}
+			for(let value of map.values()){
+				console.log(value);
+			}
+			for(let item of map.entries()){
+				console.log(item);
+			}
+			for (let [key, value] of map) {
+			  console.log(key, value);
+			}
+			const reporter = {
+			  report: function(key, value) {
+			    console.log("Key: %s, Value: %s", key, value);
+			  }
+			};
+			
+			map.forEach(function(value, key, map) {
+			  this.report(key, value);
+			}, reporter);
+		</script>
+	</body>
+</html>

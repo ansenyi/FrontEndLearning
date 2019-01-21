@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<style type="text/css">
+			.divwidth{
+				width: 200px;
+			}
+		</style>
+		<script type="text/javascript">
+			function Person(){
+				
+			};
+			var p=new Person();
+			console.log(p instanceof Person);
+//			$(document).ready(function(){
+//				$("button").click(function(){
+//					$.get("work.txt",function(data,status){
+//						alert("数据: " + data + "\n状态: " + status);
+//					});
+//				});
+//			});
+			$(document).ready(function(){
+			  $("button").click(function(){
+			  	$("#div1").load("work.txt");
+			  	$("#div2").load("work.txt #p1");
+			    $("#div2").css("background-color","gold");
+			  	$("#div2").addClass("divwidth");
+			  });
+			  $("#empty").click(function(){
+			  	$("#div2").empty();
+			  });
+			});
+			
+		</script>
+	</head>
+	<body>
+		<!--<button>获取数据</button>-->
+		<div id="div1"><h2>使用 jQuery AJAX 修改文本</h2></div>
+		<div id="div2">div2里的内容</div>
+		<button >获取外部文本</button><br />
+		<input type="button" id="empty" value="清除div2里的内容"></input>
+	</body>
+</html>

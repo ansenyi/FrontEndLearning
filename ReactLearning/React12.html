@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/react.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<script type="text/jsx">
+			
+            
+			var NoLink = React.createClass({
+			    getInitialState:function(){
+			        return {message:''}
+			    },
+			    handelChange:function(event){
+			        console.log(event.target);
+			        this.setState({message:event.target.value})
+			    },
+			    render:function(){
+			        var message = this.state.message;
+			        return (
+			            <div>
+			                <input type="text" onChange={this.handelChange} value={message} />
+			                <br />
+			                <b>{message}</b>
+			            </div>
+			        )
+			    }
+			});
+			
+			React.render(<NoLink />,document.body);
+			
+		</script>
+	</body>
+</html>

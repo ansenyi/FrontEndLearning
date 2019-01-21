@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/showLoading.css" rel="stylesheet" media="screen" /> 
+	   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+	   <script type="text/javascript" src="../js/jquery.showLoading.min.js"></script>
+	</head>
+	<body>
+		<div  id="loading" style="height: 200px; background-color: green;">
+			<button onclick="showLoading()">显示加载中</button>
+			
+		</div>
+		<div id="hloading" style="height: 200px; background-color: red;">
+			<button onclick="hideLoading()()">隐藏加载中</button>
+		</div>
+		<script type="text/javascript">
+			function showLoading(){
+				$("#loading").showLoading();
+			}
+			function hideLoading(){
+				$("#loading").hideLoading();
+			}
+		</script>
+	</body>
+</html>

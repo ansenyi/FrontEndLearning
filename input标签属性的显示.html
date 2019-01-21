@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+		Male: <input id="male" accesskey="m" type="radio"
+		name="Sex" value="Male" />
+		<br />
+		Female: <input id="female" accesskey="f" type="radio"
+		name="Sex" value="Female" />
+		<br />
+		<a href="http://www.baidu.com/" id="lianjie" target="_blank">百度</a>
+		</form>
+		
+		<p>The access key for the radio buttons are:
+		<script type="text/javascript">
+		document.write(document.getElementById('male').accessKey);
+		document.write("、");
+		document.write(document.getElementById('male').type);
+		document.write("、");
+		document.write(document.getElementById('male').name);
+		document.write("、");
+		document.write(document.getElementById('male').value);
+		document.write("、");
+		document.write(document.getElementById('female').accessKey);
+		document.write(" and ");
+		document.write(document.getElementById('lianjie').id);
+		document.write("。");
+		console.log(document.getElementById('lianjie').target);
+		</script></p>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app1">
+			<p v-upper-text="msg"></p>
+			<p v-lower-text="msg"></p>
+		</div>
+		<div id="app2">
+			<p v-upper-text="msg">{{msg}}</p>
+			<p v-lower-text="msg"></p>
+		</div>
+		<script type="text/javascript" src="../js/vue.min.js"></script>
+		<script type="text/javascript">
+			///注册全局指令
+			Vue.directive('upper-text',function(el,binding){
+				console.log(el);
+				console.log(binding);
+				el.textContent=binding.value.toUpperCase();
+			});
+			new Vue({
+				el:'#app1',
+				data:{
+					msg:'My name is Ansenyi！'
+				},
+				methods:{
+					
+				},
+				directives:{ //注册局部指令
+					'lower-text':function(el,binding){
+						el.textContent=binding.value.toLowerCase();
+						el.style.color='red';
+					}
+				}
+			});
+			new Vue({
+				el:'#app2',
+				data:{
+					msg:'My name is Ansenyi！'
+				},
+				methods:{
+					
+				},
+				directives:{ //注册局部指令
+					'lower-text':function(el,binding){
+						el.textContent=binding.value.toLowerCase();
+						el.style.color='green';
+						el.style.fontWeight='bold';
+						el.style.fontSize='30px';
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

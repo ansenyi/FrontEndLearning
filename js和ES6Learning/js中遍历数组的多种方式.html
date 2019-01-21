@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			const fruits=['苹果','香蕉','西瓜','橘子'];
+//			for(let i=0;i<fruits.length;i++){
+//				console.log(fruits[i]);
+//			}
+			fruits.forEach(fruit=>{
+				console.log(fruit);
+			}
+			)
+			console.log('--------------');
+			for(let index in fruits){
+				console.log(index,fruits[index]);
+			}
+			console.log('--------------');
+			for(let value of fruits){
+				console.log(value);
+			}
+		</script>
+	</body>
+</html>

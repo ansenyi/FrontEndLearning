@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/react-with-addons.js"></script>
+		<script src="../js/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+		<div id="div4"></div>
+		<script type="text/jsx">
+        var Box1=React.createClass({  
+            getInitialState:function(){  
+                return {  
+                    name:'star',
+                    bool:true  
+                }  
+            },  
+            handlNameChange:function(event){  
+                this.setState({name:event.target.value});  
+            },handlboolChange:function(event){  
+                this.setState({bool:event.target.checked})  
+            },  
+            render:function(){  
+                return (  
+                    <div>  
+                        <input type="text" value={this.state.name}  onChange={this.handlNameChange}/>         <br/>  
+                        <input type="checkbox"  checked={this.state.bool} onChange={this.handlboolChange}  />  
+                    </div>      
+                )  
+            }  
+        }) ;  
+        React.render(<Box1></Box1>,document.getElementById('div1'));  
+     
+        var Box2=React.createClass({  
+            mixins:[React.addons.LinkedStateMixin],
+            getInitialState:function(){  
+                return {  
+                    name:'star',bool:true  
+                }  
+            },  
+            render:function(){
+                return (  
+                    <div>  
+                        <input type="text" valueLink={this.linkState('name')} />      <br/>  
+                        <input type="checkbox" checkedLink={this.linkState('bool')} />  
+                    </div>                      
+                );  
+            }  
+        })  
+        React.render(<Box2></Box2>,document.getElementById('div2'));  
+
+        var Box3=React.createClass({  
+            getInitialState:function(){  
+                return {  
+                    name:'star',bool:true  
+                }  
+            },  
+            handlnamechange:function(val){  
+                this.setState({name:val})  
+            },  
+            handlboolchange:function(val){  
+                this.setState({bool:val})  
+            },  
+            render:function(){  
+                var reactlink={  
+                    value:this.state.name,  
+                    requestChange:this.handlnamechange  
+                }  
+                var reactlink2={  
+                    value:this.state.bool,  
+                    requestChange:this.handlboolchange  
+                }  
+                return(  
+                    <div>  
+                        <input type="text" valueLink={reactlink} />       <br/>  
+                        <input type="checkbox" checkedLink={reactlink2} />  
+                    </div>      
+                )  
+            }  
+        });  
+        React.render(<Box3></Box3>,document.getElementById('div3'));  
+     
+        var Box4=React.createClass({  
+            mixins:[React.addons.LinkedStateMixin],//添加引用  
+            getInitialState:function(){  
+                return {  
+                    name:'star',bool:true  
+                }  
+            },  
+            render:function(){  
+                var valuelink=this.linkState('name');  
+                var handlenamechange=function(e){  
+                    valuelink.requestChange(e.target.value)   
+                }  
+                var valuelink2=this.linkState('bool');  
+                var handlenboolchange=function(e){  
+                    valuelink2.requestChange(e.target.checked)    
+                }                 
+                return (  
+                    <div>  
+                        <input type="text" value={valuelink.value} onChange={handlenamechange} />         <br/>  
+                        <input type="checkbox" checked={valuelink2.value} onChange={handlenboolchange}  />  
+                    </div>      
+                )  
+            }  
+        });  
+        React.render(<Box4></Box4>,document.getElementById('div4'));  
+	</script>
+	</body>
+</html>

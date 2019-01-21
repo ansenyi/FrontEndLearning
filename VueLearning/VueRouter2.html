@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		  ul, li { list-style: none; }
+		  ul { overflow: hidden; }
+		  li { float: left; width: 100px; }
+		  h2 { background-color: #903;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		    <top-bar> </top-bar>
+		    <hr>
+		      <p>这是共用的段落,email to: {{ email }}</p> 
+		    <hr>
+		    <router-view class="view one"></router-view>
+		    <footer-bar></footer-bar>
+		  </div>
+		  <script type="text/javascript" src="../js/vue.js" ></script>
+		  <script type="text/javascript" src="../js/vue-router-3.0.1.js"></script>
+		   <script>
+		    let topbarTemp = `
+		      <nav>
+		        <ul>
+		          <li v-for="item in NavList">
+		            <router-link :to="item.url">{{ item.name }}</router-link>
+		          </li>
+		        </ul>
+		      </nav>        
+		    `;
+		    // 定义组件：topbar
+		    Vue.component('top-bar', {          
+		      template: topbarTemp,
+		      data: function () {
+		        return {
+		          NavList: [
+		            { name: '首页', url: '/home'},
+		            { name: '产品', url: '/product'},
+		            { name: '服务', url: '/service'},
+		            { name: '关于', url: '/about'}
+		          ]
+		        }
+		      }
+		    });             
+		
+		    Vue.component('footer-bar', {  // 定义组件 footerbar
+		      template: `
+		        <footer>
+		          <hr/>
+		          <p>版权所有@flydragon<p>
+		        </footer>
+		      `
+		    });
+		
+		    // 创建home模块
+		    let home = {
+		      template: `<div> <h2>{{ msg }}<h2></div>`,
+		      data: function () {
+		        return { msg: '这是首页！' }
+		      }
+		    };
+		
+		    // 创建product 模块
+		    let product = {
+		      template: `<div> {{ msg }}</div>`,
+		      data: function () {
+		        return { msg: '这是产品页面！' }
+		      }
+		    };
+		    // 创建service 模块
+		    let service = {
+		      template: `<div> {{ msg }}</div>`,
+		      data: function () {
+		        return { msg: '这是服务页面！' }
+		      }
+		    };
+		    // 创建about 模块
+		    let about = {
+		      template: `<div> {{ msg }}</div>`,
+		      data: function () {
+		        return { msg: '这是关于页面！' }
+		      }
+		    };
+		
+		    // 定义路由对象
+		    let router = new VueRouter({
+		      routes: [
+		        { path: '/home', component: home },
+		        { path: '/product', component: product },
+		        { path: '/service', component: service },
+		        { path: '/about', component: about }
+		      ]
+		    });
+		
+		    // 初始化一个Vue实例
+		    let app = new Vue({         
+		      el: '#app',               
+		      data: {                   
+		       email: 'ansenyi@163.com'
+		      },
+		      router: router
+		    });
+		  </script>
+	</body>
+</html>

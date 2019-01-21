@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var examplearr=[8,94,15,88,55,76,21,39];
+			function sortarr(arr){
+			    for(i=0;i<arr.length-1;i++){  //比较的轮数
+			        for(j=0;j<arr.length-1-i;j++){ //一轮比较的次数
+			            if(arr[j]>arr[j+1]){
+			                var temp=arr[j];
+			                arr[j]=arr[j+1];
+			                arr[j+1]=temp;
+			            }
+			        }
+			    }
+			    return arr;
+			}
+//			sortarr(examplearr);
+			console.log(sortarr(examplearr));
+			console.log(examplearr);
+			//数组反转
+			console.log(examplearr.reverse());
+			console.log(examplearr);
+		</script>
+	</body>
+</html>

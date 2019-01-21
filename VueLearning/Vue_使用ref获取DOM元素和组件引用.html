@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="getElement">获取DOM元素</button>
+			<h1 id="myh1" ref="myh1">这是一个H1标签。</h3>
+			<h2 id="myh2" ref="myh2">这是一个H2标签。</h3>
+			<component1 ref="myComgonent1"></component1>
+		</div>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript">
+			let component1={
+				template:'<h3 id="myh3" ref="myh3" style="color: green;">这是一个H3标签,是一个组件。</h3>',
+				data(){
+					return{
+						msgCom1:'这是component1中的信息'
+					}
+					
+				},
+				methods:{
+					myfunc(){
+						console.log('通过方法来输出data：'+this.msgCom1);
+					}
+				}
+	        };
+			let vm=new Vue({
+				el:'#app',
+				data:{
+					msg:'这是父组件中的数据！'
+				},
+				methods:{
+					getElement(){
+						console.log(this.$refs);
+						console.log(this.$refs.myComgonent1.msgCom1);
+						this.$refs.myComgonent1.myfunc();
+					}
+				},
+				components:{
+					component1
+				}
+			});
+			
+		</script>
+	</body>
+</html>

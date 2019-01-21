@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//用ES6中的let
+			for(let i=0;i<10;i++){
+	            var a=document.createElement('a');
+	            a.innerHTML=i+'<br>';
+	            document.body.appendChild(a);
+	            a.addEventListener('click',function(event){
+	                event.preventDefault();  //取消默认事件，指a标签
+	                alert(i);
+	            });
+	        }
+			//用闭包的方法
+			/*for(var i=0;i<10;i++){
+	            (function(i){
+	                var a=document.createElement('a');
+	                a.innerHTML=i+'<br>';
+	                document.body.appendChild(a);
+	                a.addEventListener('click',function(e){
+	                    e.preventDefault();  //取消默认事件，指a标签
+	                    alert(i);
+	                });
+	
+	            })(i);
+	
+	        }*/
+		</script>
+	</body>
+</html>

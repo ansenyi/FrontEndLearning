@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+		</ul>
+		
+		<script>
+			let ansenyi={
+				name:'ansenyi',
+				age:22,
+				todos:[
+				{name:'看电影',completed:false},
+				{name:'运动',completed:true},
+				{name:'看书',completed:false}
+				]
+			};
+			const template=`
+			<ul>
+				${ansenyi.todos.map(todo=>`
+				<li>${todo.name}${todo.completed?'√':'×'}</li>
+				`).join('')}
+			</ul>
+			`;
+			document.body.innerHTML=template;
+			
+			let id=0;
+			let userIds={
+				[`user${++id}`]:id,
+				[`user${++id}`]:id,
+				[`user${++id}`]:id,
+				[`user${++id}`]:id
+			};
+			console.log(userIds);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		 ul, li { list-style: none; }
+		  ul { overflow: hidden; }
+		  li { float: left; width: 100px; }
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		    <top-bar> </top-bar>
+		    <router-view></router-view>
+		 </div>
+		  <script type="text/javascript" src="js/vue.min.js" ></script>
+		  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		  <script type="text/javascript" src="js/vue-router-3.0.1.js"></script>
+		   <script>
+		    let topbarTemp = `
+		      <nav>
+		        <ul>
+		          <li v-for="item in NavList">
+		            <router-link :to="item.url">{{ item.name }}</router-link>
+		          </li>
+		        </ul>
+		      </nav>        
+		    `;
+		    Vue.component('top-bar', {          
+		      template: topbarTemp,
+		      data() {
+		        return {
+		          NavList: [
+		            { name: '直播管理', url: '/zhibo'},
+		            { name: '资料管理', url: '/ziliao'},
+		            { name: '账号管理', url: '/zhanghao'}
+		          ]
+		        }
+		      }
+		    });             
+		
+		    let zhibo = {
+		      template: `<div> <h2>{{ msg }}<h2></div>`,
+		      data() {
+		        return { msg: '这是直播管理页面！' }
+		      }
+		    };
+		
+		    let ziliao = {
+		      template: `<div> {{ msg }}</div>`,
+		      data() {
+		        return { msg: '这是资料管理页面！' }
+		      }
+		    };
+		    let zhanghao = {
+		      template: `<div> {{ msg }}</div>`,
+		      data() {
+		        return { msg: '这是账号管理页面！' }
+		      }
+		    };
+		    let router = new VueRouter({
+		      routes: [
+		        { path: '/zhibo', component: zhibo },
+		        { path: '/ziliao', component: ziliao },
+		        { path: '/zhanghao', component:zhanghao }
+		      ]
+		    });
+		
+		    // 初始化一个Vue实例
+		    let app = new Vue({         
+		      el: '#app',               
+		      data: { 
+		       token:''
+		       
+		      },
+		      router: router,
+		      mounted:function(){
+
+		      }
+		    });
+		  </script>
+	</body>
+</html>

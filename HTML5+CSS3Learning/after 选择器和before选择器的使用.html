@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p:before{
+				content: "台词：";
+				background-color: pink;
+				color: green;
+				font-weight: bold;
+			}
+			p:after{
+				content: "--这是我说的";
+				background-color: yellow;
+				color: red;
+				font-weight: bold;
+			}
+			p:first-letter{
+				background-color:blue ;
+			}
+			a{
+				text-decoration: none;
+			}
+			.log::after{
+				content: '|';
+				color: red;
+				font-weight: bold;
+			}
+			.out:before{
+				content:" ";
+	            display: inline-block;
+	            width: 0;
+	            height: 0;
+	            border:10px solid transparent;
+	            border-left: 10px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<span>::before/:before和::after/:after的使用</span>
+		<pre>
+1、相同点
+	（1）都可以用来表示伪类对象，用来设置对象前的内容
+	（2）:befor和::before写法是等效的
+2、不同点
+	（1）:befor是Css2的写法，::before是Css3的写法
+	（2）:before的兼容性要比::before好 ，不过在H5开发中建议使用::before比较好
+3、加分项
+	（1）伪类对象要配合content属性一起使用
+	（2）伪类对象不会出现在DOM中，所以不能通过js来操作，仅仅是在 CSS 渲染层加入
+	（3）伪类对象的特效通常要使用:hover伪类样式来激活
+	    .test:hover::before { /* 这时animation和transition才生效 */ }
+		</pre>
+		<p>asd这是第一个段落。</p>
+		<p>这是第二个段落。</p>
+		:after 选择器在被选元素的内容后面插入内容。<br />
+		<a href="" class="log">登录</a><a href="">注册</a><br />
+		<a href="" class="out">退出</a>
+		<ol>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ol>
+	</body>
+</html>

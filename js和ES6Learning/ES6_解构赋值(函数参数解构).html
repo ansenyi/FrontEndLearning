@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let destruct = function({name='an',age=1}={}){
+			    console.log(name,age);
+			}
+			destruct({name:'ansenyi',age:6});
+			destruct({}); //不传参数就是用函数的默认参数
+			console.log("***************");
+			destruct();
+		</script>
+	</body>
+</html>

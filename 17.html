@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		姓名是：<span id="name"></span><br />
+		年龄是：<span id="age"></span><br />
+		数组是：<span id="arr"></span><br />
+		<button id="btn1" onclick="addEl()">加载数据</button>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			var json1={"name":"安森一","age":12,"arr":[1,2]};
+			document.getElementById("name").innerHTML=json1.name;
+			document.getElementById("age").innerHTML=json1.age;
+			document.getElementById("arr").innerHTML=json1.arr;
+			function addEl(){
+				for(var i in json1){
+				console.log(json1[i]);
+				var el=document.createElement("h2");
+				el.innerHTML=json1[i];
+				document.body.appendChild(el);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

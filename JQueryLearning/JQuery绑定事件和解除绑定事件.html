@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn1">单击按钮</button>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#btn1").bind('click',f1);
+				$("#btn1").bind('click',f2);
+				$("#btn1").on('mouseenter',f3);
+				$("#btn1").on('mouseleave',f4);
+				//unbind()解除事件
+				//bind()方法可以用on()来代替，unbind()方法可以用off()方法来代替
+			});
+			function f1(){
+				console.log("第一个单击函数");
+			}
+			function f2(){
+				console.log("第二个单击函数");
+			}
+			function f3(){
+				console.log("鼠标移到了按钮上");
+			}
+			function f4(){
+				console.log("鼠标离开了按钮");
+			}
+		</script>
+	</body>
+</html>

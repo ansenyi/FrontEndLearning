@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<pre>
+什么是cookie?
+	cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。
+cookie的作用
+          服务器可以利用Cookies包含信息的任意性来筛选并经常性维护这些信息，以判断在HTTP传输中的状态。
+          Cookies最典型的应用是判定注册用户是否已 经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。
+          另一个重要应用场合是“购物 车”之类处理。用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入Cookies，以便在最后付款时提取信息。				
+有关cookie的例子：
+	名字 cookie
+	当访问者首次访问页面时，他或她也许会填写他/她们的名字。名字会存储于 cookie 中。当访问者再次访问网站时，他们会收到类似 "Welcome John Doe!" 的欢迎词。而名字则是从 cookie 中取回的。
+	密码 cookie
+	当访问者首次访问页面时，他或她也许会填写他/她们的密码。密码也可被存储于 cookie 中。当他们再次访问网站时，密码就会从 cookie 中取回。
+	日期 cookie
+	当访问者首次访问你的网站时，当前的日期可存储于 cookie 中。当他们再次访问网站时，他们会收到类似这样的一条消息："Your last visit was on Tuesday August 11, 2005!"。日期也是从 cookie 中取回的。
+			</pre>
+		</div>
+		<script type="text/javascript">
+			document.cookie="name=ansenyi";
+			console.log(document.cookie);
+			document.cookie="age=25";
+			console.log(document.cookie);
+			function get_cookie(Name) {
+			   var search = Name + "="//查询检索的值
+			   var returnValue = "";//返回值
+			   if (document.cookie.length > 0) {
+			     sd = document.cookie.indexOf(search);
+			     if (sd!= -1) {
+			        sd += search.length;
+			        end = document.cookie.indexOf(";", sd);
+			        if (end == -1)
+			         end = document.cookie.length;
+			         //unescape() 函数可对通过 escape() 编码的字符串进行解码。
+			        returnValue=unescape(document.cookie.substring(sd, end))
+			      }
+			   } 
+			   return returnValue;
+			}
+			//使用方式：
+			console.log(get_cookie("name"));
+			
+			var cookie = {
+			    set:function(key,val,time){//设置cookie方法
+			        var date=new Date(); //获取当前时间
+			        var expiresDays=time;  //将date设置为n天以后的时间
+			        date.setTime(date.getTime()+expiresDays*24*3600*1000); //格式化为cookie识别的时间
+			        document.cookie=key + "=" + val +";expires="+date.toGMTString();  //设置cookie
+			    },
+			    get:function(key){//获取cookie方法
+			        /*获取cookie参数*/
+			        var getCookie = document.cookie.replace(/[ ]/g,"");  //获取cookie，并且将获得的cookie格式化，去掉空格字符
+			        var arrCookie = getCookie.split(";")  //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+			        var tips;  //声明变量tips
+			        for(var i=0;i<arrCookie.length;i++){   //使用for循环查找cookie中的tips变量
+			            var arr=arrCookie[i].split("=");   //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+			            if(key==arr[0]){  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+			                tips=arr[1];   //将cookie的值赋给变量tips
+			                break;   //终止for循环遍历
+			            }
+			        }
+			        return tips;
+			    },
+			    delete:function(key){ //删除cookie方法
+			        var date = new Date(); //获取当前时间
+			        date.setTime(date.getTime()-10000); //将date设置为过去的时间
+			        document.cookie = key + "=v; expires =" +date.toGMTString();//设置cookie
+			    }
+			};
+			cookie.set("uesr","安森一",10);//设置为10天过期
+			console.log(cookie.get("uesr"));//获取cookie
+		</script>
+	</body>
+</html>

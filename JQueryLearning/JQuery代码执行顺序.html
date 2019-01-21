@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.2.1.min.js"></script>
+		<script>
+			$(function(){
+				alert("这是第一段jQuery的代码");
+			});
+		</script>
+	</head>
+	<body>
+		<p>当页面中的所有元素都加载完了，才会执行JQuery代码。</p>
+		<script>
+			alert(1);
+			$(function(){
+				alert("这是第二段jQuery的代码");
+			});
+			window.jQuery(function(){
+				alert("这是第三段jQuery的代码");
+			});
+			alert(2);
+		</script>
+	</body>
+</html>

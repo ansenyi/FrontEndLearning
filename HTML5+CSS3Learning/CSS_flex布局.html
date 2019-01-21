@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			section{
+				width: 1000px;
+				height: 600px;
+				border: 2px solid pink;
+				margin: 100px auto;
+				display: flex;
+				justify-content: space-around;/*flex-start,flex-end,center,space-between*/
+				align-items: center;/*flex-start,flex-end,center,strech*/
+			}
+			div{
+				width: 250px;
+				height: 200px;
+			}
+			div:first-child{
+				background-color: purple;
+			}
+			div:nth-child(2){
+				background-color: greenyellow;
+			}
+			div:nth-child(3){
+				background-color: brown;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div></div>
+			<div></div>
+			<div></div>
+		</section>
+	</body>
+</html>

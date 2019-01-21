@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>元素1</li>
+			<li>元素2</li>
+			<li>元素3</li>
+		</ul>
+		<script>
+			//展开运算符的作用
+			//1、将非数组转化为数组
+			//2、将数组转化为非数组
+			let str="abc123";
+			console.log([...str]);
+			console.log([...document.getElementsByTagName("li")]);
+			function fn(){
+				//arguments是类数组
+				console.log([...arguments]);
+			}
+			fn(1,2,3,5,6);
+			
+			let arr=[10,20,30,40];
+			console.log(...arr);
+			//数组合并
+			let arr1=[50,60,70];
+			console.log(arr.concat(arr1));
+			console.log([...arr,...arr1]);
+			//数组的最大值          Math.max(value1,value2,......)
+			//apply() 方法，它个方法的作用之一就是把一个数组转换成多个参数
+			let maxValue=Math.max.apply(null,arr);
+			let maxValue1=Math.max(...arr);
+			console.log(maxValue);
+			console.log(maxValue1);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			用户名：<input type="text" ref="username"/><br />
+			密码：<input type="password" ref="password"/><br />
+			<button v-on:click="add()">添加</button><br />
+			你输入的用户名为：{{un}}<br />
+			密码为：{{pw}}
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+			    el: "#app",
+			    data:{
+			    	un:'',
+			    	pw:''
+			    },
+			    methods:{
+				    add:function(){
+				        this.un= this.$refs.username.value; //减少获取dom节点的消耗
+				        this.pw=this.$refs.password.value;
+				    }
+			    }
+			})
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+			let fruits = ["Banana", "Orange", "Apple", "Mango"];
+			console.log(fruits.shift(),fruits);
+			const fruit = ["Banana", "Orange", "Apple", "Mango"];
+			const quantity=[10,20,30,40];
+			const list={
+				[fruit.shift()]:quantity.shift(),
+				[fruit.shift()]:quantity.shift(),
+				[fruit.shift()]:quantity.shift(),
+				[fruit.shift()]:quantity.shift()
+			};
+			console.log(list);
+		</script>
+	</body>
+</html>

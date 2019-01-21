@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="app">
+			<h1>Hello App!</h1>
+			<p>
+				<router-link to="/foo">Go to foo</router-link>
+				<router-link to="/bar">Go to bar</router-link>
+			</p>
+			<router-view></router-view>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script src="../js/vue-router-3.0.1.js"></script>
+		<script type="text/javascript">
+			const Foo={template:'<div>foo</div>'}
+			const Bar={template:'<div>bar</div>'}
+			const router=new VueRouter({
+				routes:[
+				{path:'/foo',component:Foo},
+				{path:'/bar',component:Bar}
+			  ]
+			})
+			const app=new Vue({
+				router
+			}).$mount('#app');
+		</script>
+	</body>
+</html>

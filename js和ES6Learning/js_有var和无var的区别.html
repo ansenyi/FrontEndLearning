@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var num = 1;
+//          是在当前域中声明变量. 如果在方法中声明，则为局部变量（local variable）；如果是在全局域中声明，则为全局变量。
+		   num2=2; //它并不是声明了一个全局变量，而是创建了一个全局对象的属性
+		   console.log(window);
+		   //由于变量声明自带不可删除属性，比较var num = 1 跟 num = 1，前者是变量声明，带不可删除属性，因此无法被删除；后者为全局变量的一个属性，因此可以从全局变量中删除。
+		   delete num;
+		   delete num2;
+		   console.log(window);
+		   var a='a';
+           b='b';
+		   function f1(){
+			c='c';
+			var d='d';
+		   }
+			console.log(a);
+			console.log(b);
+			console.log(window.c);//undefined
+			f1();
+			console.log(window.c); //c
+			console.log(c);//
+			console.log(d);//这个就会报错，因为它不是全局变量
+		</script>
+	</body>
+</html>
