@@ -24,13 +24,23 @@
 			  { name: "TypeScript", fileExtension: ".ts" },
 			  { name: "CoffeeScript", fileExtension: ".coffee" }
 			];
-			//console.table() 方法用于在控制台输出表格信息（数组或对象）。
+			//console.table() 方法用于在控制台输出表格信息（数组或对象），第二个参数用来控制显示的列。
 			console.table(languages);
 			var site1 = { name : "Runoob", site : "www.runoob.com" }
 			var site2 = { name : "Google", site : "www.google.com" }
 			var site3 = { name : "Taobao", site : "www.taobao.com" }
-			console.table([site1, site2, site3]);
+			console.table([site1, site2, site3],["site"]);// 打印一个包含对象的数组
+			function Person(firstName, lastName) {
+			  this.firstName = firstName;
+			  this.lastName = lastName;
+			}
+			var john = new Person("John", "Smith");
+			var jane = new Person("Jane", "Doe");
+			var emily = new Person("Emily", "Jones");
+			console.table([john, jane, emily]);// 打印一个包含对象的数组
 			console.table({ name : "菜鸟教程", site : "www.runoob.com" });
+			console.table([1,2,3,4]);//打印数组
+			console.table({'name':'ansenyi','password':'123'});//打印json对象
 			/*
 			%s 字符串
 			%d 整数
