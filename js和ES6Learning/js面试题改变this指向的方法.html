@@ -6,11 +6,98 @@
 	</head>
 	<body>
 		<div>
+			<p style="color:blue">
+				我们经常使用的获取dom节点的方法返回的就是一个类数组，在一个方法中使用 arguments关键字获取到的该方法的所有参数也是一个类数组
+				<br />
+				但是类数组却不能通过forEach进行遍历，因为forEach是数组原型链上的方法，类数组毕竟不是数组，所以无法使用
+			</p>
+			<p>
+				1:全局变量默认挂载在window对象下
+				2:一般情况下this指向它的调用者
+				3:es6的箭头函数中，this指向创建者，并非调用者
+				4:通过call、apply、bind可以改改变this的指向
+			</p>
+			<p>
+				JavaScript中的每一个Function对象都有一个apply()方法和一个call()方法，它们的语法分别为(第二个参数都是可选的)：<br />
+				/*apply()方法*/<br />
+				function.apply(thisObj[, argArray])<br />
+				/*call()方法*/<br />
+				function.call(thisObj[, arg1[, arg2[, [,...argN]]]]);<br />
+				apply和call的唯一区别，就是在传参的时候，apply的参数需要放在一个数组里面(参数数组)，而call不需要；<br />
+				它们各自的定义：<br />
+				apply()：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments);即A对象应用B对象的方法。<br />
+				call()：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对象的方法。<br />
+				<font color="red">它们的不同之处：</font><br />
+				apply()：最多只能有两个参数——新thisObj对象和一个数组argArray。如果给该方法传递多个参数，则把参数都写进这个数组里面，当然，即使只有一个参数，也要写进数组里。如果argArray不是一个有效的数组或arguments对象，那么将导致一个TypeError。如果没有提供argArray和thisObj任何一个参数，那么Global对象将被用作thisObj，并且无法被传递任何参数。<br />
+				call()：它可以接受多个参数，第一个参数与apply一样，后面则是一串参数列表。这个方法主要用在js对象各方法相互调用的时候，使当前this实例指针保持一致，或者在特殊情况下需要改变this指针。如果没有提供thisObj参数，那么 Global 对象被用作thisObj。 <br />
+				<font color="green">实际上，apply和call的功能是一样的，只是传入的参数列表形式不同。</font>
+				<br />
+				<font>
+					apply()和call()的作用:<br />
+					1、改变函数内部的this指向；<br />
+					2、实现继承；<br />
+					3、调用函数；<br />
+					4、借用其他函数的方法；<br />
+					5、实现多重继承。
+				</font>
+			</p>
 			<p>改变函数内部的this指向的三种方法：call(),apply(),bind()</p>
 			<p>相同点：都可以改变this指向。</p>
 			<p>不同点：接收参数的方式不同。</p>
+			<p style="color:red">bind 返回绑定作用域后的一个新函数，不会执行函数</p>
 		</div>
 		<script>
+			console.log(this === window)  // true
+            console.log(window.alert === this.alert)  // true
+            var person = {
+			    name: 'xiao ming',
+			    age: 18,
+			    who: function () {
+			        console.log( 'my name is ' + this.name + ' , ' + this.age + ' years old' );
+			        console.log( person === this);
+			    }
+			}
+			person.who();
+			//上面这段代码中who方法是person对象的一个属性，被person对象调用，所以this的指向也就是person
+			console.log("***********************");
+		    function foo(){
+		            console.log(this.fruit);
+		    }
+		    // 定义一个全局变量，等同于window.fruit = "banana";
+		    var fruit = "banana";
+		    // 此时函数中的this指向window;
+		    foo();  //   "banana"
+		    
+		    var  o = {
+		          fruit : "apple",
+		          foo : foo    
+		    };
+		    // 此时函数中的this指向o
+		    o.foo();  // "apple"
+		    //全局函数apply和call可以用来改变this的指向，如下：
+		    var o1={
+		          fruit : "apple"  
+		    };
+		    foo.apply(window);  // "banana";
+            foo.apply(o);  // "apple";
+		    foo.call(window);// "banana";
+		    foo.call(o);// "apple";
+		    //apply和call的唯一区别，就是在传参的时候，apply的参数需要放在一个数组里面，而call不需要；
+			function a(){
+			    var user = "安森一";
+			    console.log(this.user); //undefined
+			    console.log(this); //Window
+			}
+			a();//this最终指向的是调用它的对象，这里的函数a实际是被Window对象所调用的
+			window.a();//与上面是相同的效果
+			
+			var o = {
+			    user:"安森一",
+			    fn:function(){
+			        console.log(this.user);  //安森一
+			    }
+			}
+			o.fn();
 //			call()方法使用示例：
 //			语法： 函数.call(this, arg1, arg2, arg3, arg4)
 //			第一个参数用来指定函数内部的this指向，后面的参数是函数执行时所需的实参。
@@ -34,13 +121,82 @@
 				speak:function(say){
 					console.log(say+this.word);
 				}
-			}
+			};
 			Pet.speak("叫");
 			var Dog={
 				word:"汪汪汪"
 			};
 			//将this的指向改变成了Dog
 			Pet.speak.call(Dog,'狂叫');//狂叫汪汪汪
+			
+			console.log("******************");
+			function func (a,b,c) {
+				console.log(a,b,c);
+				console.log(...arguments);
+			}
+			var obj={};
+			func.apply(obj, [1,2,3]);
+			// function接收到的参数实际上是 1,2,3
+			
+			func.apply(obj, {
+			    0: 1,
+			    1: 2,
+			    2: 3,
+			    length: 3
+			});
+			// function接收到的参数实际上是 1,2,3
+			func.call(obj, 1,2,3);
+			// function接收到的参数实际上是 1,2,3
+			
+			func.call(obj, [1,2,3]);
+			// function接收到的参数实际上是 [1,2,3],undefined,undefined
+			//求数组的最大值和最小值
+			var arr=[10,20,50,40];
+			var max=Math.max.apply(null,arr);
+			var min=Math.min.apply(null,arr);
+			console.log(max,min);
+			var max1=Math.max.call(null,...arr);
+			var min1=Math.min.call(null,...arr);
+			console.log(max1,min1);
+			
+			var peo = {
+			    user:"安森一",
+			    fn:function(){
+			        console.log(this.user);  //安森一
+			    }
+			};
+			function func1 (a) {
+				console.log(a);
+				console.log(this);
+			}
+			func1.bind(peo);//func1函数不会执行
+			var perBind=func1.bind(peo);//返回绑定作用域后的一个新函数，此时func1函数已经绑定到了peo对象上
+			perBind("bind方法参数");
+			
+			var name = "window.name";
+	        var objBind = {
+	            name : "objBind.name",
+	            getName:function(){
+	                console.log(this.name);
+	                return function(){
+	                   console.log(this.name);
+	               }.bind(this);//this指的是objBind
+	            }
+	        };
+	        objBind.getName()();  //  "objBind.name"  "objBind.name"
+	        
+	        //对象中的嵌套函数的this指向不是当前对象，而是window，看如下例子：
+	        var name1 = "window.name1";
+		      var obj1 = {
+		          name : "obj1.name",
+		          getName:function(){
+		              console.log(this.name);
+		              return function(){
+		                  console.log(this.name);//这个this指的是window
+		              } 
+		          }
+		      }
+		      obj1.getName()();  // "obj1.name"  "window.name1"
 		</script>
 	</body>
 </html>
