@@ -7,8 +7,19 @@
 	<body>
 		<p>三元表达式中第一个表达式只要不是false, 0, undefined, NaN, "",'' or null，js都认为是true;</p>
 		<script type="text/javascript">
-			var isMember = 100;
-    		console.log(isMember?'是':'不是'); //返回$2.00
+			var isMember = 100; //转化为Boolean类型后为true
+    		console.log(isMember?'是':'不是'); //是
+    		console.log(Boolean(null));// false
+    		console.log(Boolean(''));// false
+    		console.log(Boolean('NaN'));// false
+    		console.log(Boolean(undefined));// false
+    		console.log("********************");
+			console.log(Boolean('hello'));     // true 
+			console.log(Boolean('0'));          // true 
+			console.log(Boolean(' '));          // true 
+			console.log(Boolean([]));           // true 
+			console.log(Boolean(function(){})); // true
+
     		console.log(1/6);
     		console.log(1/5);
 		</script>
