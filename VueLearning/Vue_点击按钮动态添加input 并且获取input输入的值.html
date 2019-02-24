@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.c1{
+				width: 200px;
+				background-color: gold;
+				text-align: center;
+			}
+			.c2{
+				margin-top:2px ;
+				margin-bottom: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="c1">
+				<button @click="addItem()">添加input文本框</button><br />
+		        <input type="text" v-for="(item,i) of items" v-model="items[i]" :key="i" class="c2">
+			</div>
+		    <span v-text="items"></span>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			//$("#app").html(data.message);
+			var app=new Vue({
+				//绑定视图
+				el:"#app",
+				//绑定数据
+				data() {
+				    return {
+				      items: []
+				    }
+				},
+				methods: {
+				    addItem() {
+				      this.items.push('');
+				    }
+				}
+			});
+		</script>
+	</body>
+</html>

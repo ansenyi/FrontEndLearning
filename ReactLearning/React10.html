@@ -13,18 +13,19 @@
 		<div id="div4"></div>
 		<script type="text/jsx">
         var Box1=React.createClass({  
-            getInitialState:function(){  
+            getInitialState(){  
                 return {  
                     name:'star',
                     bool:true  
                 }  
             },  
-            handlNameChange:function(event){  
+            handlNameChange(event){  
                 this.setState({name:event.target.value});  
-            },handlboolChange:function(event){  
+            },
+            handlboolChange(event){  
                 this.setState({bool:event.target.checked})  
             },  
-            render:function(){  
+            render(){  
                 return (  
                     <div>  
                         <input type="text" value={this.state.name}  onChange={this.handlNameChange}/>         <br/>  

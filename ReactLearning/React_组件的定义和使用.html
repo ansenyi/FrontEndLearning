@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="example1"></div>
+		<div id="example2"></div>
+		<script type="text/babel">
+			//1、定义组件
+			//第一种方式：使用函数定义组件(简单组件)
+			function MyComponent(){
+				return <h2>第一种方式：使用函数定义组件(简单组件)</h2>;
+			}
+			//第二种方式：使用 ES6 class 来定义一个组件（复杂组件）
+			class MyComponent2 extends React.Component {
+			  render() {
+			    console.log(this);
+			    return <h2>第二种方式：使用 ES6 class来定义一个组件（复杂组件）</h2>;
+			  }
+			}
+			//2、渲染组件标签
+			ReactDOM.render(
+			  <MyComponent/>,
+			  document.getElementById('example1')
+		    );
+		    ReactDOM.render(
+			  <MyComponent2/>,
+			  document.getElementById('example2')
+		    );
+		</script>
+	</body>
+</html>

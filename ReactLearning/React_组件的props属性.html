@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.c1{
+				background-color: gold;
+			}
+		</style>
+		<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+		<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+		<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="example1"></div>
+		<div id="example2"></div>
+		<div id="example3"></div>
+		<script type="text/babel">
+			function HelloMessage(props) {
+			    return <h1 className="c1">Hello {props.name}!</h1>;
+			} 
+			ReactDOM.render(
+			    <HelloMessage name="Ansenyi"/>,
+			    document.getElementById('example1')
+			);
+			
+			function Name(props) {
+		    	return <h1>网站名称：{props.name}</h1>;
+			}
+			function Url(props) {
+			    return <h1>网站地址：{props.url}</h1>;
+			}
+			function Nickname(props) {
+			    return <h1>网站小名：{props.nickname}</h1>;
+			}
+			function App() {
+			    return (
+			    <div>
+			        <Name name="菜鸟教程" />
+			        <Url url="http://www.runoob.com" />
+			        <Nickname nickname="Runoob" />
+			    </div>
+			    );
+			}
+//			debugger;
+			ReactDOM.render(
+			     <App/>,
+			    document.getElementById('example2')
+			);
+			
+			
+			class HelloMessage1 extends React.Component{
+				static defaultProps = {  //设置默认属性
+		            name:'安森一（默认）'
+		        } 
+				render(){
+					console.log(this.props.name);
+					return <h1>Hello {this.props.name}!</h1>;
+				}
+			}
+			
+			HelloMessage1.defualtProps={
+				name:'安森一（默认）'
+			};
+//			debugger;
+			ReactDOM.render(<HelloMessage1/>,document.getElementById('example3'));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			class MyComponent extends React.Component {
+				constructor(props) {
+				   super(props);
+				   this.state = {boo:false};
+				   //将新增方法中的this强制绑定为组件对象
+				   this.handleChange=this.handleChange.bind(this);
+				}
+				//新增加的方法，内部的this默认不是组件对象，是undefined
+				handleChange() { 
+					let newBoo=!this.state.boo;
+				    this.setState({boo: newBoo});
+				}
+				render() {  //重写组件类的方法
+				   console.log(this); //部的this默认是组件对象
+				   return <h2 onClick={this.handleChange}>点击改变布尔值:{this.state.boo?"布尔值为真":"布尔值为假"}</h2>;
+				}
+			}
+			//2、渲染组件标签
+			ReactDOM.render(
+			  <MyComponent/>,
+			  document.getElementById('example')
+		   );
+		</script>
+	</body>
+</html>
