@@ -30,7 +30,7 @@
 			<p>
 				深拷贝的三种实现方式：<br />
 				1、JSON方法实现；<br />
-				2、用for…in实现遍历和复制；<br />
+				2、用递归和for…in实现遍历和复制；<br />
 				3、利用数组的Array.prototype.forEach进copy；<br />
 			</p>
 		</div>
@@ -102,7 +102,16 @@
 			    b1=deepClone(a1);
 			a1[0]=2;
 			console.log(a1,b1);
-			
+			//test array
+			var arry1= ["a","b","c","d"];
+			var arry2 = deepClone(arry1);
+			arry1.pop();
+			console.log(arry1,arry2);
+			//test object
+			var objOld = {name:"小明",sex:"男",age:27,favorite:"乒乓球",family:{brother:"志平",mother:"孙爱玉",father:"王立才"}};
+			var objNew = deepClone(objOld);
+			objOld.family.brother = "close";
+			console.log(objOld,objNew);
 			
 			console.log("****借用JSON对象的parse()和stringify()实现深拷贝****");
 			//第2种方法：还可以借用JSON对象的parse和stringify

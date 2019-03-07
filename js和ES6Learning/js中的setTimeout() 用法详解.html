@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>setTimeout() 是属于 window 的方法，该方法用于在指定的毫秒数后调用函数或计算表达式。</p>
+		<p>语法格式可以是以下两种：<br />
+		setTimeout(要执行的代码, 等待的毫秒数)<br />
+		setTimeout(JavaScript 函数, 等待的毫秒数)<br />
+		</p>
+		<p>setTimeout()只执行函数一次，如果需要多次调用可以使用setInterval(),或者在函数体内再次调用setTimeout()</p>
+		<p>
+			setTimeout() 方法可以使到浏览器不断执行一段代码或一个函数 当一个 setTimeout( ) 开始了循环的工作, 我们要使它停下来, 可使用 clearTimeout( ) 这方法。<br />
+			clearTimeout() 语法：<br />
+			clearTimeout(timeoutID)
+		</p>
+		<form name="display1">   
+		    <input type="text" id="box1" name="box1" value="0" size="4" />   
+		    <input type="button" value="停止计时" onclick="clearTimeout(meter1)" />   
+		    <input type="button" value="继续计时" onclick="count1() " />   
+		</form>  
+		<script>
+			setTimeout("console.log('3秒后要执行的代码')", 3000 );
+			setTimeout(function(){
+				console.log('4秒后要执行的代码');
+			},4000);
+			setTimeout(function(){
+				console.log('3秒后要执行的另一段代码（函数）');
+			},3000);
+			//如果秒数相同，则相当于将要执行的代码合并，从上到下，顺序不变
+/*			setTimeout(function(){
+				console.log('3秒后要执行的代码');
+				console.log('3秒后要执行的代码函数');
+			},3000);
+			*/
+			var x=0;
+			function count1( )  
+			{　
+			    x = x+ 1  
+			    document.getElementById("box1").value= x  
+			    meter1=setTimeout("count1()", 1000)  
+			}
+			count1();
+		</script>
+	</body>
+</html>

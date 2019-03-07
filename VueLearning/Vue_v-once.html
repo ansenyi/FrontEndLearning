@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>v-once这个指令不需要任何表达式，它的作用就是定义它的元素或组件只会渲染一次，包括元素或者组件的所有字节点。首次渲染后，不再随着数据的改变而重新渲染。也就是说使用v-once，那么该块都将被视为静态内容。</p>
+	    <div id="app">
+	    	<span v-text="message" v-bind:id='message'></span><br />
+			<span>{{message}}</span><br />
+			<span v-once>{{message}}</span>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			var app=new Vue({
+				//绑定视图
+				el:"#app",
+				//绑定数据
+				data(){
+					return{
+						message:1
+					}
+				},
+				created(){
+					setInterval(()=>{
+						this.message++;
+					},1000);
+				}
+			});
+	    </script>
+	</body>
+</html>

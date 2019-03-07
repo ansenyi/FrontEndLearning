@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [
+			    {name:'zopp',age:0},
+			    {name:'gpp',age:18},
+			    {name:'yjj',age:8}
+			];
+			let listdata = [
+		        {num:23,content:'my first book'},
+		        {num:100,content:'Bible'},
+		        {num:3,content:'the lost library'},
+		        {num:56,content:'how to program'},
+		    ];
+			function compare(property){
+			    return function(a,b){
+			        var value1 = a[property];
+			        var value2 = b[property];
+			        return value1 - value2;
+			    }
+			}
+			console.log(arr.sort(compare('age')));
+			console.log(listdata.sort(compare('num')));
+			
+			let listdata1 = [
+		        {num:23,content:'我的 第一本书'},
+		        {num:100,content:'圣经'},
+		        {num:3,content:'消失的图书馆'},
+		        {num:56,content:'怎样编程'},
+		    ];
+		    //用一行代码实现
+		    listdata1.sort((x,y)=>{
+		    	return x['num']-y['num'];
+		    });
+		    console.log(listdata1);
+		</script>
+	</body>
+</html>
