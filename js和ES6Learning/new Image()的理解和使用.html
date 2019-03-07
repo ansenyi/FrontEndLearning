@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			Image 对象代表嵌入的图像。 <br />
+			<img> 标签每出现一次，一个 Image 对象就会被创建。<br /> 
+			同理 , 创建一个Image对象，就会生成一个<img>标签
+		</p>
+		<p>
+		事件句柄       描述<br />
+		onabort    当用户放弃图像的装载时调用的事件句柄。<br />
+		onerror    在装载图像的过程中发生错误时调用的事件句柄。<br />
+		onload     当图像装载完毕时调用的事件句柄。<br />
+		onkeydown onkeypress onkeyup
+		</p>
+		<script>
+			let img1=new Image();
+			img1.src="../img/image2.jpg";
+			document.querySelector('body').appendChild(img1);
+			console.log(document.querySelector('body'));//获取body元素
+			console.log(document.getElementsByTagName('body')[0]);//获取body元素
+		</script>
+	</body>
+</html>

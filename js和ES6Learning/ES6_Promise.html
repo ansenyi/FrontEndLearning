@@ -13,6 +13,7 @@
 			    reject("error");
 			  }
 			});
+			//Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。
 			promise1.then((value)=>{
 			  // success
 			  console.log(value);//成功的回调
@@ -20,6 +21,17 @@
 			  // failure
 			  console.log(error);//失败的回调
 			});
+			//这两个函数都接受Promise对象传出的值作为参数。
+			
+			let promise2=new Promise(function(resolve,reject){
+				console.log("Promise");
+				resolve();
+			});
+			promise2.then(function(){
+				console.log('resolved');
+			});
+			console.log('你好');
+			//上面代码中，Promise 新建后立即执行，所以首先输出的是Promise。然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。
 		</script>
 	</body>
 </html>
