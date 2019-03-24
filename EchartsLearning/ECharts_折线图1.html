@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>折线/面积图line</title>
+	</head>
+	<body>
+		<div>
+			折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。
+		</div>
+		<div id="container" style="width: 900px;height: 600px;"></div>
+		<script src="../js/echarts.min.js"></script>
+		<script type="text/javascript">
+			var myChart=echarts.init(document.getElementById('container'));
+			var option={
+				title:{  //标题组件，包含主标题和副标题。
+					text:'',  //主标题文本，支持使用 \n 换行。
+					subtext:''  //副标题文本，支持使用 \n 换行。
+
+				},
+			    xAxis: {
+			        type: 'category',  //坐标轴类型。'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+			        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] //通过data设置类目数据
+			    },
+			    yAxis: {
+			        type: 'value'   //'value' 数值轴，适用于连续数据。
+			    },
+			    series: [{  //系列列表。每个系列通过 type 决定自己的图表类型
+			        data: [820, 932, 901, 934, 1290, 1330, 1320],  //图表的数据
+			        type: 'line',   //图表的类型，默认为line（折线图），也可以是bar（柱状图）、pie（饼图）
+			        areaStyle: {
+						color:'#0f0', //折线下区域的颜色
+						origin:'auto', //图形区域的起始位置。默认为auto，也可以设置为start和end。
+						shadowColor:'#00f',  //阴影颜色
+						shadowBlur: 30, //图形阴影的模糊大小
+						opacity:0.2  //透明度
+					}  //设置 areaStyle 后可以绘制面积图(折线下的区域)
+			    }]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>
