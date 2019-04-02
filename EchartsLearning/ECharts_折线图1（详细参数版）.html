@@ -10,7 +10,7 @@
 	<div>
 		折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。
 	</div>
-	<div id="container" style="width: 900px;height: 600px;margin-top: 100px;background-color: gold;"></div>
+	<div id="container" style="width: 1200px;height: 800px;margin-top: 100px;background-color: gold;"></div>
 	<script src="../js/echarts.min.js"></script>
 	<script type="text/javascript">
 		var myChart = echarts.init(document.getElementById('container'));
@@ -49,7 +49,6 @@
 					color: '#f00',
 					fontSize: 25,
 					backgroundColor: "greenyellow",
-
 				}
 			},
 			visualMap: [
@@ -80,6 +79,16 @@
 					padding: 5
 				},
 
+			},
+			grid: {  //图表grid组件
+				left: '15%',   //grid 组件离容器左侧的距离
+				right: '10%',
+				top: 200,
+				bottom: '10%',
+				// x: 0,
+				// y: 20,
+				// x2: 0,
+				// y2: 30,   //x,y代表纵坐标的左上角距离容器的大小     ---x2,y2代表横坐标的右下角距离容器的大小
 			},
 			xAxis: {
 				type: 'category',  //坐标轴类型。'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
@@ -131,7 +140,7 @@
 						opacity: 1   //分隔线透明度，支持从 0 到 1 的数字，为 0 时不绘制该分隔线。
 					}
 				},
-				axisLine: {
+				axisLine: {  //y轴轴线的样式设置
 					lineStyle: {
 						color: "#999999"
 					}
@@ -140,15 +149,21 @@
 					formatter: function (value, index) {
 						return "第" + (index + 1) + "行：" + value + "套";
 					},
-					lineStyle: {
-						color: "#999999"
-					}
+					show: true,
+					color: "#00f",
+					fontStyle: "italic",
+					fontFamily: "楷体",
+					// fontSize: 10,
+					fontWeight: "bold",
 				},
 			},
 			series: [{  //系列列表。每个系列通过 type 决定自己的图表类型
 				name: '销售量',
 				data: [820, 932, 901, 934, 1290, 1330, 1320],  //图表的数据
 				type: 'line',   //图表的类型，默认为line（折线图），也可以是bar（柱状图）、pie（饼图）
+				//symbol: 'none',  //去掉折点的圆圈
+				symbol: 'square', //将折点改为方块
+				symbolSize: 20,  //拐点的大小
 				areaStyle: {
 					color: '#0f0', //折线下区域的颜色
 					origin: 'auto', //图形区域的起始位置。默认为auto，也可以设置为start和end。
@@ -157,11 +172,14 @@
 					opacity: 0.2  //透明度
 				},  //设置 areaStyle 后可以绘制面积图(折线下的区域)
 				itemStyle: {
-					normal: {
-						color: 'black', //折点的颜色
+					normal: {  //正常情况下，折点的样式
+						color: 'rgba(112,48,160,0.5)', //折点的颜色
 						lineStyle: {  //设置折线的样式
 							color: '#f00'
 						}
+					},
+					emphasis: { //当鼠标放上去时折点的样式
+						color: 'rgba(112,48,160,1)',
 					}
 				},
 				// smooth: true,  //使折线变得光滑
