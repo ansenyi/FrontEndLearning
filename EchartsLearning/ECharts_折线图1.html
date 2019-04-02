@@ -10,7 +10,7 @@
 	<div>
 		折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。
 	</div>
-	<div id="container" style="width: 900px;height: 600px;"></div>
+	<div id="container" style="width: 900px;height: 600px;margin-top: 100px;background-color: gold;"></div>
 	<script src="../js/echarts.min.js"></script>
 	<script type="text/javascript">
 		var myChart = echarts.init(document.getElementById('container'));
@@ -26,11 +26,6 @@
 					fontSize: 40, //字体的大小
 					align: '', //文字水平对齐方式，默认自动。'left''center''right'
 					verticalAlign: '',// 文字垂直对齐方式，默认自动。 'top''middle''bottom'
-					// rich: {
-					// 	a: {
-					// 		// 没有设置 `align`，则 `align` 为 right
-					// 	}
-					// }
 				},
 				subtextStyle: {
 
@@ -46,20 +41,45 @@
 			tooltip: {  //提示框设置
 				show: true,  //是否显示提示框组件,默认为true
 				trigger: 'axis',  //触发类型。默认为'item'，也可以是'axis'，坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+				backgroundColor: 'rgba(255,255,255,0.7)',
+				borderColor: "pink",
+				borderWidth: 5,
+				borderRadius: 10,
+				textStyle: {   //提示框里的文字的样式
+					color: '#f00',
+					fontSize: 25,
+					backgroundColor: "greenyellow",
 
+				}
 			},
-			// visualMap: [
-			// 	{
-			// 		type: "piecewise",
-			// 		pieces: [{ gt: 0 }, { lt: 0 }],
-			// 		color: ["#CF1322", "#008F4F"],
-			// 		show: false
-			// 	}
-			// ],
+			visualMap: [
+				// {
+				// 	type: "piecewise",
+				// 	pieces: [{ gt: 600 }, { lt: 900 }],
+				// 	color: ["#CF1322", "#008F4F"]
+				// }
+			],
 			legend: {  //图例组件
 				//图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。
 				type: 'plain', //普通图例。缺省就是普通图例。
-				data: ['销售量']
+				data: ['销售量'],
+				right: 20,
+				top: 10,
+				borderColor: '#00f',
+				borderWidth: 5,
+				borderRadius: 10,
+				textStyle: {
+					color: '#333',
+					fontWeight: 'bolder',
+					fontFamily: '微软雅黑',
+					fontSize: 20,
+					backgroundColor: 'pink',
+					borderColor: "#0f0",
+					borderWidth: 5,
+					borderRadius: 10,
+					padding: 5
+				},
+
 			},
 			xAxis: {
 				type: 'category',  //坐标轴类型。'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
@@ -144,6 +164,7 @@
 						}
 					}
 				},
+				// smooth: true,  //使折线变得光滑
 			}]
 		};
 		myChart.setOption(option);
