@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		p:after {
+			content: "**增加的部分内容";
+
+		}
+
+		.div2 p:after {
+			content: "增加的内容";
+			background-color: yellow;
+			color: red;
+			font-weight: bold;
+		}
+
+		.p4:after {
+			content: '|增加的content';
+			color: green;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<p>第一个段落</p>
+		<p>第二个段落</p>
+
+	</div>
+	<div class="div2">
+		<p>第三个段落</p>
+	</div>
+	<p class="p4">第四个段落</p>
+</body>
+
+</html>
