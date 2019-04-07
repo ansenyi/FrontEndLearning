@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>柱状图/条形图bar-animation-delay</title>
+</head>
+
+<body style="width: 100%;height: 100%; margin: 0">
+    <div id="container" style="width: 100%;height: 100%"></div>
+    <script src="../js/echarts.min.js"></script>
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var xAxisData = [];
+        var data1 = [];
+        var data2 = [];
+        for (var i = 0; i < 20; i++) {
+            xAxisData.push('类目' + (i + 1));
+            data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+            data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+        }
+
+        option = {
+            title: {
+                text: '柱状图动画延迟',
+                subtext: "Bar-animation-delay",
+                textStyle: {  //主标题的样式设置
+                    color: 'greenyellow', //主标题文字的颜色。
+                    fontStyle: '', // 主标题文字字体的风格,可选值为'normal''italic''oblique'
+                    fontWeight: 'bold', //字体的粗细
+                    fontFamily: '黑体',  //字体
+                    fontSize: 30, //字体的大小
+                    align: '', //文字水平对齐方式，默认自动。'left''center''right'
+                    verticalAlign: '',// 文字垂直对齐方式，默认自动。 'top''middle''bottom'
+                },
+                subtextStyle: {  //副标题的样式设置
+
+                },
+                x: 'center',// 水平安放位置，默认为左对齐，可选为: 'left' ¦ 'right' ¦ 'center' ¦ {number}（x坐标，单位px）
+                y: 'top'  // 垂直安放位置，默认为全图顶端，可选为： 'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px）
+            },
+            // 给echarts图设置背景色
+            backgroundColor: '#94D8F6',
+            color: ["#ff2b48", "#06B45F"],
+            legend: {  //图例
+                // data: ['bar1', 'bar'],
+                // align: 'left',
+                type: "plain",
+                x: 'center', // 水平安放位置
+                y: 80,    // 垂直安放位置
+                backgroundColor: 'rgba(0,0,0,0)',  //图例的背景颜色，默认为透明
+                borderColor: '#ccc',       // 图例边框颜色
+                borderWidth: 2,            // 图例边框线宽，单位px，默认为0（无边框）
+                itemGap: 20,    //各个item之间的间隔，单位px，默认为10
+                itemWidth: 25,             // 图例图形宽度，默认为25
+                itemHeight: 14,            // 图例图形高度，默认为14
+                selectedMode: true,       //点击图例的数据切换效果，默认为true
+                textStyle: {
+                    color: '#00f',
+                    fontSize: 12
+
+                },
+                data: [
+                    {
+                        name: "bar1",
+                        icon: "rect",
+                        textStyle: {
+                            fontSize: 20,
+                            color: "#ff2b48"
+                        }
+                    },
+                    {
+                        name: "bar2",
+                        icon: "rect",
+                        textStyle: {
+                            fontSize: 20,
+                            color: "#06B45F"
+                        }
+                    }
+                ],
+            },
+            tooltip: {   //提示框设置
+                show: true,
+                // trigger: 'axis',
+                backgroundColor: 'rgba(0,0,255,0.7)',//提示框的背景颜色
+                borderColor: "pink",
+                borderWidth: 5,
+                borderRadius: 10,
+                formatter: function (e) {//对显示的数据进行格式化
+                    return e.name + ":" + e.value.toFixed(1) + "-" + e.seriesIndex + "-" + e.seriesName + "-" + e.color;
+
+                },
+                textStyle: {   //提示框里的文字的样式
+                    color: '#f00',
+                    fontSize: 25,
+                    backgroundColor: "greenyellow",
+                }
+            },
+            toolbox: { //工具栏（一般在右上角）。内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。
+                // y: 'bottom',
+                show: true,
+                feature: {
+                    magicType: {  //动态类型切换
+                        type: ['line', 'bar', 'stack', 'tiled'] //折线图、条形图、堆叠模式、平铺模式
+                    },
+                    dataZoom: {
+                        show: true,
+                        title: {
+                            //zoom  区域缩放
+                            //back  区域缩放还原
+                        }
+                    },
+                    dataView: {}, //数据视图
+                    saveAsImage: {  //保存为图片
+                        pixelRatio: 5  //保存图片的分辨率比例，默认跟容器相同大小，如果需要保存更高分辨率的，可以设置为大于 1 的值，例如 2。
+                    }
+                }
+            },
+            grid: {  //图表grid组件
+                left: '10%',   //grid 组件离容器左侧的距离
+                right: '10%',
+                top: 200,
+                bottom: '10%',
+                containLabel: true,
+                backgroundColor: '#ccc',
+                borderWidth: 1,
+                borderColor: '#ccc'
+            },
+            xAxis: {
+                type: 'category',
+                data: xAxisData,
+                name: 'x轴',
+                silent: false,
+                splitLine: { show: false },//去除网格线
+                splitArea: { show: false },//去除网格区域，默认是没有的
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#00f',//坐标线的颜色
+                        width: '1'//坐标线的宽度
+                    }
+                },
+                axisLabel: {  //坐标轴刻度标签的相关设置。
+                    show: true,
+                    color: "#00f",
+                    fontStyle: "italic",
+                    fontFamily: "楷体",
+                    // fontSize: 10,
+                    fontWeight: "bold",
+                    // backgroundColor: "pink",
+                    // borderColor: "#0f0",
+                    // borderWidth: 2,
+                    // borderRadius: 5,
+                    // padding: 10
+
+                }
+            },
+            yAxis: {
+                type: 'value',   //'value' 数值轴，适用于连续数据。
+                name: "y轴",
+                splitLine: {  //分隔线
+                    show: true,   //是否显示分隔线
+                    lineStyle: {  //分隔线的样式
+                        color: "gold",  //分隔线的颜色
+                        width: 1,  //分隔线的宽度，默认为1px
+                        type: "solid",  //分隔线的类型，可选'solid''dashed''dotted'，默认为solid
+                        opacity: 1   //分隔线透明度，支持从 0 到 1 的数字，为 0 时不绘制该分隔线。
+                    }
+                },
+                axisLine: {  //y轴轴线的样式设置
+                    lineStyle: {
+                        color: "#f0f"
+                    }
+                },
+                axisLabel: {
+                    formatter: function (value, index) {
+                        return "第" + (index + 1) + "行：" + value;
+                    },
+                    show: true,
+                    color: "#00f",
+                    // fontStyle: "italic",
+                    fontFamily: "楷体",
+                    fontSize: 20,
+                    fontWeight: "bold",
+                },
+            },
+            series: [{
+                name: 'bar1',
+                type: 'bar',
+                data: data1,
+                animationDelay: function (idx) {
+                    return idx * 10;
+                },
+                itemStyle: {
+                    //正常情况下：
+                    // normal: {
+                    //     //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    //     color: function (params) {
+                    //         var colorList = ['#65d186', '#f67287', '#f29e3c', '#c05bdd', '#7a65f2']; //每根柱子的颜色
+                    //         return colorList[params.dataIndex];
+                    //     }
+                    // },
+                    //鼠标悬停时：
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.9)'
+                    }
+                },
+                // barWidth: 28,   //柱子的宽度
+                label: {  //柱子上的文本标签，可用于说明图形的一些数据信息，比如值，名称等.
+                    normal: {
+                        show: true,
+                        position: 'inside',
+                        textStyle: {
+                            fontSize: 15,
+                            color: 'grey'
+                        },
+                        formatter: e => {
+                            return e.name + ":" + e.value.toFixed(1);
+                        }
+                    }
+                }
+            }, {
+                name: 'bar2',
+                type: 'bar',
+                data: data2,
+                animationDelay: function (idx) {
+                    return idx * 10 + 100;
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: -10,
+                        shadowColor: 'rgba(66, 66, 66, 1)'
+                    }
+                }
+            }],
+            animationEasing: 'elasticOut',
+            animationDelayUpdate: function (idx) {
+                return idx * 5;
+            }
+        };
+        myChart.setOption(option);
+        window.onresize = function () {
+            console.log("窗口大小变化了");
+            // echarts.init(dom).setOption(option);
+        }
+    </script>
+</body>
+
+</html>
