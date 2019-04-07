@@ -2,152 +2,155 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>折线/面积图line</title>
+    <meta charset="UTF-8">
+    <title>折线/面积图line</title>
 </head>
 
 <body>
-	<div>
-		折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。
-	</div>
-	<div id="container" style="width: 900px;height: 600px;"></div>
-	<script src="../js/echarts.min.js"></script>
-	<script type="text/javascript">
-		var myChart = echarts.init(document.getElementById('container'));
-		var option = {
-			title: {  //标题组件，包含主标题和副标题。
-				text: '一周销售量表',  //主标题文本，支持使用 \n 换行。
-				subtext: '图表副标题',  //副标题文本，支持使用 \n 换行。
-				textStyle: {
-					color: 'red', //主标题文字的颜色。
-					fontStyle: '', // 主标题文字字体的风格,可选值为'normal''italic''oblique'
-					fontWeight: 'bold', //字体的粗细
-					fontFamily: '宋体',  //字体
-					fontSize: 40, //字体的大小
-					align: '', //文字水平对齐方式，默认自动。'left''center''right'
-					verticalAlign: '',// 文字垂直对齐方式，默认自动。 'top''middle''bottom'
-					// rich: {
-					// 	a: {
-					// 		// 没有设置 `align`，则 `align` 为 right
-					// 	}
-					// }
-				},
-				subtextStyle: {
+    <div>
+        折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。
+    </div>
+    <div>
+        这是一个div。
+    </div>
+    <div id="container" style="width: 900px;height: 600px;"></div>
+    <script src="../js/echarts.min.js"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('container'));
+        var option = {
+            title: { //标题组件，包含主标题和副标题。
+                text: '一周销售量表', //主标题文本，支持使用 \n 换行。
+                subtext: '图表副标题', //副标题文本，支持使用 \n 换行。
+                textStyle: {
+                    color: 'red', //主标题文字的颜色。
+                    fontStyle: '', // 主标题文字字体的风格,可选值为'normal''italic''oblique'
+                    fontWeight: 'bold', //字体的粗细
+                    fontFamily: '宋体', //字体
+                    fontSize: 40, //字体的大小
+                    align: '', //文字水平对齐方式，默认自动。'left''center''right'
+                    verticalAlign: '', // 文字垂直对齐方式，默认自动。 'top''middle''bottom'
+                    // rich: {
+                    // 	a: {
+                    // 		// 没有设置 `align`，则 `align` 为 right
+                    // 	}
+                    // }
+                },
+                subtextStyle: {
 
-				},
-				textAlign: '', //整体（包括 text 和 subtext）的水平对齐。可选值：'auto'、'left'、'right'、'center'。
-				x: "center",
-				backgroundColor: "greenyellow",
-				top: 50, //grid 组件离容器上侧的距离。
-				borderColor: "#0f0",
-				borderWidth: 5,
-				borderRadius: 10,
-			},
-			tooltip: {  //提示框设置
-				show: true,  //是否显示提示框组件,默认为true
-				trigger: 'axis',  //触发类型。默认为'item'，也可以是'axis'，坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+                },
+                textAlign: '', //整体（包括 text 和 subtext）的水平对齐。可选值：'auto'、'left'、'right'、'center'。
+                x: "center",
+                backgroundColor: "greenyellow",
+                top: 50, //grid 组件离容器上侧的距离。
+                borderColor: "#0f0",
+                borderWidth: 5,
+                borderRadius: 10,
+            },
+            tooltip: { //提示框设置
+                show: true, //是否显示提示框组件,默认为true
+                trigger: 'axis', //触发类型。默认为'item'，也可以是'axis'，坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
 
-			},
-			// visualMap: [
-			// 	{
-			// 		type: "piecewise",
-			// 		pieces: [{ gt: 0 }, { lt: 0 }],
-			// 		color: ["#CF1322", "#008F4F"],
-			// 		show: false
-			// 	}
-			// ],
-			legend: {  //图例组件
-				//图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。
-				type: 'plain', //普通图例。缺省就是普通图例。
-				data: ['销售量']
-			},
-			xAxis: {
-				type: 'category',  //坐标轴类型。'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', '周六', '周日'], //通过data设置类目数据
-				name: "x轴",  //名称
-				nameLocation: "end", //坐标轴名称显示位置。可选'start'、'middle' 或者 'center'、'end'，默认为end
-				boundaryGap: true,
-				axisLine: {  //x轴轴线的样式设置
-					show: true,  //x轴轴线是否显示
-					lineStyle: {
-						type: "solid", //x轴的类型
-						color: "#000" //x轴的颜色
-					}
-				},
-				axisTick: {  //坐标轴刻度相关设置
-					show: true, //坐标轴刻度是否显示
-					length: 10,  //坐标轴刻度的长度，默认为5
-					lineStyle: {
-						color: "#f00",  //坐标轴刻度的颜色
-						width: 2,   //坐标轴刻度的宽度
-						type: "solid",  //坐标轴刻度的类型
-						opacity: 1  //坐标轴刻度的透明度
-					}
-				},
-				axisLabel: {  //坐标轴刻度标签的相关设置。
-					show: true,
-					color: "#00f",
-					fontStyle: "italic",
-					fontFamily: "楷体",
-					fontSize: 20,
-					fontWeight: "bold",
-					backgroundColor: "pink",
-					borderColor: "#0f0",
-					borderWidth: 2,
-					borderRadius: 5,
-					padding: 10
+            },
+            // visualMap: [
+            // 	{
+            // 		type: "piecewise",
+            // 		pieces: [{ gt: 0 }, { lt: 0 }],
+            // 		color: ["#CF1322", "#008F4F"],
+            // 		show: false
+            // 	}
+            // ],
+            legend: { //图例组件
+                //图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。
+                type: 'plain', //普通图例。缺省就是普通图例。
+                data: ['销售量']
+            },
+            xAxis: {
+                type: 'category', //坐标轴类型。'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', '周六', '周日'], //通过data设置类目数据
+                name: "x轴", //名称
+                nameLocation: "end", //坐标轴名称显示位置。可选'start'、'middle' 或者 'center'、'end'，默认为end
+                boundaryGap: true,
+                axisLine: { //x轴轴线的样式设置
+                    show: true, //x轴轴线是否显示
+                    lineStyle: {
+                        type: "solid", //x轴的类型
+                        color: "#000" //x轴的颜色
+                    }
+                },
+                axisTick: { //坐标轴刻度相关设置
+                    show: true, //坐标轴刻度是否显示
+                    length: 10, //坐标轴刻度的长度，默认为5
+                    lineStyle: {
+                        color: "#f00", //坐标轴刻度的颜色
+                        width: 2, //坐标轴刻度的宽度
+                        type: "solid", //坐标轴刻度的类型
+                        opacity: 1 //坐标轴刻度的透明度
+                    }
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置。
+                    show: true,
+                    color: "#00f",
+                    fontStyle: "italic",
+                    fontFamily: "楷体",
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    backgroundColor: "pink",
+                    borderColor: "#0f0",
+                    borderWidth: 2,
+                    borderRadius: 5,
+                    padding: 10
 
-				}
-			},
-			yAxis: {
-				type: 'value',   //'value' 数值轴，适用于连续数据。
-				name: "持仓增长率",
-				splitLine: {  //分隔线
-					show: false,   //是否显示分隔线
-					lineStyle: {  //分隔线的样式
-						color: "gold",  //分隔线的颜色
-						width: 2,  //分隔线的宽度，默认为1px
-						type: "solid",  //分隔线的类型，可选'solid''dashed''dotted'，默认为solid
-						opacity: 1   //分隔线透明度，支持从 0 到 1 的数字，为 0 时不绘制该分隔线。
-					}
-				},
-				axisLine: {
-					lineStyle: {
-						color: "#999999"
-					}
-				},
-				axisLabel: {
-					formatter: function (value, index) {
-						return "第" + (index + 1) + "行：" + value + "套";
-					},
-					lineStyle: {
-						color: "#999999"
-					}
-				},
-			},
-			series: [{  //系列列表。每个系列通过 type 决定自己的图表类型
-				name: '销售量',
-				data: [820, 932, 901, 934, 1290, 1330, 1320],  //图表的数据
-				type: 'line',   //图表的类型，默认为line（折线图），也可以是bar（柱状图）、pie（饼图）
-				areaStyle: {
-					color: '#0f0', //折线下区域的颜色
-					origin: 'auto', //图形区域的起始位置。默认为auto，也可以设置为start和end。
-					shadowColor: '#00f',  //阴影颜色
-					shadowBlur: 30, //图形阴影的模糊大小
-					opacity: 0.2  //透明度
-				},  //设置 areaStyle 后可以绘制面积图(折线下的区域)
-				itemStyle: {
-					normal: {
-						color: 'black', //折点的颜色
-						lineStyle: {  //设置折线的样式
-							color: '#f00'
-						}
-					}
-				},
-			}]
-		};
-		myChart.setOption(option);
-	</script>
+                }
+            },
+            yAxis: {
+                type: 'value', //'value' 数值轴，适用于连续数据。
+                name: "持仓增长率",
+                splitLine: { //分隔线
+                    show: false, //是否显示分隔线
+                    lineStyle: { //分隔线的样式
+                        color: "gold", //分隔线的颜色
+                        width: 2, //分隔线的宽度，默认为1px
+                        type: "solid", //分隔线的类型，可选'solid''dashed''dotted'，默认为solid
+                        opacity: 1 //分隔线透明度，支持从 0 到 1 的数字，为 0 时不绘制该分隔线。
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#999999"
+                    }
+                },
+                axisLabel: {
+                    formatter: function(value, index) {
+                        return "第" + (index + 1) + "行：" + value + "套";
+                    },
+                    lineStyle: {
+                        color: "#999999"
+                    }
+                },
+            },
+            series: [{ //系列列表。每个系列通过 type 决定自己的图表类型
+                name: '销售量',
+                data: [820, 932, 901, 934, 1290, 1330, 1320], //图表的数据
+                type: 'line', //图表的类型，默认为line（折线图），也可以是bar（柱状图）、pie（饼图）
+                areaStyle: {
+                    color: '#0f0', //折线下区域的颜色
+                    origin: 'auto', //图形区域的起始位置。默认为auto，也可以设置为start和end。
+                    shadowColor: '#00f', //阴影颜色
+                    shadowBlur: 30, //图形阴影的模糊大小
+                    opacity: 0.2 //透明度
+                }, //设置 areaStyle 后可以绘制面积图(折线下的区域)
+                itemStyle: {
+                    normal: {
+                        color: 'black', //折点的颜色
+                        lineStyle: { //设置折线的样式
+                            color: '#f00'
+                        }
+                    }
+                },
+            }]
+        };
+        myChart.setOption(option);
+    </script>
 </body>
 
 </html>
