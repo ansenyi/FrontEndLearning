@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<div>
+		改变浏览器窗口的大小，控制台会显示窗口的宽度和高度信息。
+	</div>
+	<script>
+		console.log(document.body.clientWidth);        //网页可见区域宽(body)
+		console.log(document.body.clientHeight);       //网页可见区域高(body)
+		console.log(document.body.offsetWidth);       //网页可见区域宽(body)，包括border、margin等
+		console.log(document.body.offsetHeight);      //网页可见区域宽(body)，包括border、margin等
+		console.log(document.body.scrollWidth);        //网页正文全文宽，包括有滚动条时的未见区域
+		console.log(document.body.scrollHeight);       //网页正文全文高，包括有滚动条时的未见区域
+		console.log(document.body.scrollTop);           //网页被卷去的Top(滚动条)
+		console.log(document.body.scrollLeft);           //网页被卷去的Left(滚动条)
+		console.log(window.screenTop);                     //浏览器距离Top
+		console.log(window.screenLeft);                     //浏览器距离Left
+		console.log(window.screen.height);                //屏幕分辨率的高
+		console.log(window.screen.width);                 //屏幕分辨率的宽
+		console.log(window.screen.availHeight);          //屏幕可用工作区的高
+		console.log(window.screen.availWidth);           //屏幕可用工作区的宽
+		console.log("-----------");
+		var w, h;
+		window.onresize = function () {
+			w = window.innerWidth;
+			h = window.innerHeight
+			console.log(`浏览器窗口的宽度为：${w}px，高度为：${h}px。`);
+		};
+	</script>
+</body>
+
+</html>

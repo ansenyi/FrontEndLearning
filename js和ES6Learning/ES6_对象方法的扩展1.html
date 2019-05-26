@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			let a=5;
-			let obj={
-				a:"name",
-				b:function(){
-					console.log(this.a);
-				},
-				c:10
-			};
-//			obj.a=10;
-			obj.b();
-			console.log(Object.keys(obj));  //Array [ "a", "b" ]
-			
-			const target = { a: 1 };
-			const source1 = { b: 2 };
-			const source2 = { c: 3 };
-			Object.assign(target, source1, source2);
-			console.log(target); // {a:1, b:2, c:3}
-			//Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
-			
-			
-			//Object()将参数变成对象
-			//Object构造函数会像工厂方法一样，根据传入的值的类型返回相应的基本包装类型的实例
-			console.log(Object(1)); //Number
-			console.log(Object(true)); //Boolean
-			console.log(Object("abcd")); //String
-			console.log(Object([1,'a','b',2])); //Array
-			
-			console.log(Object.keys(obj));//返回值是数组，所有可枚举的属性
-			console.log(Object.values(obj));//返回值是数组，所有可枚举的键值
-			console.log(Object.entries(obj));//返回值是数组，所有可枚举的属性键值对，每一项也是一个数组
-		</script>
-	</body>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		let a = 5;
+		let obj = {
+			a: "name",
+			b: function () {
+				console.log(this.a);
+			},
+			c: 10
+		};
+		//			obj.a=10;
+		obj.b();
+		console.log(Object.keys(obj));  //Array [ "a", "b" ]
+
+		const target = { a: 1 };
+		const source1 = { b: 2 };
+		const source2 = { c: 3 };
+		Object.assign(target, source1, source2);
+		console.log(target); // {a:1, b:2, c:3}
+		//Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
+
+
+		//Object()将参数变成对象
+		//Object构造函数会像工厂方法一样，根据传入的值的类型返回相应的基本包装类型的实例
+		console.log(Object(1)); //Number
+		console.log(Object(true)); //Boolean
+		console.log(Object("abcd")); //String
+		console.log(Object([1, 'a', 'b', 2])); //Array
+
+		console.log(Object.keys(obj));//返回值是数组，所有可枚举的属性
+		console.log(Object.values(obj));//返回值是数组，所有可枚举的键值   //ES8的新特性
+		console.log(Object.entries(obj));//返回值是数组，所有可枚举的属性键值对，每一项也是一个数组  //ES8的新特性
+	</script>
+</body>
+
 </html>

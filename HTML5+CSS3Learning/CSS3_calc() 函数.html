@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			position: absolute;
+			margin-left: 50px;
+			width: calc(100% - 100px);
+			border: 1px solid black;
+			background-color: yellow;
+			padding: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<p>
+			calc() 函数用于动态计算长度值。
+			<ul>
+				<li>需要注意的是，运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)；</li>
+				<li>任何长度值都可以使用calc()函数进行计算；</li>
+				<li>calc()函数支持 "+", "-", "*", "/" 运算；</li>
+				<li>calc()函数使用标准的数学运算优先级规则；</li>
+			</ul>
+		</p>
+
+	</div>
+	<div id="div1">一些文本...</div>
+</body>
+
+</html>

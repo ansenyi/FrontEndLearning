@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+
+<body>
+	<div id="app">
+		<input type="text" id="searchText" placeholder="搜索姓名" v-model="searchData" />
+		<ul>
+			<li v-for="user in users">
+				{{user.name}}--{{user.age}}岁
+			</li>
+		</ul>
+	</div>
+	<script src="../js/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			//绑定视图
+			el: "#app",
+			//绑定数据
+			data() {
+				return {
+					searchData: '',
+					users: [{
+						name: "张三丰",
+						age: 99
+					},
+					{
+						name: "张翠山",
+						age: 55
+					},
+					{
+						name: "张无忌",
+						age: 25
+					},
+					{
+						name: "安森一",
+						age: 26
+					}, {
+						name: "安森二",
+						age: 27
+					}, {
+						name: "安森三",
+						age: 30
+					}, {
+						name: "安森四",
+						age: 26
+					}]
+				}
+			},
+			created() {
+				console.log("this--", this);
+				console.log("this.$el--", this.$el);//undefined,挂载元素还不存在
+				console.log("this.$data--", this.$data);
+				console.log("this.$options--", this.$options);
+			},
+			mounted() {
+				console.log("this.$el(挂载后)--", this.$el);
+				console.log("挂载后的元素对比结果：", this.$el === document.getElementById('app'));//true
+			}
+
+		});
+		console.log("vm.$el--", vm.$el);//类型（HTMLElement）挂载元素，访问挂载当前组件实例的DOM根元素
+		console.log(vm.$el === document.getElementById('app'));  // true
+		console.log("vm.$data--", vm.$data); //对象类型，用来访问组件实例观察的数据对象，该对象引用组件实例化时选项中的data属性。
+		console.log("vm.$options--", vm.$options);
+	</script>
+</body>
+
+</html>

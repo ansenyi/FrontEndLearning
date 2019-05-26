@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.main1 {
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			/* direction	用角度值指定渐变的方向（或角度）。 */
+			background: linear-gradient(#fb3, #58a);
+		}
+
+		.main2 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: linear-gradient(#fb3 20%, #58a 80%);
+		}
+
+		.main3 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: linear-gradient(#fb3 45%, #58a 55%);
+		}
+
+		.main4 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: linear-gradient(#fb3 50%, #58a 50%);
+		}
+
+		.main5 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			background: -webkit-linear-gradient(red, yellow, blue);
+			/* Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(red, yellow, blue);
+			/* Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(red, yellow, blue);
+			/* Firefox 3.6 to 15 */
+			background: linear-gradient(red, yellow, blue);
+			/* 标准语法 (必须在最后) */
+		}
+
+		.main6 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			background: -webkit-linear-gradient(left, red, blue);
+			/* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(right, red, blue);
+			/* Opera 11.1 - 12.0 */
+			background: -moz-linear-gradient(right, red, blue);
+			/* Firefox 3.6 - 15 */
+			background: linear-gradient(to right, #fb3, #58a);
+			/* 标准的语法（必须放在最后） */
+		}
+
+		.grad1 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+			/* Safari 5.1 - 6.0 */
+			background: -o-linear-gradient(right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+			/* Opera 11.1 - 12.0 */
+			background: -moz-linear-gradient(right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+			/* Firefox 3.6 - 15 */
+			background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+			/* 标准的语法（必须放在最后） */
+		}
+
+		.main7 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: repeating-linear-gradient(45deg, #fb3, #58a 30px);
+		}
+
+		.main8 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: repeating-linear-gradient(60deg, #fb3, #fb3 30px, #58a 0, #58a 60px);
+		}
+
+		.main9 {
+			margin-top: 5px;
+			width: 200px;
+			height: 200px;
+			/* background: linear-gradient(direction, color-stop1, color-stop2, ...); */
+			background: repeating-linear-gradient(45deg,
+				#fb3 0, #fb3 25%, #58a 0, #58a 50%);
+			background-size: 42.426406871px 42.426406871px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<p>
+		linear-gradient() 函数用于创建一个线性渐变的 "图像"。<br>
+		为了创建一个线性渐变，你需要设置一个起始点和一个方向（指定为一个角度）的渐变效果。你还要定义终止色。终止色就是你想让Gecko去平滑的过渡，并且你必须指定至少两种，当然也会可以指定更多的颜色去创建更复杂的渐变效果。
+	</p>
+	<div class="main1"></div>
+	<div class="main2"></div>
+	<div class="main3"></div>
+	<div class="main4"></div>
+	<div class="main5"></div>
+	<div class="main6"></div>
+	<div class="main7"></div>
+	<div class="main8"></div>
+	<div class="main9"></div>
+	<div class="grad1"></div>
+</body>
+
+</html>
