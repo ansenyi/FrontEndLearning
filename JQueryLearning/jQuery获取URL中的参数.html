@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取地址中的参数</title>
+</head>
+
+<body>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        function getUrlParam(key) {
+            var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
+            var value = window.location.search.substr(1).match(reg)
+            if (value !== null) {
+                return decodeURIComponent(value[2])
+            }
+            return null
+        }
+
+        function getUrlParam2(paraName) {
+            var url = document.location.toString();
+            var arrObj = url.split("?");
+
+            if (arrObj.length > 1) {
+                var arrPara = arrObj[1].split("&");
+                var arr;
+                for (var i = 0; i < arrPara.length; i++) {
+                    arr = arrPara[i].split("=");
+
+                    if (arr != null && arr[0] == paraName) {
+                        return arr[1];
+                    }
+                }
+                return "";
+            } else {
+                return "";
+            }
+        }
+
+        $(document).ready(function() {});
+        // 获取当前Url的4种方法
+        var url1 = window.location.href;
+        var url2 = self.location.href;
+        var url3 = document.URL;
+        var url4 = document.location;
+        console.log("当前的url地址为：", url1, url2, url3, url4);
+        console.log(url2);
+        console.log(url3);
+        console.log(url4);
+    </script>
+</body>
+
+</html>

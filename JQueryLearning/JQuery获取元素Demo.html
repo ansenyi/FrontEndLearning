@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div id="d1">
-			<p class="c1">div1p1</p>
-			<p class="c2">div1p2</p>
-			<p class="c3">div1p3</p>
-		</div>
-		<div id="d2">
-			<p class="c1">div2p1</p>
-			<p class="c2"><span>div2p2</span></p>
-			<p class="c3">div2p3</p>
-			<p class="c4">div2p4</p>
-		</div>
-		<p class="c4">引用c1的p标签</p>
-		<script src="../js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript">
-			console.log($("#d2 .c2").text());
-			console.log($("#d2 .c2").html());
-			console.log($("div > .c4").text());
-			console.log(true&&10);
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #nav {
+            width: 100px;
+            background-color: aquamarine;
+        }
+        
+        .active {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">
+        <p class="c1">div1p1</p>
+        <p class="c2">div1p2</p>
+        <p class="c3">div1p3</p>
+    </div>
+    <div id="d2">
+        <p class="c1">div2p1</p>
+        <p class="c2"><span>div2p2</span></p>
+        <p class="c3">div2p3</p>
+        <p class="c4">div2p4</p>
+    </div>
+    <div id="nav">
+        <ul>
+            <li data-id="item1">第1项<span>item1</span></li>
+            <li data-id="item2">第2项<a href="">这是一个超链接</a></li>
+            <li data-id="item3">第3项</li>
+            <li data-id="item4">第4项</li>
+            <li data-id="item5">第5项</li>
+        </ul>
+    </div>
+    <p class="c4">引用c1的p标签</p>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        console.log($("#d2 .c2").text());
+        console.log($("#d2 .c2").html());
+        console.log($("div > .c4").text());
+        console.log(true && 10);
+        var selectedLi = 'item4';
+        $("#nav li").each(function() { //循环
+            console.log(this); // 获取循环元素li
+            console.log($(this)); //将dom元素转化为jQuery元素
+            console.log(this.innerHTML);
+            console.log(this.innerText);
+            console.log($(this).html());
+            console.log($(this).text());
+            if ($(this).attr('data-id') == selectedLi) {
+                $(this).addClass("active"); //给选定项加样式
+                $(this).siblings().removeClass("active"); //其他项去掉样式
+            }
+        });
+    </script>
+</body>
+
 </html>
