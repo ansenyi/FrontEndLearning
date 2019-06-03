@@ -82,6 +82,20 @@
 			       
 			var today3 = new Date();        
 			console.log(today3.format2("yyyy-MM-dd hh:mm:ss"));  
+			
+			console.log("------获取某个日期的前n个月----");
+			var strDate = "2010-04-01";
+			var now = new Date(strDate.replace(/\-/g,"/"));
+			var oneBMonth =new Date( now.setMonth(now.getMonth() - 1));//获取当前日期的前1个月
+			console.log(oneBMonth.format("yyyy-MM-dd"));
+			var threeBMonth =new Date( now.setMonth(now.getMonth() - 2));//获取当前日期的前3个月
+			console.log(threeBMonth.format("yyyy-MM-dd"));
+			console.log("------获取当前日期的前n个月----");
+			var today=new Date();
+			var current_oneBMonth=new Date(today.setMonth(today.getMonth() - 1));//获取当前日期的前1个月
+			console.log(current_oneBMonth.format("yyyy-MM-dd")); 
+			var current_threeBMonth=new Date(today.setMonth(today.getMonth() - 2));//获取当前日期的前3个月
+			console.log(current_threeBMonth.format("yyyy-MM-dd")); 
 		</script>
 	</body>
 </html>

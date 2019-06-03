@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.green-color {
+			color: green;
+			display: inline
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<input type="radio" id="one" value="fast" v-model="currentView">
+		<label for="one">fast</label><br>
+		<input type="radio" id="two" value="bus" v-model="currentView">
+		<label for="two">bus</label><br>
+		<input type="radio" id="three" value="business" v-model="currentView">
+		<label for="three">business</label><br>
+		<span>你的选择是：</span>
+		<component v-bind:is="currentView" class="green-color"></component>
+
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+		var fast = { template: '<div> 滴滴快车</div>' };
+		var bus = { template: '<div> 滴滴巴士</div>' };
+		var business = { template: '<div> 滴滴专车</div>' };
+		new Vue({
+			//绑定视图
+			el: "#app",
+			//绑定数据
+			data() {
+				return {
+					currentView: "bus"
+				}
+			},
+			components: {
+				fast: fast,
+				bus: bus,
+				business: business
+			},
+			created() {
+			}
+		});
+	</script>
+</body>
+
+</html>
