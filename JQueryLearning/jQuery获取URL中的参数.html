@@ -13,7 +13,7 @@
             var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
             var value = window.location.search.substr(1).match(reg)
             if (value !== null) {
-                return decodeURIComponent(value[2])
+                return decodeURIComponent(value[2]) //网上有的地方用unescape来代替decodeURIComponent
             }
             return null
         }
