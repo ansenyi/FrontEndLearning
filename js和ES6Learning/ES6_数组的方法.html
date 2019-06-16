@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>
+        1、Array.prototype.indexOf(value):得到数组中的第一个value的下标；<br /> 2、Array.prototype.lastIndexOf(value):得到数组中的最后一个value的下标；
+        <br /> 3、Array.prototype.forEach(function(item,index){}):遍历数组；
+        <br /> 4、Array.prototype.map(function(item,index){}):遍历数组返回一个新的数组，新数组的内容为加工之后的值；
+        <br /> 5、Array.prototype.filter(function(item,index){}):遍历过滤出一个新的数组，新数组的内容为条件为true的值；
+        <br /> 6、Array.prototype.includes(value):判断数组中是否含有value
+    </p>
+    <script>
+        let colors = ['red', 'green', 'blue', 'pink', 'gold'];
+        console.log(colors.includes('gold'));
+        colors.forEach(function(item, index) {
+            console.log(item, index);
+        });
+        let someColors = colors.filter(function(item, index) {
+            return item == 'green' | item == 'blue';
+        });
+        console.log(someColors);
+        //filter()方法将数组中符合条件的元素筛选出来，放到一个新数组中，原数组不变
+        let arr1 = ["string1", 40, 50, 60, false, 'a', 70];
+        let arr1FilterResult = arr1.filter(function(item, index) { //index可选
+            return typeof item === "number";
+        });
+        console.log(arr1FilterResult);
+        console.log(arr1); //原数组不变
+        let arr1FilterResult1 = arr1.filter((item, index) => {
+            //return false; //函数中不写内容和return false是一样的结果，都是过滤出一个空数组
+        });
+        console.log("arr1FilterResult1", arr1FilterResult1);
+        let changedColors = colors.map(function(item, index) {
+            return item + ' color';
+        });
+        console.log(changedColors);
+
+        console.log(["1", "2", "3"].map(parseInt)); //结果为：[ 1, NaN, NaN ]
+        function returnInt(element) {
+            return parseInt(element, 10);
+        }
+        console.log(["1", "2", "3"].map(returnInt));
+        //这主要是因为　parseInt()默认有两个参数，第二个参数是进制数。当parsrInt没有传入参数的时候，而map()中的回调函数时候，会给它传三个参数，第二个参数就是索引，明显不正确，所以返回NaN了。
+
+        let numArr = [10, 20, 30, 40, 50];
+        let numReduceResult = numArr.reduce(function(prev, item) {
+            return prev + item; //prev代表上一次的返回值，item代表当前项
+        }); //reduce(),迭代，用于求和
+        console.log(numReduceResult);
+    </script>
+</body>
+
+</html>
