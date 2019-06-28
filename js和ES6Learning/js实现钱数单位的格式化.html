@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        function strNumSize(tempNum) {
+            var stringNum = tempNum.toString();
+            var index = stringNum.indexOf('.');
+            var newNum = stringNum;
+            if (index != -1) {
+                newNum = stringNum.substring(0, index);
+            }
+            return newNum.length;
+        }
+
+        function unitConvert(num = 0) {
+            var moneyUnits = ['', '万', '亿', '万亿']
+            var dividend = 10000
+            var curentNum = num //转换数字
+            var curentUnit = moneyUnits[0] //转换单位
+            for (var i = 0; i < 4; i++) {
+                curentUnit = moneyUnits[i]
+                if (this.strNumSize(curentNum) < 5) {
+                    break
+                }
+                curentNum = curentNum / dividend
+            }
+            var m = curentNum.toFixed(2) + curentUnit;
+            return m
+        }
+        console.log(unitConvert(1234));
+        console.log(unitConvert(123456));
+        console.log(unitConvert(123456789));
+        console.log(unitConvert(123456789000000));
+    </script>
+</body>
+
+</html>

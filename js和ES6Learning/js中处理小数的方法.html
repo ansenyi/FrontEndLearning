@@ -8,6 +8,9 @@
 
 <body>
     <script>
+        //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
+        
+        //参数num表示保留的小数位
         //去尾法
         Number.prototype.toFloor = function(num) {
             return Math.floor(this * Math.pow(10, num)) / Math.pow(10, num);

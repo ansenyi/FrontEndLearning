@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<p>在这之前我们比较值使用两等号 “==” 或 三等号“===”， 三等号更加严格，只要比较两方类型不同立即返回false。</p>
-		<p></p>
-		<p>Object.is(v1,v2),多数情况下Object.is等价于“===”</p>
-		<p>但对于NaN、0、+0、 -0，则和 “===” 不同</p>
-		<p>Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
-		<p>Object.assign(target, ...sources)，参数：target（目标对象），sources（源对象）</p>
-		<p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。</p>
-		<p>Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用Object.getOwnPropertyDescriptor()和Object.defineProperty() 。</p>
-		<p>String类型和 Symbol 类型的属性都会被拷贝。</p>
-		<script>
-			console.log(1 === 1); // true
-			console.log(Object.is(1, 1)); // true
-			 
-			console.log('a' === 'a'); // true
-			console.log(Object.is('a', 'a')); // true
-			 
-			console.log(true === true) // true
-			console.log(Object.is(true, true)) // true
-			 
-			console.log(null === null) // true
-			console.log(Object.is(null, null)); // true
-			 
-			console.log(undefined === undefined); // true
-			console.log(Object.is(undefined, undefined)); // true
-			console.log('**********');
-			console.log(0===-0);//true
-			console.log(Object.is(0, -0)); // false
-			console.log(NaN===NaN);//false
-			console.log(Object.is(NaN, NaN)); // true
-			console.log(-0 === +0); // true
-			console.log(Object.is(-0, +0)); // false
-			
-			//Object.assign()复制一个对象的两种方法
-			var obj = { a: 1 };
-			var copy = Object.assign({}, obj);
-			console.log(copy); // { a: 1 }
-			var copy1={};
-			Object.assign(copy1, obj);
-			console.log(copy1);  // { a: 1 }
-			console.log('Object.assign()用于对象合并');
-			const object1 = {
-			  a: 1,
-			  b: 2,
-			  c: 3
-			};
-			const object2 = Object.assign({c: 4, d: 5}, object1);
-			console.log(object2);
-			Object.assign(object1,{c: 4, d: 5});
-			console.log(object1);
-			console.log(...object1,...{c: 4, d: 5});
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>在这之前我们比较值使用两等号 “==” 或 三等号“===”， 三等号更加严格，只要比较两方类型不同立即返回false。</p>
+    <p></p>
+    <p>Object.is(v1,v2),多数情况下Object.is等价于“===”</p>
+    <p>但对于NaN、0、+0、 -0，则和 “===” 不同</p>
+    <p>Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+    <p>Object.assign(target, ...sources)，参数：target（目标对象），sources（源对象）</p>
+    <p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。</p>
+    <p>Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用Object.getOwnPropertyDescriptor()和Object.defineProperty() 。</p>
+    <p>String类型和 Symbol 类型的属性都会被拷贝。</p>
+    <script>
+        console.log(1 === 1); // true
+        console.log(Object.is(1, 1)); // true
+
+        console.log('a' === 'a'); // true
+        console.log(Object.is('a', 'a')); // true
+
+        console.log(true === true) // true
+        console.log(Object.is(true, true)) // true
+
+        console.log(null === null) // true
+        console.log(Object.is(null, null)); // true
+
+        console.log(undefined === undefined); // true
+        console.log(Object.is(undefined, undefined)); // true
+        console.log('**********');
+        console.log(0 === -0); //true
+        console.log(Object.is(0, -0)); // false
+        console.log(NaN === NaN); //false
+        console.log(Object.is(NaN, NaN)); // true
+        console.log(-0 === +0); // true
+        console.log(Object.is(-0, +0)); // false
+
+        //Object.assign()复制一个对象的两种方法
+        var obj = {
+            a: 1
+        };
+        var copy = Object.assign({}, obj);
+        console.log(copy); // { a: 1 }
+        var copy1 = {};
+        Object.assign(copy1, obj);
+        console.log(copy1); // { a: 1 }
+        console.log("复制结果：", copy == copy1); //false
+        console.log('Object.assign()用于对象合并');
+        const object1 = {
+            a: 1,
+            b: 2,
+            c: 3
+        };
+        const object2 = Object.assign({
+            c: 4,
+            d: 5
+        }, object1);
+        console.log(object2);
+        Object.assign(object1, {
+            c: 4,
+            d: 5
+        });
+        console.log(object1);
+        console.log(...object1, ... {
+            c: 4,
+            d: 5
+        });
+    </script>
+</body>
+
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        // 替换字符串中连续的数字为指定字符
+        let testStr = "我的体重是120公斤，身高是10米";
+        let newStr = testStr.replace(/(\d)+/g, 1300000);
+        console.log("替换后的字符串为", newStr);
+        let newStr1 = testStr.replace(/(\d)+/g, 1300000);
+        //替换字符串中的数字，每一个单独的数字都会被替换成指定字符，i表示区分大小写，g表示进行全局匹配
+        let text = "abc123456";
+        let textNum = text.replace(/[0-9]/ig, "*");
+        console.log("替换字符串中的所有数字后的结果", textNum)
+            // 替换字符串中的非数字
+        let textStr = text.replace(/[^0-9]/ig, "*");
+        console.log("替换字符串中的所有字符后的结果", textStr)
+    </script>
+</body>
+
+</html>
