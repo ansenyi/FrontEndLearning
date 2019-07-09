@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div id="app">
-	    <div class="checkbox">
-	        <label for="quan">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="checkbox">
+            <label for="quan">
 	            <!-- 这里的 $event 是将当前对象传入进去，具体详情请参照vue官方文档 -->
 	            <input id="quan" type="checkbox" @click="checkAll($event)"> 全选
 	        </label>
-	        <label v-for="item in ajaxData">
+            <label v-for="item in ajaxData">
 	            <!-- v-model 双向数据绑定命令 -->
 	            <input type="checkbox" class="checkItem" :value="item.value" v-model="checkData"> {{item.name}}
-	        </label><br />
-	                   你选中的选项：{{checkData}}
-	    </div>
-	</div>
-	<script src="../js/vue.js"></script>
-	<script>
-	    new Vue({
-	        el: '#app',
-	        data(){
-	            return {
-	                ajaxData: [{ // 后台请求过来的数据
-	                    name: '苹果',
-	                    value: 'apple'
-	                },{
-	                    name: '香蕉',
-	                    value: 'banana'
-	                },{
-	                    name: '橘子',
-	                    value: 'orange'
-	                }],
-	                checkData: [] // 双向数据绑定的数组
-	            }
-	        },
-	        watch: {
-	            checkData: { // 监视双向绑定的数组变化
-	                handler(){
-	                    if(this.checkData.length == this.ajaxData.length){
-	                        document.querySelector('#quan').checked = true;
-	                    }else {
-	                        document.querySelector('#quan').checked = false;
-	                    }
-	                },
-	                deep: true
-	            }
-	        },
-	        methods: {
-	            checkAll(e){ // 点击全选事件
-	                if(e.target.checked){
-	                    this.ajaxData.forEach((el,i)=>{
-	                        // 数组里没有这一个value才push，防止重复push
-	                        if(this.checkData.indexOf(el.value) == '-1'){ 
-	                            this.checkData.push(el.value);
-	                        }
-	                    });
-	                }else { // 全不选选则清空绑定的数组
-	                    this.checkData = [];
-	                }
-	            }
-	        }
-	    });
-	</script>
-	</body>
+	        </label><br /> 你选中的选项：{{checkData}}
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    ajaxData: [{ // 后台请求过来的数据
+                        name: '苹果',
+                        value: 'apple'
+                    }, {
+                        name: '香蕉',
+                        value: 'banana'
+                    }, {
+                        name: '橘子',
+                        value: 'orange'
+                    }],
+                    checkData: [] // 双向数据绑定的数组
+                }
+            },
+            watch: {
+                checkData: { // 监视双向绑定的数组变化
+                    handler() {
+                        if (this.checkData.length == this.ajaxData.length) {
+                            document.querySelector('#quan').addClass('on');
+                        } else {
+                            document.querySelector('#quan').removeClass('on');
+                        }
+                    },
+                    deep: true
+                }
+            },
+            methods: {
+                checkAll(e) { // 点击全选事件
+                    if (e.target.checked) {
+                        this.ajaxData.forEach((el, i) => {
+                            // 数组里没有这一个value才push，防止重复push
+                            if (this.checkData.indexOf(el.value) == '-1') {
+                                this.checkData.push(el.value);
+                            }
+                        });
+                    } else { // 全不选选则清空绑定的数组
+                        this.checkData = [];
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
 </html>

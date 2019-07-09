@@ -52,6 +52,15 @@
             return prev + item; //prev代表上一次的返回值，item代表当前项
         }); //reduce(),迭代，用于求和
         console.log(numReduceResult);
+
+        //如果是一个普通数组，可以用concat()方法将数组赋值给另一个数组
+        let arrOld = ["a", "b", "c", "d"];
+        let arrNew = [].concat(arrOld);
+        let arrNewSame = arrOld;
+        arrOld[0] = "aaa";
+        console.log("arrNew", arrNew); //arrNew[0]仍然是"a"
+        console.log("arrNewSame", arrNewSame); //arrNewSame[0]是修改后的"aaa"
+        //如果直接arrNew =arrOld，这使arrNew作为arrOld的引用
     </script>
 </body>
 

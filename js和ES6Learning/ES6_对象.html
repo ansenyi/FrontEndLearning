@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			class A{
-				constructor(){
-					this.name='ansenyi';
-				}
-				getName(){
-					return this.name;
-				}
-			}
-			class B extends A{
-				constructor(){
-					super();
-					this.age=22;
-				}
-				getAge(){
-					return this.age;
-				}
-			}
-			var b=new B();
-//			Object.keys() //返回的可枚举的自有属性 
-//			Obejct.getOwnProtertyNames() // 返回的自身属性，包括不可以枚举属性，但是得不到原型链上的属性，得不到Symbols属性
-			console.log(Object.keys(b));
-			console.log(Object.getOwnPropertyNames(b));
-			console.log(Object.getOwnPropertyDescriptor(b));
-			console.log(Object.getOwnPropertyDescriptor(b,'name'));
-			console.log(Object.getOwnPropertyDescriptor(b,'age'));
-			console.log(Object.getOwnPropertySymbols(b));
-			
-			const obj = {
-				foo: 123,
-				get bar() { return 'abc' }
-			};
-			console.log(Object.getOwnPropertyDescriptor(obj,'foo'));
-			console.log(Object.getOwnPropertyDescriptor(obj,'bar'));
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class A {
+            constructor() {
+                this.name = 'ansenyi';
+            }
+            getName() {
+                return this.name;
+            }
+        }
+        class B extends A {
+            constructor() {
+                super();
+                this.age = 22;
+            }
+            getAge() {
+                return this.age;
+            }
+        }
+        var b = new B();
+        //			Object.keys() //返回的可枚举的自有属性 
+        //			Obejct.getOwnProtertyNames() // 返回的自身属性，包括不可以枚举属性，但是得不到原型链上的属性，得不到Symbols属性
+        console.log(Object.keys(b));
+        console.log(Object.getOwnPropertyNames(b));
+        console.log(Object.getOwnPropertyDescriptor(b));
+        console.log(Object.getOwnPropertyDescriptor(b, 'name'));
+        console.log(Object.getOwnPropertyDescriptor(b, 'age'));
+        console.log(Object.getOwnPropertySymbols(b));
+
+        const obj = {
+            foo: 123,
+            get bar() {
+                return 'abc'
+            }
+        };
+        console.log(Object.getOwnPropertyDescriptor(obj, 'foo'));
+        console.log(Object.getOwnPropertyDescriptor(obj, 'bar'));
+
+        //遍历对象
+        //方法1：for...in 
+        console.log("遍历对象的方法1：**********")
+        let myObject = {
+            name: 'ansenyi',
+            sex: 'man',
+            age: 25
+        }
+        for (let key in myObject) { //遍历对象
+            console.log(key, myObject[key]);
+        }
+
+        //方法2：Object.keys()
+        console.log("遍历对象的方法2：**********")
+        Object.prototype.pro1 = function() {}
+        Object.defineProperty(myObject, 'country', {
+            Enumerable: true, //可枚举
+            value: 'ccc'
+        });
+        Object.defineProperty(myObject, 'nation', {
+            Enumerable: false, //不可枚举
+            value: null
+        })
+        myObject.country = 'china';
+        Object.keys(myObject).forEach(function(index) {
+            console.log(index, myObject[index])
+        });
+        //方法2：Objcet.getOwnPropertyNames()  输出对象自身的可枚举和不可枚举属性的数组,不输出原型链上的属性
+        console.log("遍历对象的方法3：**********")
+        Object.getOwnPropertyNames(myObject).forEach(function(index) {
+            console.log(index, myObject[index])
+        });
+    </script>
+</body>
+
 </html>
