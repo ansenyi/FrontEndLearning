@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .jiahao {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label><input type="checkbox" v-model="person.ansenyi"/>安森一</label><br />
+        <label><input type="checkbox" v-model="person.ansener"/>安森二</label><br />
+        <label><input type="checkbox" v-model="person.ansensan"/>安森三</label><br />
+        <p>{{person}}</p>
+        <span>{{num}}</span><span @click="num++" class="jiahao">+</span>
+    </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            person: {
+                "ansenyi": true,
+                "ansener": false,
+                "ansensan": true
+            },
+            num: 0
+        },
+        computed: {　　
+            ansenyi() {　　　　
+                return this.person.ansenyi;
+            }
+        },
+        watch: {
+            person: { //监听整个对象的变化
+                handler(newValue, oldValue) {
+                    console.log("person对象的值改变了", newValue);
+                },
+                deep: true
+            },
+            ansenyi(newValue) { //监听对象某个属性的变化，方法1
+                console.log("person对象的ansenyi值改变了", newValue);
+            },
+            'person.ansener': { //监听对象某个属性的变化，方法2
+                handler(newVal, oldVal) {
+                    console.log("person对象的ansener值改变了", newVal)
+                },
+                deep: true
+
+            },
+            num(newValue) { //监听data中基本类型的数据的变化
+                console.log("数值改变了", newValue);
+            }
+        }
+    });
+</script>
+
+</html>
+
+
+.

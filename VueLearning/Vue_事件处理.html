@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style type="text/css">
-			h1{
-				color: green;
-				font-family:"楷体";
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-			<h1>{{msg1}}</h1>
-			<button @click="test1">test1</button>
-			<button @click="test2('参数字符串')">test2</button>
-			<button @click="test3">test3</button>
-			<button @click="test3($event)">test31</button>
-			<button @click="test4('参数字符串',$event)">test4</button>
-			<h1>{{msg2}}</h1>
-			<h3>1.event.stopPropagation()方法<br />
-				这是阻止事件的冒泡方法，不让事件向document上蔓延，但是默认事件任然会执行，当你掉用这个方法的时候，如果点击一个连接，这个连接仍然会被打开;<br />
-				2.event.preventDefault()<br />
-				这是阻止默认事件的方法，调用此方法是，连接不会被打开，但是会发生冒泡，冒泡会传递到上一层的父元素；<br />
-				3.return false；<br />
-				这个方法比较暴力，他会同事阻止事件冒泡也会阻止默认事件；写上此代码，连接不会被打开，事件也不会传递到上一层的父元素；可以理解为return false就等于同时调用了event.stopPropagation()和event.preventDefault();
-			</h3>
-			<!-- 阻止单击事件继续传播 -->
-			<a v-on:click.stop="doThis"></a>
-			
-			<!-- 提交事件不再重载页面 -->
-			<form v-on:submit.prevent="onSubmit"></form>
-			
-			<!-- 修饰符可以串联 -->
-			<a v-on:click.stop.prevent="doThat"></a>
-			
-			<!-- 只有修饰符 -->
-			<form v-on:submit.prevent></form>
-			
-			<!-- 添加事件监听器时使用事件捕获模式 -->
-			<!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
-			<div v-on:click.capture="doThis">...</div>
-			
-			<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
-			<!-- 即事件不是从内部元素触发的 -->
-			<div v-on:click.self="doThat">...</div>
-			<h1>{{msg3}}</h1>
-		</div>
-		<script type="text/javascript" src="../js/vue.min.js"></script>
-		<script type="text/javascript">
-			let vue=new Vue({
-				el:'#app',
-				data:{
-					msg1:'1、事件监听',
-					msg2:'2、事件修饰符',
-					msg3:'3、按键修饰符'
-				},
-				methods:{
-					test1(){
-						console.log('test1');
-					},
-					test2(m){
-						console.log(m);
-					},
-					test3(event){
-						console.log(event.target.innerHTML);
-					},
-					test4(m,event){
-						console.log(m+' '+event.target.innerHTML);
-					}
-					
-				}
-			})
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        h1 {
+            color: green;
+            font-family: "楷体";
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg1}}</h1>
+        <button @click="test1">test1</button>
+        <button @click="test2('参数字符串')">test2</button>
+        <button @click="test3">test3</button>
+        <button @click="test3($event)">test31</button>
+        <button @click="test4('参数字符串',$event)">test4</button>
+        <h1>{{msg2}}</h1>
+        <h3>1.event.stopPropagation()方法<br /> 这是阻止事件的冒泡方法，不让事件向document上蔓延，但是默认事件任然会执行，当你掉用这个方法的时候，如果点击一个连接，这个连接仍然会被打开;
+            <br /> 2.event.preventDefault()
+            <br /> 这是阻止默认事件的方法，调用此方法是，连接不会被打开，但是会发生冒泡，冒泡会传递到上一层的父元素；
+            <br /> 3.return false;<br /> 这个方法比较暴力，他会同事阻止事件冒泡也会阻止默认事件；写上此代码，连接不会被打开，事件也不会传递到上一层的父元素；可以理解为return false就等于同时调用了event.stopPropagation()和event.preventDefault();
+        </h3>
+        <!-- 阻止单击事件继续传播 -->
+        <a v-on:click.stop="doThis"></a>
+
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+
+        <!-- 修饰符可以串联 -->
+        <a v-on:click.stop.prevent="doThat"></a>
+
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+
+        <!-- 添加事件监听器时使用事件捕获模式 -->
+        <!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+        <div v-on:click.capture="doThis">...</div>
+
+        <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+        <!-- 即事件不是从内部元素触发的 -->
+        <div v-on:click.self="doThat">...</div>
+        <h1>{{msg3}}</h1>
+    </div>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript">
+        let vue = new Vue({
+            el: '#app',
+            data: {
+                msg1: '1、事件监听',
+                msg2: '2、事件修饰符',
+                msg3: '3、按键修饰符'
+            },
+            methods: {
+                test1() {
+                    console.log('test1');
+                },
+                test2(m) {
+                    console.log(m);
+                },
+                test3(event) {
+                    console.log(event.target.innerHTML);
+                },
+                test4(m, event) {
+                    console.log(m + ' ' + event.target.innerHTML);
+                }
+
+            }
+        })
+    </script>
+</body>
+
 </html>
