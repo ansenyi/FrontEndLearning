@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div id="app">
-			<label><input type="checkbox" v-model="person.ansenyi"/>安森一</label><br />
-			<label><input type="checkbox" v-model="person.ansener"/>安森二</label><br />
-			<label><input type="checkbox" v-model="person.ansensan"/>安森三</label><br />
-			<p>{{person}}</p>
-		</div>
-	</body>
-	<script src="../js/vue.min.js"></script>
-	<script>
-		var app=new Vue({
-			el:"#app",
-			data:{
-				person:{
-					"ansenyi":true,
-					"ansener":false,
-					"ansensan":true
-				}
-			}
-		});
-	</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <label><input type="checkbox" v-model="person.ansenyi"/>安森一</label><br />
+        <label><input type="checkbox" v-model="person.ansener"/>安森二</label><br />
+        <label><input type="checkbox" v-model="person.ansensan"/>安森三</label><br />
+        <p>{{person}}</p>
+    </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            person: {
+                "ansenyi": true,
+                "ansener": false,
+                "ansensan": true
+            }
+        },
+        watch: {
+            person: {
+                handler(newValue, oldValue) {
+                    console.log("person对象的值改变了", newValue);
+                },
+                deep: true
+            }
+        }
+    });
+</script>
+
 </html>
