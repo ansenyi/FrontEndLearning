@@ -50,6 +50,27 @@
         for (let key in myObject) { //遍历对象
             console.log(key);
         }
+        console.log("1------------")
+        for (let key in myObject) { //遍历对象
+            if (key == "sex") {
+                continue
+            }
+            console.log(key);
+        }
+        console.log("2------------")
+        for (let key in myObject) { //遍历对象
+            // if (key == "sex") {
+            //     return
+            // }
+            console.log(key);
+        }
+        console.log("3------------")
+        for (let key in myObject) { //遍历对象
+            if (key == "sex") {
+                // return false
+            }
+            console.log(key);
+        }
     </script>
 </body>
 

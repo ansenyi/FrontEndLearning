@@ -1,172 +1,209 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div>
-			<h3>
-				基本数据类型有哪些，number,string,boolean,null,undefined五类。<br />
-				引用数据类型(Object类)有常规键值对的无序对象{a:1}，数组[1,2,3]，以及函数等。
-			</h3>
-			<p>
-				浅拷贝的方法：Object.assign()<br />
-				Object.assign()是ES6新添加的接口，主要的用途是用来合并多个JavaScript的对象。<br />
-                Object.assign()接口可以接收多个参数，第一个参数是目标对象，后面的都是源对象，assign方法将多个原对象的属性和方法都合并到了目标对象上面，如果在这个过程中出现同名的属性（方法），后合并的属性（方法）会覆盖之前的同名属性（方法）。<br />
-                assign的设计目的是用于合并接口的，所以它接收的第一个参数（目标）应该是对象，如果不是对象的话，它会在内部转换成对象，所以如果碰到了null或者undefined这种不能转换成对象的值的话，assign就会报错。<br />
-				Object.assign拷贝的属性是有限制的，只会拷贝对象本身的属性（不会拷贝继承属性），也不会拷贝不可枚举的属性。但是属性名为Symbol值的属性，是可以被Object.assign拷贝的。<br />
-                                      如果assign只接收到了一个对象作为参数的话，就是说没有源对象要合并到目标对象上，那会原样把目标对象返回。<br />
-			</p>
-			<font color="blueviolet">
-				Object.assign是针对Object开发的API，一旦在源对象的参数未知接收到了其他类型的参数，会尝试类型转换。<br />
-				如果是数组类型的话，类型转换的结果是将每个数组成员的值作为属性键值，将数组成员在数组中的位置作为属性键名。多个数组组成参数一同传入的话还会造成覆盖。<br />
-				具体例子如下：<br />
-				Object.assign([1, 2, 3], [4, 5]);<br />
-				类似于Object.assign({0:1,1:2,2:3}, {0:4,1:5});<br />
-				// [4, 5, 3]<br />
-				上面代码中，assign把数组视为属性名为 0、1、2 的对象，因此源数组的 0 号属性4覆盖了目标数组的 0 号属性1。
-			</font>
-			<p>
-				深拷贝的三种实现方式：<br />
-				1、JSON方法实现；<br />
-				2、用递归和for…in实现遍历和复制；<br />
-				3、利用数组的Array.prototype.forEach进copy；<br />
-			</p>
-		</div>
-		<script src="../js/jquery-3.2.1.js"></script>
-		<script>
-			let a=[0,1,2,3,4],
-			    b=a;
-			console.log(a===b);//true
-			a[0]=1;
-			console.log(a,b);
-			console.log("**********************************");
-			var target1  = {a : 1}; //目标对象
-			var source1 = {b : 2}; //源对象1
-			var source2 = {c : 3}; //源对象2
-			var source3 = {c : 4}; //源对象3，和source2中的对象有同名属性c
-			Object.assign(target1,source1,source2,source3);
-			console.log(target1);//{ a1: 1, b: 2, c: 4 }
-			
-			const obj1={a:{b:'b'}};
-			const obj2=Object.assign({},obj1);
-			obj1.a.b="bbb";
-			console.log(obj2.a.b);//bbb
-			console.log(Object.assign([1, 2, 3], [4, 5]));
-			console.log(Object.assign({0:1,1:2,2:3}, {0:4,1:5}));
-			console.log("*******浅拷贝（使用object.assign方法）********");
-			//浅拷贝（使用object.assign方法）
-			let target=[];
-			let testArr=[2,3,5,8];
-			Object.assign(target,testArr);
-			console.log(target);
-			testArr.push(8);
-			console.log("我是原来的"+target+",我是现在的"+testArr);
-			console.log("**********************************");
-			
-			//slice方法和concat方法不是真正的深拷贝
-			let obj = [
-			    {
-			        name:'melin1',
-			        job:'111'
-			    },
-			    {
-			        name:'melin2',
-			        job:'222'
-			    }
-			];
-			let copy = obj.slice();//或者concat()
-			copy[1].name = 'tom';
-			console.log(obj[1].name); //tom
-			console.log(copy[1].name); //tom
-			//第1种方法：递归
-			function deepClone(obj){
-			    let objClone = Array.isArray(obj)?[]:{};
-			    if(obj && typeof obj==="object"){
-			        for(key in obj){
-			            if(obj.hasOwnProperty(key)){
-			                //判断ojb子元素是否为对象，如果是，递归复制
-			                if(obj[key]&&typeof obj[key] ==="object"){
-			                    objClone[key] = deepClone(obj[key]);
-			                }else{
-			                    //如果不是，简单复制
-			                    objClone[key] = obj[key];
-			                }
-			            }
-			        }
-			    }
-			    return objClone;
-			}    
-			let a1=[1,2,3,4],
-			    b1=deepClone(a1);
-			a1[0]=2;
-			console.log(a1,b1);
-			//test array
-			var arry1= ["a","b","c","d"];
-			var arry2 = deepClone(arry1);
-			arry1.pop();
-			console.log(arry1,arry2);
-			//test object
-			var objOld = {name:"小明",sex:"男",age:27,favorite:"乒乓球",family:{brother:"志平",mother:"孙爱玉",father:"王立才"}};
-			var objNew = deepClone(objOld);
-			objOld.family.brother = "close";
-			console.log(objOld,objNew);
-			
-			console.log("****借用JSON对象的parse()和stringify()实现深拷贝****");
-			//第2种方法：还可以借用JSON对象的parse和stringify
-			function deepClone2(obj){
-			    let _obj = JSON.stringify(obj),
-			        objClone = JSON.parse(_obj);
-			    return objClone;
-			}    
-			let a2=[0,1,[2,3],4],
-			    b2=deepClone2(a2);
-			a2[0]=1;
-			a2[2][0]=1;
-			console.log(a2,b2);
-			
-			console.log("***********借用JQ的extend方法***********");
-			//第3种方法：还可以借用JQ的extend方法。
-            //$.extend( [deep ], target, object1 [, objectN ] )
-            // deep表示是否深拷贝，为true为深拷贝，为false，则为浅拷贝
-            // target Object类型目标对象，其他对象的成员属性将被附加到该对象上。
-            //object1  objectN可选。 Object类型 第一个以及第N个被合并的对象。 
-            let a3=[0,1,[2,3],4],
-                b3=$.extend(true,[],a3);
-            a3[0]=1;
-			a3[2][0]=1;
-			console.log(a3,b3);
-			
-            let obj3 = {name:'安森一',age:20,company : { name : '腾讯', address : '深圳'} };
-			let obj3_extend = $.extend(true,{}, obj3); //extend方法，第一个参数为true，为深拷贝，为false，或者没有为浅拷贝。
-			console.log(obj3 === obj3_extend);//false
-			obj3.company.name = "阿里";
-			obj3.name = "安森2";
-			console.log(obj3,obj3_extend);
-			
-			//第4种方法
-			let deepClone4 = function (obj) {
-			    let copy = Object.create(Object.getPrototypeOf(obj));
-			    let propNames = Object.getOwnPropertyNames(obj);
-			    propNames.forEach(function (items) {
-			        let item = Object.getOwnPropertyDescriptor(obj, items);
-			        Object.defineProperty(copy, items, item);
-			
-			    });
-			    return copy;
-			};
-			
-			let testObj = {
-			    name: "梁纤巾",
-			    sex: "女",
-			    age: 22,
-			    favorite: "play",
-			    family: {brother: "brother", mother: "mother", father: "father"}
-			};
-			let testRes2 = deepClone(testObj);
-			testObj.family.brother="哥哥";
-			console.log(testRes2,testObj);
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <h3>
+            基本数据类型有哪些，number,string,boolean,null,undefined五类。<br /> 引用数据类型(Object类)有常规键值对的无序对象{a:1}，数组[1,2,3]，以及函数等。
+        </h3>
+        <p>
+            浅拷贝的方法：Object.assign()<br /> Object.assign()是ES6新添加的接口，主要的用途是用来合并多个JavaScript的对象。
+            <br /> Object.assign()接口可以接收多个参数，第一个参数是目标对象，后面的都是源对象，assign方法将多个原对象的属性和方法都合并到了目标对象上面，如果在这个过程中出现同名的属性（方法），后合并的属性（方法）会覆盖之前的同名属性（方法）。
+            <br /> assign的设计目的是用于合并接口的，所以它接收的第一个参数（目标）应该是对象，如果不是对象的话，它会在内部转换成对象，所以如果碰到了null或者undefined这种不能转换成对象的值的话，assign就会报错。
+            <br /> Object.assign拷贝的属性是有限制的，只会拷贝对象本身的属性（不会拷贝继承属性），也不会拷贝不可枚举的属性。但是属性名为Symbol值的属性，是可以被Object.assign拷贝的。
+            <br /> 如果assign只接收到了一个对象作为参数的话，就是说没有源对象要合并到目标对象上，那会原样把目标对象返回。
+            <br />
+        </p>
+        <font color="blueviolet">
+            Object.assign是针对Object开发的API，一旦在源对象的参数未知接收到了其他类型的参数，会尝试类型转换。<br /> 如果是数组类型的话，类型转换的结果是将每个数组成员的值作为属性键值，将数组成员在数组中的位置作为属性键名。多个数组组成参数一同传入的话还会造成覆盖。
+            <br /> 具体例子如下：
+            <br /> Object.assign([1, 2, 3], [4, 5]);<br /> 类似于Object.assign({0:1,1:2,2:3}, {0:4,1:5});<br /> // [4, 5, 3]<br /> 上面代码中，assign把数组视为属性名为 0、1、2 的对象，因此源数组的 0 号属性4覆盖了目标数组的 0 号属性1。
+        </font>
+        <p>
+            深拷贝的三种实现方式：<br /> 1、JSON方法实现；
+            <br /> 2、用递归和for…in实现遍历和复制；
+            <br /> 3、利用数组的Array.prototype.forEach进copy；
+            <br />
+        </p>
+    </div>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script>
+        let a = [0, 1, 2, 3, 4],
+            b = a;
+        console.log(a === b); //true
+        a[0] = 1;
+        console.log(a, b);
+        console.log("**********************************");
+        var target1 = {
+            a: 1
+        }; //目标对象
+        var source1 = {
+            b: 2
+        }; //源对象1
+        var source2 = {
+            c: 3
+        }; //源对象2
+        var source3 = {
+            c: 4
+        }; //源对象3，和source2中的对象有同名属性c
+        Object.assign(target1, source1, source2, source3);
+        console.log(target1); //{ a1: 1, b: 2, c: 4 }
+
+        const obj1 = {
+            a: {
+                b: 'b'
+            }
+        };
+        const obj2 = Object.assign({}, obj1);
+        obj1.a.b = "bbb";
+        console.log(obj2.a.b); //bbb
+        console.log(Object.assign([1, 2, 3], [4, 5]));
+        console.log(Object.assign({
+            0: 1,
+            1: 2,
+            2: 3
+        }, {
+            0: 4,
+            1: 5
+        }));
+        console.log("*******浅拷贝（使用object.assign方法）********");
+        //浅拷贝（使用object.assign方法）
+        let target = [];
+        let testArr = [2, 3, 5, 8];
+        Object.assign(target, testArr);
+        console.log(target);
+        testArr.push(8);
+        console.log("我是原来的" + target + ",我是现在的" + testArr);
+        console.log("**********************************");
+
+        //slice方法和concat方法不是真正的深拷贝
+        let obj = [{
+            name: 'melin1',
+            job: '111'
+        }, {
+            name: 'melin2',
+            job: '222'
+        }];
+        let copy = obj.slice(); //或者concat()
+        copy[1].name = 'tom';
+        console.log(obj[1].name); //tom
+        console.log(copy[1].name); //tom
+        //第1种方法：递归
+        console.log("*****第1种方法：递归*****")
+
+        function deepClone(obj) {
+            let objClone = Array.isArray(obj) ? [] : {};
+            if (obj && typeof obj === "object") {
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        //判断ojb子元素是否为对象，如果是，递归复制
+                        if (obj[key] && typeof obj[key] === "object") {
+                            objClone[key] = deepClone(obj[key]);
+                        } else {
+                            //如果不是，简单复制
+                            objClone[key] = obj[key];
+                        }
+                    }
+                }
+            }
+            return objClone;
+        }
+        let a1 = [1, 2, 3, 4],
+            b1 = deepClone(a1);
+        a1[0] = 2;
+        console.log(a1, b1);
+        //test array
+        var arry1 = ["a", "b", "c", "d"];
+        var arry2 = deepClone(arry1);
+        arry1.pop();
+        console.log(arry1, arry2);
+        //test object
+        var objOld = {
+            name: "小明",
+            sex: "男",
+            age: 27,
+            favorite: "乒乓球",
+            family: {
+                brother: "志平",
+                mother: "孙爱玉",
+                father: "王立才"
+            }
+        };
+        var objNew = deepClone(objOld);
+        objOld.family.brother = "close";
+        console.log(objOld, objNew);
+
+        console.log("****借用JSON对象的parse()和stringify()实现深拷贝****");
+        //第2种方法：还可以借用JSON对象的parse和stringify
+        function deepClone2(obj) {
+            let _obj = JSON.stringify(obj),
+                objClone = JSON.parse(_obj);
+            return objClone;
+        }
+        let a2 = [0, 1, [2, 3], 4],
+            b2 = deepClone2(a2);
+        a2[0] = 1;
+        a2[2][0] = 1;
+        console.log(a2, b2);
+
+        console.log("***********借用JQ的extend方法***********");
+        //第3种方法：还可以借用JQ的extend方法。
+        //$.extend( [deep ], target, object1 [, objectN ] )
+        // deep表示是否深拷贝，为true为深拷贝，为false，则为浅拷贝
+        // target Object类型目标对象，其他对象的成员属性将被附加到该对象上。
+        //object1  objectN可选。 Object类型 第一个以及第N个被合并的对象。 
+        let a3 = [0, 1, [2, 3], 4],
+            b3 = $.extend(true, [], a3);
+        a3[0] = 1;
+        a3[2][0] = 1;
+        console.log(a3, b3);
+
+        let obj3 = {
+            name: '安森一',
+            age: 20,
+            company: {
+                name: '腾讯',
+                address: '深圳'
+            }
+        };
+        let obj3_extend = $.extend(true, {}, obj3); //extend方法，第一个参数为true，为深拷贝，为false，或者没有为浅拷贝。
+        console.log(obj3 === obj3_extend); //false
+        obj3.company.name = "阿里";
+        obj3.name = "安森2";
+        console.log(obj3, obj3_extend);
+
+        //第4种方法
+        let deepClone4 = function(obj) {
+            let copy = Object.create(Object.getPrototypeOf(obj));
+            let propNames = Object.getOwnPropertyNames(obj);
+            propNames.forEach(function(items) {
+                let item = Object.getOwnPropertyDescriptor(obj, items);
+                Object.defineProperty(copy, items, item);
+
+            });
+            return copy;
+        };
+
+        let testObj = {
+            name: "梁纤巾",
+            sex: "女",
+            age: 22,
+            favorite: "play",
+            family: {
+                brother: "brother",
+                mother: "mother",
+                father: "father"
+            }
+        };
+        let testRes2 = deepClone(testObj);
+        testObj.family.brother = "哥哥";
+        console.log(testRes2, testObj);
+    </script>
+</body>
+
 </html>

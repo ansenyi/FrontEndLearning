@@ -50,13 +50,15 @@
         let myObject = {
             name: 'ansenyi',
             sex: 'man',
-            age: 25
+            age: 25,
+            身高: '180cm'
         }
         for (let key in myObject) { //遍历对象
             console.log(key, myObject[key]);
         }
-
-        //方法2：Object.keys()
+        let testStr = '身高';
+        console.log("读取对象的某个值", myObject['身高'], myObject.身高, myObject[testStr]) //两种方法：对象['属性名']或者对象.属性名
+            //方法2：Object.keys()
         console.log("遍历对象的方法2：**********")
         Object.prototype.pro1 = function() {}
         Object.defineProperty(myObject, 'country', {
