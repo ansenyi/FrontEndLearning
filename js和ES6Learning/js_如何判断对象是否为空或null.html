@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //1. 将json对象转化为json字符串， 再判断该字符串是否为 "{}"
+        var obj = {};
+        console.log(JSON.stringify(obj) == "{}"); //true
+
+        // 2. for in 循环判断
+        var b = function() {
+            for (var key in obj) {
+                return false;
+            }
+            return true;
+        }
+        console.log(b()); //true
+        // 3.使用ES6的Object.keys()方法,是ES6的新方法, 返回值是对象中属性名组成的数组
+        console.log(Object.keys(obj).length == 0); //true
+
+        let objNull = null;
+        console.log(obj === null) //false
+        console.log(objNull === null); //true
+        console.log(Object.keys(objNull).length == 0) //报错，Cannot convert undefined or null to object
+    </script>
+</body>
+
+</html>

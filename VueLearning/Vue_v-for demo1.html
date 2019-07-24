@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style>
-			li{
-				list-style-type: decimal;
-			}
-		</style>
-	</head>
-	<body>
-		<ul id="example-1">
-  			<li v-for="(item,index,key) in items">
-   			 {{ item.message }}----这是第{{index}}个；
-  			</li>
-  			------------------------
-  			of也可以  			
-  			<li v-for="(item,index) of items">
-   			 {{ item.message }}----这是第{{index}}个；
-  			</li>
-  			<li v-for="item in items">
-  				{{item}}
-  			</li>
-		</ul>
-		<script src="../js/vue.js" ></script>
-		<script type="text/javascript">
-			var example1 = new Vue({
- 			 el: '#example-1',
- 			 data: {
-   				 items: [
-     			 	{message:'Foo' },
-      				{message:'Bar' },
-      				{message:'安森一'},
-      				{message:'安森二'},
-      				{message:'安森三'}
-      				
-   				 ]
-  				}
-			});
-			example1.items.push({message:'安森四'});
-			example1.items.push({message:'安森五'});
-			console.log(example1.items.pop({message:'安森五'}));
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li {
+            list-style-type: decimal;
+        }
+        
+        strong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>当我们在使用v-for进行渲染时，尽可能使用
+        <strong>渲染元素自身属性的id</strong>给渲染的元素绑定一个key值，这样在当前渲染元素的DOM结构发生变化时，能够单独响应该元素而不触发所有元素的渲染。</p>
+    <ul id="example-1">
+        <li v-for="(item,index,key) in items" :key="item.id" :id="item.id">
+            {{ item.message }}----这是第{{index}}个；
+        </li>
+        ------------------------ of也可以
+        <li v-for="(item,index) of items">
+            {{ item.message }}----这是第{{index}}个；
+        </li>
+        <li v-for="item in items">
+            {{item}}
+        </li>
+    </ul>
+    <script src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var example1 = new Vue({
+            el: '#example-1',
+            data: {
+                items: [{
+                        message: 'Foo',
+                        id: 1
+                    }, {
+                        message: 'Bar',
+                        id: 2
+                    }, {
+                        message: '安森一',
+                        id: 3
+                    }, {
+                        message: '安森二',
+                        id: 4
+                    }, {
+                        message: '安森三',
+                        id: 5
+                    }
+
+                ]
+            }
+        });
+        example1.items.push({
+            message: '安森四'
+        });
+        example1.items.push({
+            message: '安森五'
+        });
+        console.log(example1.items.pop({
+            message: '安森五'
+        }));
+    </script>
+</body>
+
 </html>

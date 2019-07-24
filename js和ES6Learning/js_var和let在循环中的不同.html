@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function() {
+                console.log(i);
+            }, 2000); //同时输出5个5
+        }
+        for (let i = 0; i < 5; i++) {
+            setTimeout(function() {
+                console.log(i);
+            }, 3000); //6秒后同时按顺序输出1，2，3，4，5
+        }
+        var Processbar = {
+            step: 1,
+            stop: 100,
+            loading: function() {
+                for (let i = 0; i <= this.stop; i += this.step) {
+                    setTimeout(function() {
+                        console.log("loading:", i, "%");
+                    }, 5000); //5秒后同时按顺序输出
+                }
+            }
+        };
+        Processbar.loading();
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
