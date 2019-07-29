@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var str = "abcdef123456";
+
+        //前三种是String对象的方法
+        //方法一: indexOf()(推荐)
+        //indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。 如果要检索的字符串值没有出现， 则该方法返回 - 1。
+        console.log("方法1", str.indexOf("234") != -1); // true
+
+        //方法二: search()
+        // search() 方法用于检索字符串中指定的子字符串， 或检索与正则表达式相匹配的子字符串。 如果没有找到任何匹配的子串， 则返回 - 1。
+        console.log("方法2", str.search("234") != -1); // true
+
+        //方法三: match()
+        // match() 方法可在字符串内检索指定的值， 或找到一个或多个正则表达式的匹配。
+        var reg = RegExp(/234/);
+        console.log("方法3", str.match(reg));
+
+        //下面两种是RegExp对象的方法
+        //方法四: test() 
+        // test() 方法用于检索字符串中指定的值。 返回 true 或 false。
+        var reg = RegExp(/234/);
+        console.log("方法4", reg.test(str) != -1); // true
+
+        // 方法五: exec()
+        // exec() 方法用于检索字符串中的正则表达式的匹配。 返回一个数组， 其中存放匹配的结果。 如果未找到匹配， 则返回值为 null。
+        var reg = RegExp(/234/);
+        console.log("方法5", reg.exec(str))
+    </script>
+</body>
+
+</html>

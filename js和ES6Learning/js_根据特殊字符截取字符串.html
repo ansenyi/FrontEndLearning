@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var str = "abcdef_1234_56";
+
+        var strA2 = str.substr(
+            str.split("_")[0].length + 1
+        ); //取第一个"_"后的所有字符
+        console.log(strA2);
+        var strA1 = str.substr(
+            0,
+            str.length - str.split('_')[str.split('_').length - 1].length - 1
+        ); //取最后一个"_"前的所有字符
+        console.log(strA1);
+        var strA3 = str.substr(
+            str.length - str.split('_')[str.split('_').length - 1].length
+        ); //取最后一个"_"后的所有字符
+        console.log(strA3)
+    </script>
+</body>
+
+</html>

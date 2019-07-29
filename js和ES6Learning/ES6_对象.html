@@ -78,6 +78,22 @@
         Object.getOwnPropertyNames(myObject).forEach(function(index) {
             console.log(index, myObject[index])
         });
+
+        //为Object对象动态添加属性和值
+        //方式1：
+        var objAddP = {}; //或者 var obj=new Object();
+        var key = "name";
+        var value = "张三丰";
+        objAddP[key] = value;
+        console.log("加属性后的对象",
+            objAddP);
+        //方式2:使用eval() 动态解析字符串表达式
+        var key1 = "sex";
+        var value1 = "女";
+        eval("objAddP." + key1 + "='" + value1 + "'");
+        eval("objAddP.ppp" + key1 + "='" + value1 + "'"); //添加属性名为 pppsex的属性
+        console.log("第二种方法加属性后的对象",
+            objAddP);
     </script>
 </body>
 
