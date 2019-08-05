@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var str = "abcdef_1234_56";
+        console.log(str.charAt(str.length - 1)); //第1种方法
+        console.log(str.substr(str.length - 1, 1)); //第2种方法
+        console.log(str.split("")[str.split("").length - 1]); //第3种方法
+
+        //1、substr 方法,返回一个从指定位置开始的指定长度的子字符串,第二个参数为要截取的长度,可选。
+        //stringvar.substr(start[, length])      
+        //2、substring 方法,返回位于 String 对象中指定位置的子字符串,第二个参数为要结束的位置,可选。
+        //strVariable.substring(start[, end])
+    </script>
+</body>
+
+</html>

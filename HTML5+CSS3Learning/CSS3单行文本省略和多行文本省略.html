@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .single,
+        .many {
+            width: 300px;
+            height: 44px;
+            /*注意高度的设置，和显示的行数有关*/
+            background-color: gold;
+        }
+        
+        .single {
+            overflow: hidden;
+            /*溢出的部分隐藏*/
+            text-overflow: ellipsis;
+            /*文本溢出时显示省略标记*/
+            white-space: nowrap;
+        }
+        
+        .many {
+            background-color: burlywood;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            /*-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。
+            常见结合属性：
+            display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+            -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="single">
+        小红书官方表示，随着内容平台影响力的不断增加，内容治理也成为互联网内容平台面临的共同问题。去年以来，包括快手、哔哩哔哩、网易云音乐等在内的内容平台先后都曾遭遇下架整改。
+    </div>
+    <div class="many">
+        小红书官方表示，随着内容平台影响力的不断增加，内容治理也成为互联网内容平台面临的共同问题。去年以来，包括快手、哔哩哔哩、网易云音乐等在内的内容平台先后都曾遭遇下架整改。
+    </div>
+    <pre ">
+        本地运行的时候是没有问题的，但是vue项目中build之后发现失效了。仔细一看是 -webkit-box-orient: vertical; 没有起效。编译过程导致这个属性丢失。
+        最后各种修改之后发现应该是webpack的锅
+        解决方案是改成下面这样
+        /*! autoprefixer: off */
+        -webkit-box-orient: vertical;
+        /* autoprefixer: on */
+        这样确实解决了编译丢失的情况，但会在编译过程中报warning
+        比较完美的方法是（在编译过程中不报warning）:
+        /* autoprefixer: ignore next */
+        -webkit-box-orient: vertical;
+    </pre>
+</body>
+
+</html>
