@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        请选择水果(只能选一个)：
+        <select v-model="selected">
+            <option v-for="item in fruits" :value="item.value">{{item.name}}</option>
+        </select>
+        <br>你选中的水果为：{{selected}}
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        //$("#app").html(data.message);
+        var app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data: {
+                selected: 'peach',
+                fruits: [{
+                    name: "苹果",
+                    value: "apple"
+                }, {
+                    name: "西瓜",
+                    value: "watermelon"
+                }, {
+                    name: "桃子",
+                    value: "peach"
+                }, {
+                    name: "芒果",
+                    value: "mango"
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

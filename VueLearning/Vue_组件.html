@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div id="app">
-			<mycomponent></mycomponent>
-			<table border="1">
-				<tr>
-					<td>编号</td>
-					<td>名称</td>
-				</tr>
-				<tr is='component2'></tr>
-				<tr is='component3'></tr>
-			</table>
-		</div>
-		<script type="text/javascript" src="../js/vue.js" ></script>
-		<script type="text/javascript">
-			let component1={
-				template:'<div>今天是个好天气！</div>'
-			},
-			component2={
-				template:'<tr><td>1</td><td>安森一</td></tr>'
-			}, 
-			component3={
-				template:'<tr><td>2</td><td>安森二</td></tr>'
-			};
-			let app=new Vue({
-				//绑定视图
-				el:"#app",
-				//绑定数据
-				data:{
-				},
-				components:{
-					'mycomponent':component1, //组件名称里不要有大写字母
-					'component2':component2,
-					component3  //同名可以简写
-				}
-			});
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <p>Vue组件的模板在某些情况下会受到HTML的限制，比如
+            <table></table>内规定值允许是tr、td、th等这些表格元素，所以在table内直接使用组件是无效的。<br> 在这种情况下，可以使用特殊的is属性来挂载组件。
+        </p>
+        <mycomponent></mycomponent>
+        <table border="1">
+            <tr>
+                <td>编号</td>
+                <td>名称</td>
+            </tr>
+            <tr is='component2'></tr>
+            <tr is='component3'></tr>
+        </table>
+        <br>
+        <table>
+            <tbody is="component4"></tbody>
+            <!-- tbody在渲染的时候，会被替换为组件的内容。 tbody标签会消失。-->
+        </table>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        let component1 = {
+                template: '<div>今天是个好天气！</div>'
+            },
+            component2 = {
+                template: '<tr><td>1</td><td>安森一</td></tr>'
+            },
+            component3 = {
+                template: '<tr><td>2</td><td>安森二</td></tr>'
+            },
+            component4 = {
+                template: '<div>组件4的内容</div>'
+            };
+        let app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data: {},
+            components: {
+                'mycomponent': component1, //组件名称里不要有大写字母
+                'component2': component2,
+                component3, //同名可以简写
+                component4
+            }
+        });
+    </script>
+</body>
+
 </html>

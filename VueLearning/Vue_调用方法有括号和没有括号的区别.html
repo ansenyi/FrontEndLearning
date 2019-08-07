@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="addItem1">1、调用方法不写括号</button><br>
+        <button @click="addItem2()">2、调用方法写括号</button><br>
+        <button @click="addItem3($event)">3、调用方法写括号</button><br>
+        <button @click="addItem4($event,'000')">4、调用方法写括号</button><br>
+        <button @click="addItem5('000')">5、调用方法写括号</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        //$("#app").html(data.message);
+        var app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data() {
+                return {
+                    items: []
+                }
+            },
+            methods: {
+                addItem1() {
+                    console.log("触发了点击方法", event)
+                },
+                addItem2() {
+                    console.log("触发了点击方法", event)
+                },
+                addItem3() {
+                    console.log("触发了点击方法", event)
+                },
+                addItem4(param) {
+                    console.log("触发了点击方法", event, param)
+                },
+                addItem5(param) {
+                    console.log("触发了点击方法", param, event)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

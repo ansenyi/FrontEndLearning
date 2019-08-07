@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "ansenyi"
+        };
+        var obj2 = 1;
+        var obj3 = null;
+        var obj4 = [];
+
+        function isObject(param) {
+            // return typeof param == "object" && param != null && Object.prototype.toString.call(param) != "[object Array]";
+            return Object.prototype.toString.call(param) == "[object Object]"
+        }
+        console.log(isObject(obj1)); //true
+        console.log(isObject(obj2)); //false
+        console.log(isObject(obj3), typeof obj3); //false
+        console.log(isObject(obj4)); //true
+    </script>
+</body>
+
+</html>
