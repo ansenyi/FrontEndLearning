@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>Vue组件内容分发（slot）。Vue中的slot源于Web Components规范草案，也被称之为插槽，是组件的一块HTML模板，而这块模板显示不显示，以及怎么显示由父组件来决定。著作权归作者所有。 商业转载请联系作者获得授权,非商业转载请注明出处。 原文: https://www.w3cplus.com/vue/vue-slot.html © w3cplus.com</p>
+    <p>由于<code>slot</code>是一块模板，因此对于任何一个组件，从模板种类的角度来分，共实都可分为<strong>非插槽模板</strong>和<strong>插槽模板</strong>。其中非插槽模板指的是HTML模板（也就是HTML的一些元素，比如<code>div</code>、<code>span</code>等构成的），其显与否及怎么显示完全由插件自身控制；但插槽模板（也就是<code>slot</code>）是一个空壳子，它显示与否以及怎么显示完全是由<strong>父组件</strong>来控制。不过，<strong>插槽显示的位置由子组件自身决定，<code>slot</code>写在组件<code>template</code>的哪块，父组件传过来的模板将来就显示在哪块</strong>。
+    </p>
+    <div id="app">
+        <say-to pname='安森1'>
+            ansenyi！
+        </say-to>
+        <say-to pname='安森2'>
+            ansener！
+        </say-to>
+        <say-to pname='安森3'>
+            ansensan！
+        </say-to>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        let component1 = {
+            props: ['pname'],
+            template: '<div>名字是<strong>{{pname}}</strong>,<slot></slot></div>'
+        };
+        let app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data: {},
+            components: {
+                'say-to': component1
+            }
+        });
+    </script>
+</body>
+
+</html>

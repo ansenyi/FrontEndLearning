@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main {
+            height: 100px;
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <say-to pname='安森1'>
+            ansenyi！
+        </say-to>
+        <hr>
+        <child-component>
+            <p>分发的内容</p>
+            <p>更多分发的内容</p>
+        </child-component>
+        <hr>
+        <child-component>
+            <!-- 没有插入的内容 -->
+        </child-component>
+        <child-component2>
+            <h2 slot="header">标题</h2>
+            <p>分发的内容</p>
+            <p>更多分发的内容</p>
+            <div slot="footer">底部信息</div>
+        </child-component2>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        let component1 = {
+            props: ['pname'],
+            template: '<div>名字是<strong>{{pname}}</strong>,<slot></slot></div>'
+        };
+        let childComponent = {
+            template: '<div><slot><p>如果父组件没有插入内容，我将作为默认出现。</p></slot></div>'
+                // 单个Slot
+                // 在父组件没有使用slot时，会渲染这段默认的文本；如果使用了slot，那就会替换整个<slot>。
+        };
+        let childComponent2 = {
+            template: ' <div class = "container" ><div class = "header" ><slot name="header"></slot></div><div class = "main" ><slot></slot></div><div class = "footer" ><slot name="footer"></slot></div></div>'
+                // 具名Slot
+                // 给<slot>指定一个name后可以分发多个内容
+                // 具名Slot可以和单个Slot共存。
+        };
+        let app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data: {},
+            components: {
+                'say-to': component1,
+                childComponent,
+                childComponent2
+            }
+        });
+    </script>
+</body>
+
+</html>

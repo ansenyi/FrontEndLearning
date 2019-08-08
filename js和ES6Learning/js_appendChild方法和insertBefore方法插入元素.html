@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div {
+            width: 500px;
+            height: 300px;
+            float: left;
+            margin-left: 50%;
+            position: relative;
+            left: -250px;
+            background-color: #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <hr />
+    <hr />
+    <!--两条横线 -->
+    <ul id="mylist">
+        <li>第一项</li>
+        <li>第二项</li>
+        <li>第三项</li>
+    </ul>
+    <input type="button" value="添加元素" onclick="add()" />
+    <script type="text/javascript">
+        function add() {
+            var ul = document.getElementById("mylist");
+            var li = document.createElement("li");
+            li.innerHTML = "第二项";
+
+            ul.insertBefore(li, ul.firstChild); //在ul的第一个子节点前插入li
+            ul.appendChild(li); //在ul的最后面插入li
+            //这两个方法只能执行一个，后面的那一个
+        }
+    </script>
+</body>
+
+</html>
