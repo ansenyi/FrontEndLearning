@@ -1,74 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-
-<body>
-    <a href="javascript:void(0);">页面不刷新的超链接</a>
-    <mark>这里是标记部分</mark>
-    <ins>这里加了下划线</ins><br />
-    <u>这也是下划线的效果</u>
-    <p style="text-transform: lowercase;">ABCDEFG</p>
-    <p style="text-transform: capitalize;">abcdefg首字母大写</p>
-    <h1><del>删除</del>大标题<small>小标题<small>小标题<small>小标题<small>小标题<small>小标题</small></small>
-        </small>
-        </small>
-        </small>
-    </h1>
-    <div style="width: 100px;height: 20px; background-color: gold;overflow:hidden;">我的名字叫安森一</div>
-    <em>这是斜体吗？</em>
-    <i>这也是斜体吗</i>
-    <h5>普通列表</h5>
-    <ul>
-        <li>列表项目</li>
-        <li>列表项目</li>
-        <li>列表项目</li>
-        <li>列表项目</li>
-        <li>列表项目</li>
-    </ul>
-    <h5>有序列表</h5>
-    <ol>
-        <li>项目列表一</li>
-        <li>项目列表二</li>
-        <li>项目列表三</li>
-    </ol>
-    <h5>有序列表嵌套</h5>
-    <ol>
-        <li>有序列表</li>
-        <li>
-            有序列表
-            <ol>
-                <li>有序列表(2)</li>
-                <li>有序列表(2)</li>
-            </ol>
-        </li>
-        <li>有序列表</li>
-    </ol>
-    <!--下面是代码任务部分-->
-
-    <br /> 请输入你的名字：
-    <input id="name" /><br />
-    <button onclick="validateForm()">提交</button>
-    <br /><br /><br />
-    <a href="#" onclick="alert('点击了超链接');">执行点击方法，并且回到顶部</a>
-    <br />
-    <a href="#" onclick="alert('点击了超链接');return false;">执行点击方法，但是不回到顶部</a>
-    <script type="text/javascript">
-        function validateForm() {
-            //var x=document.getElementById("name").value;
-            var x = document.getElementsByTagName("input")[0].value;
-
-            if (x == null || x == "") {
-                alert("姓必须填写");
-                return false;
-            } else {
-                alert("提交成功！");
-            }
-        }
-    </script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var generateClosure=function(){
+		   	 var count=0;
+		   	 var get=function(){
+		        count++;
+		        return count;
+		   	 };
+		     return get;
+			};
+		
+			var counter1=generateClosure();
+			var counter2=generateClosure();
+			console.log(generateClosure());
+			console.log(generateClosure());
+			console.log(counter1());   //   输出   1
+			console.log(counter2());   //   输出   1
+			console.log(counter1());   //   输出   2
+			console.log(counter1());   //   输出   3
+			console.log(counter2());   //   输出   2
+//			counter1和counter2分别调用了generateClosure() 函数，
+//			生成了两个闭包的实例，它们内部引用的 count 变量分别属于各自的运行环境。
+		</script>
+	</body>
 </html>

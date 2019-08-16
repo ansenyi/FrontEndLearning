@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script src="js/jquery.min.js"></script>
-		<style>
-			p img{
-				vertical-align: middle;
-			}
-			
-		</style>
-	</head>
-	<body>
 
-		<p>这是文字<img src="img/HBuilder.png"></p>
-		<input type="checkbox" id="name" />
-		<label style="background-color: greenyellow;"for="name">姓名</label>
-		<label style="background-color: gold;"><input type="checkbox">年龄</label>
-		<form id="form1" runat="server" > 
-			<div id="divOne" onclick="alert('我是最外层');"> 
-				<div id="divTwo" onclick="alert('我是中间层！')"> 
-					<!--<a id="hr_three" href="http://www.baidu.com" onclick="alert('我是最里层！')">点击我</a>--> 
-					<div id="divThree">点击我</div>
-				</div> 
-			</div> 
-		</form> 
-		
-	</body>
-	<script type="text/javascript">
-		 var num = ['123','abc','cd'];  
-		 console.log(num.toString());
-    	console.log(num.join('+'));  
-//		$(function(){
-//			$('#divThree').click(function(event){
-////				event.stopPropagation();
-//			  return false;
-//			});
-//		});
-		window.onload = function(){
-		    var btn1 = document.getElementById("divThree");
-		    btn1.onclick = function(ev){
-		        var oEvent = ev || event;
-		        //阻止时间冒泡
-		        alert('我是最里层！')
-		        oEvent.cancelBubble=true;
-		    }
-		};
-		var num1=new Number();
-		var num2=Number.MIN_VALUE;
-		console.log(num2);
-	</script>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        p img {
+            vertical-align: middle;
+        }
+        
+        #divThree {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>这是文字<img src="img/HBuilder.png"></p>
+    <input type="checkbox" id="name" />
+    <label style="background-color: greenyellow;" for="name">姓名</label>
+    <label style="background-color: gold;"><input type="checkbox">年龄</label>
+    <form id="form1" runat="server">
+        <div id="divOne" onclick="alert('我是最外层');">
+            <div id="divTwo" onclick="alert('我是中间层！')">
+                <!--<a id="hr_three" href="http://www.baidu.com" onclick="alert('我是最里层！')">点击我</a>-->
+                <div id="divThree">点击我</div>
+            </div>
+        </div>
+    </form>
+
+</body>
+<script type="text/javascript">
+    var num = ['123', 'abc', 'cd'];
+    console.log(num.toString());
+    console.log(num.join('+'));
+    window.onload = function() {
+        var btn1 = document.getElementById("divThree");
+        btn1.onclick = function(ev) {
+            var oEvent = ev || event;
+            //阻止事件冒泡
+            alert('我是最里层！阻止了事件冒泡')
+            oEvent.cancelBubble = true;
+        }
+    };
+    var num1 = new Number();
+    var numMin = Number.MIN_VALUE;
+    var numMax = Number.MAX_VALUE;
+    var num2 = new Number(10);
+    console.log(num1, numMin, numMax);
+</script>
+
 </html>
