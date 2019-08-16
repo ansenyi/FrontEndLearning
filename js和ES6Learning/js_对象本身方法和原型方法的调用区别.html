@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>
+        当函数对象本身的属性或方法与原型的属性或方法同名的时候：
+        <br /> 1、默认调用的是函数对象本身的属性或方法；
+        <br /> 2、通过原型增加的属性或方法的确是存在的；
+        <br /> 3、函数对象本身的属性或方法的优先级要高于原型的属性或方法。
+    </p>
+    <script type="text/javascript">
+        function Person() {
+            this.name = "安森一";
+            this.showMe = function() {
+                console.log("名字叫安森一");
+            }
+        }
+        Person.prototype.name = "安森二";
+        Person.prototype.showMe = function() {
+            console.log("名字叫安森二");
+        }
+        Person.prototype.sayMe = function() {
+            console.log("名字叫安森三");
+        }
+        var one = new Person();
+        console.log(one.name);
+        one.showMe(); //名字叫安森一
+        one.sayMe(); //名字叫安森三
+        Person.prototype.showMe(); //名字叫安森二
+    </script>
+</body>
+
+</html>

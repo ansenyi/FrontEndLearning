@@ -1,64 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			/*class Point{
-				constructor(x,y){
-					this.x=x;
-					this.y=y;
-					
-				}
-			}
-			class ColorPoint extends Point{
-				constructor(x,y,color){
-					super(x,y);
-					this.color=color;
-				}
-			}
-			var p=new ColorPoint(1,2,"red");
-			console.log(p.x);
-			console.log(p.y);
-			console.log(p.color);
-			console.log(p instanceof ColorPoint);
-			console.log(p instanceof Point);*/
-			/*class A {
-			  static hello() {
-			    console.log('hello world');
-			  }
-			}
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /*class Point{
+                                                                                                                				constructor(x,y){
+                                                                                                                					this.x=x;
+                                                                                                                					this.y=y;
+                                                                                                                					
+                                                                                                                				}
+                                                                                                                			}
+                                                                                                                			class ColorPoint extends Point{
+                                                                                                                				constructor(x,y,color){
+                                                                                                                					super(x,y);
+                                                                                                                					this.color=color;
+                                                                                                                				}
+                                                                                                                			}
+                                                                                                                			var p=new ColorPoint(1,2,"red");
+                                                                                                                			console.log(p.x);
+                                                                                                                			console.log(p.y);
+                                                                                                                			console.log(p.color);
+                                                                                                                			console.log(p instanceof ColorPoint);
+                                                                                                                			console.log(p instanceof Point);*/
+        /*class A {
+          static hello() {
+            console.log('hello world');
+          }
+        }
 			
-			class B extends A {
-			}
+        class B extends A {
+        }
 			
-			B.hello(); 
-			const arr=[1,2,3,4];
-			const [first,second]=arr;
-			console.log(second);*/
-			function getFullName({ firstName, lastName }) {
-				console.log(lastName);
-				
-			}
-			const peo={firstName:'senyi',lastName:'an'};
-			getFullName(peo);
-			Object.assign(peo,{fullname:'ansenyi'});
-			peo['nam']='nam';
-			peo.name='name';
-			console.log(peo);
-			
-			let ref='some value';
-			const atom={
-				ref,
-				value:1,
-				addValue(value){
-					return atom.value+value;
-				},
-			};
-			console.log(atom.ref);
-			console.log(atom.addValue(10));
-		</script>
-	</body>
+        B.hello(); 
+        const arr=[1,2,3,4];
+        const [first,second]=arr;
+        console.log(second);*/
+        function getFullName({
+            firstName,
+            lastName
+        }) {
+            console.log(lastName);
+
+        }
+        const peo = {
+            firstName: 'senyi',
+            lastName: 'an'
+        };
+        getFullName(peo);
+        Object.assign(peo, {
+            fullname: 'ansenyi'
+        });
+        peo['nam'] = 'nam';
+        peo.name = 'name';
+        console.log(peo);
+
+        let ref = 'some value';
+        const atom = {
+            ref,
+            value: 1,
+            addValue(value) {
+                return atom.value + value;
+            },
+        };
+        console.log(atom.ref);
+        console.log(atom.addValue(10));
+
+        console.log("--------------");
+        let obj = {
+            name: "ansenyi",
+            age: 20
+        };
+        console.log(obj); //重点注意：：：对象被打印之后的操作也会影响到打印的结果
+        //因为 console.log/dir/... 这类方法输出对象时会显示该对象在内存中最新的状态
+        obj.sex = "male";
+        obj.name = "安森一";
+    </script>
+</body>
+
 </html>

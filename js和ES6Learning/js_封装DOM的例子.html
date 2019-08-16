@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        p {
+            background-color: gold;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p1"></p>
+    <script type="text/javascript">
+        //写一个封装DOM的例子
+        function Elem(id) { //定义类
+            this.elem = document.getElementById(id);
+        }
+        Elem.prototype.html = function(val) { //利用原型添加设置html的方法
+            this.elem.innerHTML = val;
+            return this; //链式操作， 可有可无
+        }
+        Elem.prototype.on = function(type, fn) {
+            var elem = this.elem;
+            elem.addEventListener(type, fn);
+            return this;
+        }
+        var p1 = new Elem('p1');
+        console.log(p1);
+        p1.html('hello world').on('click', function() {
+            alert('被点击了');
+            console.log(this);
+            this.innerHTML = '点击后显示的文本';
+        });
+    </script>
+</body>
+
+</html>

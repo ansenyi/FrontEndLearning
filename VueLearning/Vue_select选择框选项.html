@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script src="js/vue.js"></script>
-	</head>
-	<body>
-		<!--<div id="example-3" class="demo">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!--<div id="example-3" class="demo">
 		  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
 		  <label for="jack">Jack</label>
 		  <input type="checkbox" id="john" value="John" v-model="checkedNames">
@@ -24,7 +26,7 @@
 		  }
 		})
 		</script>-->
-		<!--<div id="example-5" class="demo">
+    <!--<div id="example-5" class="demo">
 		  <select v-model="selected">
 		    <option selected>A</option>
 		    <option>B</option>
@@ -40,22 +42,23 @@
 		  }
 		})
 		</script>-->
-		<div id="example-6" class="demo">
-		  <select v-model="selected" multiple style="width: 50px">
+    <div id="example-6" class="demo">
+        <select v-model="selected" multiple style="width: 50px">
 		    <option selected>A</option>
 		    <option>B</option>
 		    <option>C</option>
 		  </select>
-		  <br>
-		  <span>Selected: {{ selected | json }}</span>
-		</div>
-		<script>
-		new Vue({
-		  el: '#example-6',
-		  data: {
-		    selected: []
-		  }
-		})
-		</script>
-	</body>
+        <br>
+        <span>Selected: {{ selected | json }}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#example-6',
+            data: {
+                selected: []
+            }
+        })
+    </script>
+</body>
+
 </html>

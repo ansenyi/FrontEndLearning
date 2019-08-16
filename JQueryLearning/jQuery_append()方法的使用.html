@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <strong>加强后的文字</strong>
+    <p title="选择你最喜欢的水果">你最喜欢的水果是？</p>
+    <ul>
+        <li title="苹果">苹果</li>
+        <li title="橘子">橘子</li>
+        <li title="菠萝">菠萝</li>
+    </ul>
+    <script type="text/javascript">
+        //			$("strong").appendTo($("body"));
+        $("strong").appendTo($("p"));
+
+        console.log($("p").text());
+        console.log($("p").attr("title"));
+        var oj = $("<li title='芒果'>芒果</li>"); //创建节点
+        $("p").append(oj);
+        $("p").append(function(index, html) {
+            return "<h2>123456</h2>" + index + "<br/>" + html;
+        })
+        $("body").append("<li title='菠萝'>菠萝</li>");
+    </script>
+</body>
+
+</html>
