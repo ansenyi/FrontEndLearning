@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        let str = "abcabcabcbbccccc";
+        //第1种方法
+        let num = 0;
+        let char = '';
+
+        // 使其按照一定的次序排列
+        str = str.split('').sort().join('');
+        // "aaabbbbbcccccccc"
+
+        // 定义正则表达式
+        let re = /(\w)\1+/g;
+        str.replace(re, ($0, $1) => {
+            if (num < $0.length) {
+                num = $0.length;
+                char = $1;
+            }
+        });
+        console.log(`字符最多的是${char}，出现了${num}次`);
+
+        //第2种方法
+        var o = {};
+        //遍历str，统计每个字符出现的次数
+        for (var i = 0, length = str.length; i < length; i++) {
+            //当前第i个字符
+            var char1 = str.charAt(i);
+            //char就是对象o的一个属性，o[char]是属性值，存储出现的次数
+            if (o[char1]) { //如果char属性存在，属性值+1 
+                o[char1]++; //次数加1
+            } else { //char属性不存在为1（即字符第一次出现） 
+                o[char1] = 1; //若第一次出现，次数记为1
+            }
+        }
+        //输出的是完整的对象，记录着每一个字符及其出现的次数
+        //输出{a: 3, b: 5, c: 8}
+        console.log(o);
+        //遍历对象，找到出现次数最多的字符和次数
+        var maxNum = 0; //存储出现次数最多的次数
+        var maxChar = null; //存储出现次数最多的字符
+        for (var key in o) {
+            if (maxNum < o[key]) {
+                maxNum = o[key]; //maxNum始终储存次数最大的那个
+                maxChar = key; //那么对应的字符就是当前的key
+            }
+        }
+        console.log("最多的字符是" + maxChar);
+        console.log("出现的次数是" + maxNum);
+    </script>
+</body>
+
+</html>

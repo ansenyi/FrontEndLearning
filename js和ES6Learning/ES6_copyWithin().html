@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style type="text/css">
-			/*table tr td,th{border:1px solid #000;}*/
-		</style>
-	</head>
-	<body>
-		<p>copyWithin() 方法用于从数组的指定位置拷贝元素到数组的另一个指定位置中。</p>
-		<p>array.copyWithin(target, start, end)</p>
-		<p>ES6为Array增加了copyWithin函数，用于操作当前数组自身，用来把某些个位置的元素复制并覆盖到其他位置上去。</p>
-		<table border="1" cellspacing="0">
-			<tr>
-				<th>参数</th>
-				<th>描述</th>
-			</tr>
-			<tr>
-				<td>target</td>
-				<td>必需。复制到指定目标索引位置。</td>
-			</tr>
-			<tr>
-				<td>start</td>
-				<td>可选。元素复制的起始位置。</td>
-			</tr>
-			<tr>
-				<td>end</td>
-				<td>可选。停止复制的索引位置 (默认为 array.length)。如果为负值，表示倒数。</td>
-			</tr>
-		</table>
-		<p>Array.prototype.copyWithin(target, start = 0, end = this.length)<br />
-			该函数有三个参数。<br />
-            target：目的起始位置。<br />
-            start：复制源的起始位置，可以省略，可以是负数。<br />
-            end：复制源的结束位置，可以省略，可以是负数，实际结束位置是end-1。<br />
-            start和end都是可以省略。<br />
-			start省略表示从0开始，end省略表示数组的长度值。<br />
-			start和end都可以是负数，负数表示从右边数过来第几个。
-         </p>
-		<script>
-			var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi", "Papaya"];
-			console.log(fruits.copyWithin(2, 0, 2));
-			const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-			arr1.copyWithin(1, 3, 6);
-			console.log(arr1);
-			console.log(JSON.stringify(arr1));
-			const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-			arr2.copyWithin(3);
-			console.log(JSON.stringify(arr2));
-            const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-			arr3.copyWithin(3, -3, -2);
-			console.log(JSON.stringify(arr3));
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        /*table tr td,th{border:1px solid #000;}*/
+    </style>
+</head>
+
+<body>
+    <p>copyWithin() 方法用于从数组的指定位置拷贝元素到数组的另一个指定位置中。</p>
+    <p>array.copyWithin(target, start, end)</p>
+    <p>ES6为Array增加了copyWithin函数，用于操作当前数组自身，用来把某些个位置的元素复制并覆盖到其他位置上去。</p>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>参数</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td>target</td>
+            <td>必需。复制到指定目标索引位置。</td>
+        </tr>
+        <tr>
+            <td>start</td>
+            <td>可选。元素复制的起始位置。</td>
+        </tr>
+        <tr>
+            <td>end</td>
+            <td>可选。停止复制的索引位置 (默认为 array.length)。如果为负值，表示倒数。</td>
+        </tr>
+    </table>
+    <p>Array.prototype.copyWithin(target, start = 0, end = this.length)<br /> 该函数有三个参数。
+        <br /> target：目的起始位置。
+        <br /> start：复制源的起始位置，可以省略，可以是负数。
+        <br /> end：复制源的结束位置，可以省略，可以是负数，实际结束位置是end-1。
+        <br /> start和end都是可以省略。
+        <br /> start省略表示从0开始，end省略表示数组的长度值。
+        <br /> start和end都可以是负数，负数表示从右边数过来第几个。
+    </p>
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi", "Papaya"];
+        console.log(JSON.stringify(fruits), typeof JSON.stringify(fruits));
+        console.log(fruits.copyWithin(2, 0, 2));
+        const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        arr1.copyWithin(1, 3, 6);
+        console.log(arr1);
+        console.log(JSON.stringify(arr1));
+        const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        arr2.copyWithin(3);
+        console.log(JSON.stringify(arr2));
+        const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        arr3.copyWithin(3, -3, -2);
+        console.log(JSON.stringify(arr3));
+    </script>
+</body>
+
 </html>

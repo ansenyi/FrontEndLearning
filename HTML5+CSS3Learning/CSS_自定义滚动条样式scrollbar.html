@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .test {
+            width: 200px;
+            height: 200px;
+            overflow: auto;
+            float: left;
+            margin: 5px;
+            border: none;
+        }
+        
+        .scrollbar {
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+         ::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 20px;
+            /*垂直滚动条的宽度*/
+            /*高宽分别对应横竖滚动条的尺寸*/
+            height: 10px;
+            /*水平滚动条的高度*/
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            border-radius: 10px;
+            background: #535353;
+        }
+        
+         ::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            border-radius: 10px;
+            background: #EDEDED;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <div class="scrollbar">
+            首先我们要了解滚动条。滚动条从外观来看是由两部分组成：1、可以滑动的部分，我们叫它滑块；2、滚动条的轨道，即滑块的轨道，一般来说滑块的颜色比轨道的颜色深。
+            <br><br>滚动条的css样式主要有三部分组成：
+            <br>1、::-webkit-scrollbar 定义了滚动条整体的样式；
+            <br>2、::-webkit-scrollbar-thumb 滑块部分；
+            <br>3、::-webkit-scrollbar-track 轨道部分；
+            <br>4、::-webkit-scrollbar-button — 滚动条上的按钮 (上下箭头)；
+            <br>5、::-webkit-scrollbar-track-piece — 滚动条没有滑块的轨道部分.
+            <br>6、::-webkit-scrollbar-corner — 当同时有垂直滚动条和水平滚动条时交汇的部分.
+        </div>
+    </div>
+</body>
+
+</html>

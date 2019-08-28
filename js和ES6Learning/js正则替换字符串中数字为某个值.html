@@ -18,8 +18,12 @@
         let textNum = text.replace(/[0-9]/ig, "*");
         console.log("替换字符串中的所有数字后的结果", textNum)
             // 替换字符串中的非数字
-        let textStr = text.replace(/[^0-9]/ig, "*");
-        console.log("替换字符串中的所有字符后的结果", textStr)
+        let textStr1 = text.replace(/[^0-9]/ig, "*");
+        console.log("替换字符串中的所有字符后的结果", textStr1)
+
+        let testStr2 = "我的体重是120公斤，身高是10米";
+        testStr2 = testStr2.replace(/是/g, '为'); //g是重点，如果替换的为‘/’，需要转义，吧/a/g替换为'/\//g'
+        console.log("替换字符串中的某个子字符串后的结果：", testStr2)
     </script>
 </body>
 

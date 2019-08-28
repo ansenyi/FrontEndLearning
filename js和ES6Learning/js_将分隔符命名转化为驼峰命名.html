@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var str = "get-element-by-id";
+        var f = function(s) {
+            return s.replace(/-\w/g, function(x) {
+                return x.slice(1).toUpperCase();
+            })
+        };
+        console.log("转化后的驼峰命名字符串为：", f(str))
+    </script>
+</body>
+
+</html>
