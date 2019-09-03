@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <p>arguments 是一个对应于传递给函数的参数的<b style="color: red;">类</b>数组对象。</p>
+        <p>arguments对象不能显式创建，arguments对象只有函数开始时才可用。函数的 arguments 对象并不是一个数组，访问单个参数的方式与访问数组元素的方式相同。索引 n 实际上是arguments 对象的 0…n 属性的其中一个参数。</p>
+        <p>
+            arguments.callee 指向当前执行的函数。<br /> arguments.caller 指向调用当前函数的函数。<br /> arguments.length 指向传递给当前函数的参数数量。
+        </p>
+        <p>arguments对象可以与剩余参数、默认参数和解构赋值参数结合使用。</p>
+    </div>
+    <script type="text/javascript">
+        function add() {
+            console.log(typeof arguments); //object
+            console.log(arguments.length);
+            console.log(arguments);
+        }
+        add();
+        add(1);
+        add(1, 2, 3, 4);
+        //定义连接字符串的函数
+        function myConcat(separator) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            return args.join(separator);
+        }
+        // returns "red, orange, blue"   //逗号后面有空格
+        console.log(myConcat(", ", "red", "orange", "blue"));
+
+        // returns "elephant; giraffe; lion; cheetah" //分号后面有空格
+        console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+
+        // returns "sage. basil. oregano. pepper. parsley"  //点后面有空格
+        console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
+
+        //			function foo1(...args) {
+        //			  console.log(args);
+        //			}
+        //			foo1(1, 2, 3);
+        //arguments常用于递归操作
+        //arguments.callee返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文，这有利于匿名函数的递归或者保证函数的封装性。 
+        function fn(n) {
+            if (n == 1) {
+                return 1;
+            } else {
+                return n + arguments.callee(n - 1);
+            }
+        }
+
+        console.log(fn(100));
+        //			console.log(HTMLElement.prototype);
+    </script>
+</body>
+
+</html>

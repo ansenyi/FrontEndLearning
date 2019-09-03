@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<pre>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <pre>
 		forEach()和map()的相同点：
 		1、都是循环遍历数组中的每一项
 		2、forEach和map方法里每次执行匿名函数都支持3个参数，参数分别是item（当前每一项）、index（索引值）、arr（原数组）
@@ -15,21 +17,22 @@
 		forEach()函数没有返回值，一般来说只是遍历该数组获得每一项的值进行处理；
 		map()函数有返回值，返回值组成一个新的数组。原数组不会改变。
 		</pre>
-		<script>
-			var arr=[0,2,4,6,8,10];
-			var str=arr.map(function(item,index,arr){
-				console.log(this);
-				console.log("原数组arr为：",arr);
-				return item/2;
-			},this);
-			console.log(str);
-			
-			var sum = 0;
-			var str1 = arr.forEach(function(item,index,arr){
-			    sum += item;
-			    console.log("sum的值为：",sum); //0 2 6 12 20 
-			});
-			console.log(str1);
-		</script>
-	</body>
+    <script>
+        var arr = [0, 2, 4, 6, 8, 10];
+        var str = arr.map(function(item, index, arr) {
+            console.log(this);
+            console.log("原数组arr为：", arr);
+            return item / 2;
+        }, this);
+        console.log("map----", str);
+
+        var sum = 0;
+        var str1 = arr.forEach(function(item, index, arr) {
+            sum += item;
+            console.log("sum的值为：", sum); //0 2 6 12 20 
+        });
+        console.log(str1); //undefinded
+    </script>
+</body>
+
 </html>

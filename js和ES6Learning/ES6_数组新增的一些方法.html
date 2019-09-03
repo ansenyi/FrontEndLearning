@@ -55,7 +55,16 @@
             return item.quantity >= 30;
         });
         console.log(everyResult); //结果为false
-        //includes(),与string的includes()一样，接收第2参数，查询的项以及查询起始位置。
+        //includes(),与string的includes()一样，接收2个参数，查询的项以及查询起始位置。
+        //includes()作用,是查找一个值在不在数组里,若是存在则返回true,不存在返回false.
+        console.log("ES7新增的数组方法includes");
+        console.log(['a', 'b', 'c'].includes('a')) // true
+        console.log(['a', 'b', 'c'].includes('d')) // false
+
+        //只能判断简单类型的数据，对于复杂类型的数据，比如对象类型的数组，二维数组，这些，是无法判断的.
+        var arr = [1, [2, 3], 4]
+        console.log(arr.includes([2, 3])) //false
+        console.log(arr.indexOf([2, 3])) //-1
     </script>
 </body>
 

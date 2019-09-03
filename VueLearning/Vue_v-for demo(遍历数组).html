@@ -29,6 +29,11 @@
         <li v-for="item in items">
             {{item}}
         </li>
+        <hr>
+        <!-- 在标签下紧跟v-if来进行控制，这里是用索引来进行控制的，所以循环的时候记得把index这个参数加到v-for循环中。 -->
+        <li v-for="(item,index) in items" v-if="index>2">
+            {{item}}
+        </li>
     </ul>
     <script src="../js/vue.js"></script>
     <script type="text/javascript">

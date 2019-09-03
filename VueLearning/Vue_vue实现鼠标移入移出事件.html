@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .icon {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in fruits">
+                <i class="icon" @mouseenter="enter(index)" @mouseleave="leave()"></i>
+                <span v-show="index==current">{{item}}</span>
+            </li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var example1 = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    fruits: ["苹果", "香蕉", "西瓜", "哈密瓜"],
+                    seen: true,
+                    current: null
+                }
+            },
+            methods: {
+                enter(index) {
+                    this.current = index;
+                },
+                leave() {
+                    this.current = null;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

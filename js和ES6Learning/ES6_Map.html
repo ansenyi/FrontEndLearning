@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			let set=new Set([1,2,3]);
-			set=new Set([...set].map(x=>x*2));
-			console.log(set.entries());
-			const m=new Map();
-			const o={p:'Hello World'};
-			m.set(o,'contemt');
-			m.set(1,'数字1');
-			m.set(1,'覆盖后的值');//如果存在某个key，则新的 value会覆盖旧的value
-			console.log(m);
-			console.log(m.size);//键值对的个数
-			console.log(m.get(o));
-			console.log(m.has(o));
-			console.log(m.delete(o));//删除成功返回true
-			console.log(m.has(o));
-			const items = [
-			  ['name', '张三'],
-			  ['title', 'Author']
-			];
-			
-			const map1 = new Map();
-			
-			items.forEach(
-			  ([key, value]) => map1.set(key, value)
-			);
-			console.log(map1);
-			const map2=new Map([
-			  ['name', '李四'],
-			  ['title', '这是一本书']
-			]);
-			console.log(map2);
-			const map=new Map();
-			map.set('foo',true);
-			map.set('bar',false);
-			console.log(map.size);
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let set = new Set([1, 2, 3]);
+        set = new Set([...set].map(x => x * 2));
+        console.log(set.entries());
+        const m = new Map();
+        const o = {
+            p: 'Hello World'
+        };
+        m.set(o, 'contemt');
+        m.set(1, '数字1');
+        m.set(1, '覆盖后的值'); //如果存在某个key，则新的 value会覆盖旧的value
+        console.log(m);
+        console.log(m.size); //键值对的个数
+        console.log(m.get(o));
+        console.log(m.has(o));
+        console.log(m.delete(o)); //删除成功返回true
+        console.log(m.has(o));
+        const items = [
+            ['name', '张三'],
+            ['title', 'Author']
+        ];
+
+        const map1 = new Map();
+
+        items.forEach(
+            ([key, value]) => map1.set(key, value)
+        );
+        console.log(map1);
+        const map2 = new Map([
+            ['name', '李四'],
+            ['title', '这是一本书']
+        ]);
+        console.log(map2);
+        console.log("----------");
+        const map = new Map();
+        map.set('foo', true);
+        map.set('bar', false);
+        console.log(map);
+        console.log(map.size);
+        console.log(map.get('foo'));
+        for (let [key, value] of map) { //遍历map类型的数据
+            console.log(key + "-------" + value);
+        }
+
+        var s = "";
+        console.log(s.length);
+    </script>
+</body>
+
 </html>
