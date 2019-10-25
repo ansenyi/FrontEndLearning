@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div>
-			<p>typeof返回的六种数据类型:number、string、boolean、object、function、undefined。</p>
-		</div>
-		<script>
-			var num=12;
-			console.log(typeof num);
-			var str="12";
-			console.log(typeof str);
-			var boo=true;
-			console.log(typeof boo);
-			console.log("*********");
-			var p={
-				name:"安森一",
-				age:20
-			};
-			console.log(typeof p); //object
-			var arr=[1,2,3,4,5];
-			console.log(typeof arr);//object
-			var n=null;
-			console.log(typeof n);//object
-			var obj=new Number(10);
-			console.log(typeof obj);
-			console.log("*********");
-			function fun(){
-				console.log();
-			}
-			console.log(typeof fun); //function
-			
-			var x;
-			console.log(typeof x);//undefined
-			console.log(typeof undefined);//undefined
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <p>typeof返回的六种数据类型:number、string、boolean、object、function、undefined。</p>
+    </div>
+    <script>
+        //输出结果都是字符串
+        var num = 12;
+        console.log(typeof num); //number
+        var str = "12";
+        console.log(typeof str); //string
+        var boo = true;
+        console.log(typeof boo); //boolean
+        console.log("*********");
+        var p = {
+            name: "安森一",
+            age: 20
+        };
+        console.log(typeof p); //object
+        var arr = [1, 2, 3, 4, 5];
+        console.log(typeof arr); //object
+        var n = null;
+        console.log(typeof n); //object
+        var obj = new Number(10);
+        console.log(typeof obj);
+
+        console.log(typeof null); //object
+        console.log("*********");
+
+        function fun() {
+            console.log();
+        }
+        console.log(typeof fun); //function
+
+        var x;
+        console.log(typeof x); //undefined
+        console.log(typeof undefined); //undefined
+    </script>
+</body>
+
 </html>

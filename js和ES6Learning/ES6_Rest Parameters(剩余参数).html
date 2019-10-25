@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<p>arguments和剩余参数的区别</p>
-		<ul>
-			<li>剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参。</li>
-			<li>arguments对象不是一个真正的数组(是一个伪数组)，而剩余参数是真正的 Array实例，也就是说你能够在它上面直接使用所有的数组方法，比如 sort，map，forEach或pop。</li>
-			<li>arguments上有callee，callee上有caller。</li>
-		</ul>
-		<script>
-			function func1(a, ...rest) {
-			  console.log(a);
-			  console.log(rest);//剩余参数组成一个数组
-			}
-			func1(1);
-			func1(1, 2, 3, 4);
-			function func2(a, b, ...rest) {
-			  console.log(a, b);
-			  console.log(rest);
-			}
-			func2(1, 2);
-			func2(1, 2, 3, 4);
-			//后面就不要再跟其它的参数了，不然会报错
-			//也可以用于数组的解构
-			const player=['ansenyi',001,10,12,13,11];
-			const [name,id,...scores]=player;
-			console.log(name,id,scores);
-			//求参数的和
-			function sum(...args){
-				console.log(args);
-				let result=0;
-				args.forEach(val=>{
-					result+=val;
-				});
-				return result;
-			}
-			console.log(sum(10,20,30,40));
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>arguments和剩余参数的区别</p>
+    <ul>
+        <li>剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参。</li>
+        <li>arguments对象不是一个真正的数组(是一个伪数组)，而剩余参数是真正的 Array实例，也就是说你能够在它上面直接使用所有的数组方法，比如 sort，map，forEach或pop。</li>
+        <li>arguments上有callee，callee上有caller。</li>
+    </ul>
+    <script>
+        function func1(a, ...rest) {
+            console.log(a);
+            console.log(rest); //剩余参数组成一个数组
+        }
+        func1(1);
+        func1(1, 2, 3, 4);
+
+        function func2(a, b, ...rest) {
+            console.log(a, b);
+            console.log(rest);
+        }
+        func2(1, 2);
+        func2(1, 2, 3, 4);
+        //后面就不要再跟其它的参数了，不然会报错
+        //也可以用于数组的解构
+        const player = ['ansenyi', 001, 10, 12, 13, 11];
+        const [name, id, ...scores] = player;
+        console.log(name, id, scores);
+        //求参数的和
+        function sum(...args) {
+            console.log("args", args);
+            let result = 0;
+            args.forEach(val => {
+                result += val;
+            });
+            return result;
+        }
+        console.log(sum(10, 20, 30, 40));
+    </script>
+</body>
+
 </html>

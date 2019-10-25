@@ -8,8 +8,54 @@
 
 <body>
     <script>
-        //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
-        
+        //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。但是会有一些问题。
+        console.log(1.705.toFixed(2)); // 1.71 正确
+        console.log(1.305.toFixed(2)); // 1.30 错误
+        console.log(1.35.toFixed(1)); // 1.4 正确
+        console.log(1.335.toFixed(2)); //1.33 错误 
+        console.log(1.3335.toFixed(3)); //1.33 错误
+        console.log(1.33335.toFixed(4)); //1.3334 正确
+        console.log(1.333335.toFixed(5)); //1.33333 错误
+        console.log(1.3333335.toFixed(6)); //1.333333 错误
+        //重写toFixed()
+        //方法1
+        // Number.prototype.toFixed = function(s) {
+        //     var times = Math.pow(10, s);
+        //     var des = this * times + 0.5;
+        //     des = parseInt(des, 10) / times;
+        //     return Number(des + '');
+        // };
+        //方法2
+        //四舍五入保留2位小数（不够位数，则用0替补）
+        Number.prototype.toFixed = function(num) {
+            // return Math.round(this * Math.pow(10, num)) / Math.pow(10, num)
+            let f = parseFloat(this);
+            if (isNaN(f)) {
+                return false;
+            }
+            f = Math.round(this * Math.pow(10, num)) / Math.pow(10, num);
+            let s = f.toString();
+            var rs = s.indexOf('.');
+            //判定如果是整数，增加小数点再补0
+            if (rs < 0) {
+                rs = s.length;
+                s += '.';
+            }
+            while (s.length <= rs + num) {
+                s += '0';
+            }
+            return s;
+        };
+        console.log((1).toFixed(2)); // 1.00 正确
+        console.log(1.7.toFixed(2)); // 1.70 正确
+        console.log(1.705.toFixed(2)); // 1.71 正确
+        console.log(1.305.toFixed(2)); // 1.31 正确
+        console.log(1.35.toFixed(1)); // 1.4 正确
+        console.log(1.335.toFixed(2)); //1.34 正确 
+        console.log(1.3335.toFixed(3)); //1.334 正确
+        console.log(1.33335.toFixed(4)); //1.3334 正确
+        console.log(1.333335.toFixed(5)); //1.33334 正确
+        console.log(1.3333335.toFixed(6)); //1.333334 正确
         //参数num表示保留的小数位
         //去尾法
         Number.prototype.toFloor = function(num) {
@@ -23,8 +69,8 @@
 
         //四舍五入法
         Number.prototype.toRound = function(num) {
-            // return Math.round(this * Math.pow(10, num)) / Math.pow(10, num);
-            return Math.round(this * 100) / 100;
+            return Math.round(this * Math.pow(10, num)) / Math.pow(10, num);
+            // return Math.round(this * 100) / 100;
         };
         //四舍五入保留2位小数（不够位数，则用0替补） 
         function keepTwoDecimalFull(num) {

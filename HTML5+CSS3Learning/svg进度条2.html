@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<style>
+    .ciecle-progress {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        position: relative;
+    }
+    
+    svg {
+        -webkit-transform: rotate(-0.05deg);
+        transform: rotate(-0.05deg);
+    }
+    
+    #text {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        line-height: 0;
+    }
+</style>
+
+<body>
+    <!-- stroke-dasharray在SVG中表示描边是虚线，两个值，
+        第一个是虚线的宽度，表示进度
+        第二个是虚线之间的间距,将间距设置比周长大，那么最多就只会出现一条片段
+     -->
+    <!-- matrix(0,-1,1,0,0,200)将方向从上开始 -->
+    <div class="ciecle-progress">
+        <?xml version="1.0" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+        <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          cx="100"
+          cy="100"
+          r="50"
+          width="100"
+          height="100"
+          style="stroke-width:10;
+            stroke:rgb(223, 223, 223);fill:none; "
+        />
+        <circle
+          id="precentCircle"
+          cx="100"
+          cy="100"
+          r="50"
+          width="100"
+          height="100"
+          stroke-dasharray="0 210"
+          ;
+          style="stroke-width:10;
+                stroke:rgb(4, 250, 168);fill:none; transform: matrix(0,-1,1,0,0,200);"
+        />
+      </svg>
+        <div id="text">0</div>
+        <input type="range" name="" id="precent" value="0%" />
+    </div>
+</body>
+<script>
+    var precent = document.querySelector("#precent");
+    var text = document.querySelector("#text");
+    var precentCircle = document.querySelector("#precentCircle");
+    var perimeter = 50 * 2 * Math.PI;
+    precent.onmousedown = function() {
+        precent.onmousemove = function() {
+            precentCircle.setAttribute('stroke-dasharray', perimeter * precent.value / 100 + " " + perimeter);
+            text.innerText = precent.value + '%'
+        }
+    }
+</script>
+
+</html>

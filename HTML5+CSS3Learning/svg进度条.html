@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <svg width="230" height="230" viewBox="0 0 230 230" transform="rotate(90),scale(-1,1)">
+                //进度条渐变色
+                <defs>
+                    <linearGradient id="orange" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"   stop-color="#F34D4D"/>
+                        <stop offset="100%" stop-color="#F27D31"/>
+                    </linearGradient>
+                </defs>
+    　　　　　　　　//进度条渐变
+    　　　　　　　　//外层圆
+    　　　　　　　　<circle cx="115" cy="115" r="50" fill="none" stroke="#f7f7f7" stroke-width="30" />
+    　　　　　　　　//外层圆
+    　　　　　　　　//内容圆
+    　　　　　　    <circle class="test" cx="115" cy="115" r="50" fill="none" stroke="url(#orange)" stroke-width="12" stroke-dasharray="314.1592653589793" stroke-dashoffset="31.41592653589793"  stroke-linecap="round" /> 
+    　　　　　　　　//内层圆　　　　　　
+    　　　　</svg>
+</body>
+
+</html>

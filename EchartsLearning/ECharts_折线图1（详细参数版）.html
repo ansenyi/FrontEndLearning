@@ -132,6 +132,8 @@
                 name: '销售量',
                 data: [820, 932, 901, 934, 1290, 1330, 1320], //图表的数据
                 type: 'line', //图表的类型，默认为line（折线图），也可以是bar（柱状图）、pie（饼图）
+                smooth: true, //将折线设置为光滑的
+                symbol: 'none', //取消折点圆圈
                 areaStyle: {
                     color: '#0f0', //折线下区域的颜色
                     origin: 'auto', //图形区域的起始位置。默认为auto，也可以设置为start和end。
@@ -141,12 +143,31 @@
                 }, //设置 areaStyle 后可以绘制面积图(折线下的区域)
                 itemStyle: {
                     normal: {
-                        color: 'black', //折点的颜色
+                        color: '#00f', //折点的颜色
                         lineStyle: { //设置折线的样式
                             color: '#f00'
                         }
                     }
                 },
+                markPoint: {
+                    symbol: 'emptyCircle',
+                    symbolSize: 10,
+                    itemStyle: {
+                        normal: {
+                            color: '#67AEF5'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [{
+                        coord: ['Mon', 820]
+                    }, {
+                        coord: ['Tue', 932]
+                    }]
+                }
             }]
         };
         myChart.setOption(option);

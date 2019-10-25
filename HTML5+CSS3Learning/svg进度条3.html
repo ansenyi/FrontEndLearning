@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+
+
+    <title>Document</title>
+</head>
+<style type="text/css">
+    circle {
+        -webkit-transition: stroke-dasharray 1s;
+        transition: stroke-dasharray 1s;
+    }
+    
+    .box {
+        position: relative;
+    }
+    
+    .grade {
+        position: absolute;
+        width: 4rem;
+        left: 50%;
+        margin-left: -2rem;
+        text-align: center;
+        top: 1.8rem;
+        font-size: 24px;
+    }
+    
+    .svg_box {
+        margin: 0 auto;
+    }
+    
+    .svg_main {
+        width: 4rem;
+        height: 4rem;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        margin-left: -2rem;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="grade">
+            <span id="grade"></span><span>%</span>
+        </div>
+        <div class="svg_box">
+            <svg class="svg_main">
+                <circle cx="2rem" cy="2rem" r="1.2rem" stroke-width="0.1rem" stroke="#D1D3D7" fill="none"></circle>
+                <circle cx="2rem" cy="2rem" r="1.2rem" stroke-width="0.1rem" stroke="red" stroke-linecap="round" fill="none" stroke-dasharray="0 1069"></circle>
+            </svg>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function setRootSize() {
+        var docWid = window.document.documentElement,
+            width = docWid.getBoundingClientRect().width,
+            fontSize = (width >= 450) ? (450 / 7.5) : width / 750 * 100;
+        docWid.style.fontSize = fontSize + 'px';
+    }
+    window.addEventListener('resize', function() {
+        setRootSize();
+    }, false);
+    setRootSize();
+    var circle = document.querySelectorAll("circle")[1];
+    var grade = document.getElementById('grade');
+    var percent = 0.8,
+        perimeter = Math.PI * 2 * 1.2;
+    var num = 1;
+    setInterval(function() {
+        percent
+        if (num < parseInt(percent * 100)) {
+            num++;
+            console.log(num);
+            grade.innerHTML = num;
+        }
+    }, 20)
+    setTimeout(() => {
+        circle.setAttribute('stroke-dasharray', (perimeter * percent) + 'rem' + " " + (perimeter * (1 - percent)) + 'rem');
+    }, 500)
+</script>
+
+</html>
