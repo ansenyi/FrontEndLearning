@@ -24,8 +24,9 @@
            <!--这里viewBox也可以不设置-->
            <defs>
                <!--defs是definitions的缩写，linearGradient标签必须嵌套在<defs>内部-->
-               <linearGradient id="svg_1" x1="0%" y1="0%" x2="100%"  y2="0%">                   <!--linearGradient定义线性渐变-->
-                   <!--x1，x2，y1，y2属性定义渐变开始和结束位置，
+               <linearGradient id="svg_1" x1="0%" y1="0%" x2="100%" y2="0%">
+                   <!--linearGradient定义线性渐变-->
+                   <!--X1，X2，Y1，Y2属性定义渐变开始和结束位置，
                    当y1和y2相等，而x1和x2不同时，可创建水平渐变
                    当x1和x2相等，而y1和y2不同时，可创建垂直渐变
                    当x1和x2不同，且y1和y2不同时，可创建角形渐变-->
@@ -35,9 +36,9 @@
                    <stop offset="75%" stop-color="green"></stop>
                    <stop offset="100%" stop-color="blue"></stop>
                    <!--渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个<stop>标签来规定。offset属性用来定义渐变的开始和结束位置。-->
-                </linearGradient>
+               </linearGradient>
            </defs>
-           <circle r="62" cx="64" cy="64" stroke-width="4" stroke="#d3d3d3" fill="none" transform="rotate(0,64 64)"></circle>
+           <circle r="62" cx="64" cy="64" stroke-width="4" stroke="#d3d3d3" fill="none" transform="rotate(-89,64 64)"></circle>
            <!--circle标签可以定义一个圆-->
            <!--r属性设置圆的半径，此demo设置为svg宽和高的1/2,减去stroke-width的宽度-->
            <!--cr和cy属性定义圆点的x和y坐标。如果省略cx和cy，圆的中心会被设置为(0, 0),此demo设置为svg宽和高的1/2处，-->
@@ -46,18 +47,7 @@
            <!--fill属性设置圆形是否填充-->
            <!--transform属性这里定义圆旋转rotate（-89，64，64)，-89是旋转的度数，后两个64是定义旋转的中心点，这里定义了圆心位置
            注意：经测试旋转-90度时，在ios手机上app里圆是旋转不过来的，所以设置-89度-->
-           <circle 
-           id="colorfulCircle" 
-           r="62" 
-           cx="64" 
-           cy="64" 
-           stroke-width="4" 
-           stroke="url(#svg_1)" 
-           stroke-linecap="round" 
-           transform="rotate(0,64 64)"
-           stroke-dasharray="0 389" 
-           fill="none" 
-           stroke-opacity="1">
+           <circle class="circle" r="62" cx="64" cy="64" stroke-width="4" stroke="url(#svg_1)" stroke-linecap="round" transform="rotate(-89,64 64)" stroke-dasharray="300 389" fill="none" stroke-opacity="1">
            </circle>
            <!--这第二个圆形与第一个圆相似-->
            <!--不同点，stroke通过url(线性渐变的id）把渐变链接到此，作为圆的轮廓颜色-->
@@ -74,13 +64,13 @@
         clearInterval(timer);
         timer = setInterval(function() {
             sum += 1;
-            if (sum >= 290) {
-                sum = 290;
+            if (sum >= 300) {
+                sum = 300;
                 clearInterval(timer);
             }
-            document.getElementById("colorfulCircle").setAttribute("stroke-dasharray", sum + " 389");
+            document.getElementsByClassName("circle")[0].setAttribute("stroke-dasharray", sum + " 389");
             //             通过js让进度条有动态的效果
-        }, 5);
+        }, 10);
     </script>
 
 </body>
