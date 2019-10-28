@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class="donut">
+        <svg width="340" height="340" xmlns="http://www.w3.org/2000/svg" class="donut_svg">
+      <circle r="150" cy="170" cx="170" stroke-width="10" stroke="#FAFAFA" fill="none" />
+      <circle class="circle_bar" r="150" cy="170" cx="170" stroke-width="35" stroke="url(#linearGradient)" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <circle class="dot" fill="#FFFFFF" fill-rule="nonzero" cx="320" cy="170" r="12"></circle>
+      <defs>
+        <linearGradient x1="0%" y1="80.9878035%" x2="96.9769965%" y2="41.7547666%" id="linearGradient">
+          <stop stop-color="#18A6FF" offset="0%"></stop>
+          <stop stop-color="#32B7FF" offset="52.7095376%"></stop>
+          <stop stop-color="#0094F1" offset="100%"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+        <div class="donut_copy">
+            <div class="donut_title">
+                <span class="js-donut-figure"></span><span class="donut_spic">%</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            'use strict';
+            var ProgressCircle = (function() {
+                function ProgressCircle(percent, radius, elementClass) {
+                    this._percent = percent; //百分比
+                    this._radius = radius; //圆的半径
+                    this._elementClass = elementClass;
+                }
+
+                ProgressCircle.prototype.calcDashOffset = function() {
+                    var circumference;
+                    circumference = Math.PI * (2 * this._radius); //计算圆圈的周长
+                    return Math.round(circumference - this._percent / 100 * circumference); //计算圆圈要渲染的 长度！
+                }
+
+                //渲染进度条
+                ProgressCircle.prototype.createCSS = function() {
+                    return $("." + this._elementClass + " .circle_bar").css('stroke-dashoffset', this.calcDashOffset());
+                };
+                //读取效果
+                ProgressCircle.prototype.updateText = function() {
+                    $("." + this._elementClass + " .js-donut-figure")[0].innerText = this._percent;
+                }
+
+                ProgressCircle.prototype.init = function() {
+                    var _this = this;
+                    setTimeout(function() {
+                        _this.updateText();
+                        return _this.createCSS();
+                    }, 1000);
+                };
+                return ProgressCircle;
+            })();
+
+            let progress = new ProgressCircle(50, 150, 'donut');
+            progress.init();
+        }
+    </script>
+    <style type="text/css" lang="scss">
+        * {
+            padding: 0;
+            margin: 0
+        }
+        
+        .donut {
+            position: relative;
+        }
+        
+        .circle_warp {
+            position: relative;
+            top: 0;
+            left: 0
+        }
+        
+        .circle_bar {
+            stroke-dasharray: 942.4777960769379; //计算整个圆周的周长公式为Circumstance=2*PI*Radius  2*3.14*半径（此时是半径是150）
+            stroke-dashoffset: 942.4777960769379;
+            transition: stroke-dashoffset 1200ms cubic-bezier(.99, .01, .62, .94);
+        }
+        
+        .donut_svg {
+            transform: rotate(-90deg);
+        }
+        
+        .donut_copy {
+            text-align: center;
+            width: 340px;
+            height: 340px;
+            top: 40%;
+            left: 0;
+            position: absolute;
+        }
+        
+        .donut_title {
+            opacity: 0;
+            font-size: 42px;
+            color: #171717;
+            margin-bottom: 2px;
+            animation: donutTitleFadeLeft 800ms 200ms cubic-bezier(.99, .01, .22, .94) forwards;
+            transform: translateX(0);
+            font-weight: bold;
+        }
+        
+        .donut_spic {
+            content: "%";
+            animation: donutTitleFadeRight 800ms 200ms cubic-bezier(.99, .01, .22, .94) forwards;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .donut__text p {
+            font-size: 16px;
+            color: #AAAAAA;
+        }
+        
+        @keyframes donutTitleFadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(10px);
+            }
+        }
+        
+        @keyframes donutTitleFadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+
+</html>
