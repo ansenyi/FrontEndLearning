@@ -5,145 +5,42 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+        @keyframes load {
+            0% {
+                transform: rotate(0)
+            }
+            100% {
+                transform: rotate(-360deg)
+            }
+        }
+        
+        #load {
+            animation: load 1s linear infinite;
+            transform-origin: center center;
+        }
+    </style>
 </head>
 
 <body>
     <div class="donut">
-        <svg width="340" height="340" xmlns="http://www.w3.org/2000/svg" class="donut_svg">
-      <circle r="150" cy="170" cx="170" stroke-width="10" stroke="#FAFAFA" fill="none" />
-      <circle class="circle_bar" r="150" cy="170" cx="170" stroke-width="35" stroke="url(#linearGradient)" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
-      <circle class="dot" fill="#FFFFFF" fill-rule="nonzero" cx="320" cy="170" r="12"></circle>
-      <defs>
-        <linearGradient x1="0%" y1="80.9878035%" x2="96.9769965%" y2="41.7547666%" id="linearGradient">
-          <stop stop-color="#18A6FF" offset="0%"></stop>
-          <stop stop-color="#32B7FF" offset="52.7095376%"></stop>
-          <stop stop-color="#0094F1" offset="100%"></stop>
-        </linearGradient>
-      </defs>
-    </svg>
-        <div class="donut_copy">
-            <div class="donut_title">
-                <span class="js-donut-figure"></span><span class="donut_spic">%</span>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        window.onload = function() {
-            'use strict';
-            var ProgressCircle = (function() {
-                function ProgressCircle(percent, radius, elementClass) {
-                    this._percent = percent; //百分比
-                    this._radius = radius; //圆的半径
-                    this._elementClass = elementClass;
-                }
-
-                ProgressCircle.prototype.calcDashOffset = function() {
-                    var circumference;
-                    circumference = Math.PI * (2 * this._radius); //计算圆圈的周长
-                    return Math.round(circumference - this._percent / 100 * circumference); //计算圆圈要渲染的 长度！
-                }
-
-                //渲染进度条
-                ProgressCircle.prototype.createCSS = function() {
-                    return $("." + this._elementClass + " .circle_bar").css('stroke-dashoffset', this.calcDashOffset());
-                };
-                //读取效果
-                ProgressCircle.prototype.updateText = function() {
-                    $("." + this._elementClass + " .js-donut-figure")[0].innerText = this._percent;
-                }
-
-                ProgressCircle.prototype.init = function() {
-                    var _this = this;
-                    setTimeout(function() {
-                        _this.updateText();
-                        return _this.createCSS();
-                    }, 1000);
-                };
-                return ProgressCircle;
-            })();
-
-            let progress = new ProgressCircle(50, 150, 'donut');
-            progress.init();
-        }
-    </script>
-    <style type="text/css" lang="scss">
-        * {
-            padding: 0;
-            margin: 0
-        }
-        
-        .donut {
-            position: relative;
-        }
-        
-        .circle_warp {
-            position: relative;
-            top: 0;
-            left: 0
-        }
-        
-        .circle_bar {
-            stroke-dasharray: 942.4777960769379; //计算整个圆周的周长公式为Circumstance=2*PI*Radius  2*3.14*半径（此时是半径是150）
-            stroke-dashoffset: 942.4777960769379;
-            transition: stroke-dashoffset 1200ms cubic-bezier(.99, .01, .62, .94);
-        }
-        
-        .donut_svg {
-            transform: rotate(-90deg);
-        }
-        
-        .donut_copy {
-            text-align: center;
-            width: 340px;
-            height: 340px;
-            top: 40%;
-            left: 0;
-            position: absolute;
-        }
-        
-        .donut_title {
-            opacity: 0;
-            font-size: 42px;
-            color: #171717;
-            margin-bottom: 2px;
-            animation: donutTitleFadeLeft 800ms 200ms cubic-bezier(.99, .01, .22, .94) forwards;
-            transform: translateX(0);
-            font-weight: bold;
-        }
-        
-        .donut_spic {
-            content: "%";
-            animation: donutTitleFadeRight 800ms 200ms cubic-bezier(.99, .01, .22, .94) forwards;
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        
-        .donut__text p {
-            font-size: 16px;
-            color: #AAAAAA;
-        }
-        
-        @keyframes donutTitleFadeLeft {
-            from {
-                opacity: 0;
-                transform: translateX(0);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(10px);
-            }
-        }
-        
-        @keyframes donutTitleFadeRight {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-    </style>
+        <svg>
+            <style type="text/css">
+            .st1{fill:url(#SVGID_1_);}
+            .st2{fill:url(#SVGID_2_);}
+            .st3{fill:#4886CD;}
+            </style>
+            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="150" y2="200">
+            <stop  offset="0" style="stop-color:#4886CD"/>
+            <stop  offset="1" style="stop-color:#9DBFE4"/>
+            </linearGradient><!--深蓝到浅蓝的渐变-->
+            <path class="st1" d="M100,0v20c44.1,0,80,35.9,80,80c0,44.1-35.9,80-80,80v20c55.2,0,100-44.8,100-100S155.2,0,100,0z"/>
+            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="50" y2="200">
+            <stop  offset="0" style="stop-color:#FFFFFF"/>
+            <stop  offset="1" style="stop-color:#9DBFE4"/>
+            </linearGradient><!--白色到浅蓝的渐变-->
+            <path class="st2" d="M20,100c0-44.1,35.9-80,80-80V0C44.8,0,0,44.8,0,100s44.8,100,100,100v-20C55.9,180,20,144.1,20,100z"/>
+            <circle class="st3" cx="100" cy="10" r="10"/>
+            </svg>
 
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <p>h5本地存储localStorage，sessionStorage。<br> localStorage是没有失效时间的，sessionStorage的声明周期是浏览器的生命周期。 当浏览器关闭时，sessionStorage的数据将清空，而localStorage数据只要不通过代码特意的删除或手动删除，是永久保存的。 删除方法：localStorage.clear()。
+    </p>
+    <script>
+        //sessionStorage和localStorage的存储方式是相同的
+        var arr = [1, 2, 3];
+        window.sessionStorage.setItem("a", arr);
+        var aSession = window.sessionStorage.getItem("a");
+        console.log(aSession, typeof aSession); //数组存进去直接被强转为了字符串类型
+
+        function storageObj(obj) {
+            //储存对象的时候，先将对象用JSON.stringify()转化为字符串，然后再用 JSON.parse()将字符串转化为对象，从而使用
+            var checkedIdStr = JSON.stringify(obj);
+            sessionStorage.setItem("key", checkedIdStr);
+        };
+        //存储数组
+        var arrBefore = [1, 2, 3];
+        storageObj(arrBefore);
+        var arrAfter = JSON.parse(sessionStorage.getItem("key"));
+        console.log(arrAfter, typeof arrAfter); //[1, 2, 3]  "object"
+
+        //存储对象
+        var objBefor = {
+            a: 1,
+            b: 2
+        };
+        storageObj(objBefor);
+        var objAfter = JSON.parse(sessionStorage.getItem("key"));
+        console.log(objAfter, typeof objAfter); //{a: 1, b: 2} "object"
+    </script>
+</body>
+
+</html>

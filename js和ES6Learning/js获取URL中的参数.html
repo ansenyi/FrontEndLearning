@@ -7,15 +7,23 @@
 </head>
 
 <body>
-    <script src="../js/jquery-3.2.1.js"></script>
+    <!-- <script src="../js/jquery-3.2.1.js"></script> -->
     <script type="text/javascript">
         function getUrlParam(key) {
             var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
             var value = window.location.search.substr(1).match(reg)
             if (value !== null) {
-                return decodeURIComponent(value[2]) //网上有的地方用unescape来代替decodeURIComponent
+                return decodeURIComponent(value[2]) //网上有的地方用unescape、decodeURI来代替decodeURIComponent
             }
             return null
+        }
+
+        //重点关注的方法，中文不会出现乱码
+        function getUrlParam3(name) {
+            return Array.from(new URLSearchParams(location.search.replace(/^\?/, ''))).reduce(function(acc, cur) {
+                acc[cur[0]] = cur[1]
+                return acc
+            }, {})[name]
         }
 
         function getUrlParam2(paraName) {
@@ -38,7 +46,9 @@
             }
         }
 
-        $(document).ready(function() {});
+
+        console.log("getUrlParam('abc')----------", getUrlParam("abc"));
+        console.log("getUrlParam3('abc')----------", getUrlParam3("abc"));
         // 获取当前Url的4种方法
         var url1 = window.location.href;
         var url2 = self.location.href;
@@ -51,4 +61,4 @@
     </script>
 </body>
 
-</html>
+</html
