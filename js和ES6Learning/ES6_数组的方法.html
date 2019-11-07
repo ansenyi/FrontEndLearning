@@ -12,7 +12,11 @@
         <br /> 3、Array.prototype.forEach(function(item,index){}):遍历数组；
         <br /> 4、Array.prototype.map(function(item,index){}):遍历数组返回一个新的数组，新数组的内容为加工之后的值；
         <br /> 5、Array.prototype.filter(function(item,index){}):遍历过滤出一个新的数组，新数组的内容为条件为true的值；
-        <br /> 6、Array.prototype.includes(value):判断数组中是否含有value
+        <br /> 6、Array.prototype.includes(value):判断数组中是否含有value;
+        <br /> 7、Array.isArray() 用于确定传递的值是否是一个 Array。当检测Array实例时, Array.isArray 优于 instanceof,因为Array.isArray能检测iframes.
+        <br /> 8、Array.prototype.concat():用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组；
+        <br /> 8、Array.prototype.copyWithin():浅复制数组的一部分到同一数组中的另一个位置，并返回它，不会改变原数组的长度；
+
     </p>
     <script>
         let colors = ['red', 'green', 'blue', 'pink', 'gold'];
@@ -68,6 +72,37 @@
         // 说明
         // concat 方法返回一个 Array 对象，其中包含了 array1 和提供的任意其他项目的连接。
         // 要加的项目（item1 … itemN）会按照从左到右的顺序添加到数组。如果某一项为数组，那么添加其内容到 array1 的末尾。如果该项目不是数组，就将其作为单个的数组元素添加到数组的末尾。
+        console.log("Array.isArray()---------------");
+        console.log(Array.isArray([1, 2, 3]));
+        // true
+        console.log(Array.isArray({
+                foo: 123
+            }))
+            // false
+        console.log(Array.isArray("foobar"));
+        // false
+        console.log(Array.isArray(undefined));
+        // false
+
+        //arr.copyWithin(target[, start[, end]])
+        //target
+        // 0 为基底的索引，复制序列到该位置。如果是负数，target 将从末尾开始计算。
+        // 如果 target 大于等于 arr.length，将会不发生拷贝。如果 target 在 start 之后，复制的序列将被修改以符合 arr.length。
+        // start
+        // 0 为基底的索引，开始复制元素的起始位置。如果是负数，start 将从末尾开始计算。
+        // 如果 start 被忽略，copyWithin 将会从0开始复制。
+        // end
+        // 0 为基底的索引，开始复制元素的结束位置。copyWithin 将会拷贝到该位置，但不包括 end 这个位置的元素。如果是负数， end 将从末尾开始计算。
+        // 如果 end 被忽略，copyWithin 方法将会一直复制至数组结尾（默认为 arr.length）。
+        var array1 = ['a', 'b', 'c', 'd', 'e'];
+
+        // copy to index 0 the element at index 3
+        console.log(array1.copyWithin(0, 3, 4));
+        // expected output: Array ["d", "b", "c", "d", "e"]
+
+        // copy to index 1 all elements from index 3 to the end
+        console.log(array1.copyWithin(1, 3));
+        // expected output: Array ["d", "d", "e", "d", "e"]
     </script>
 </body>
 

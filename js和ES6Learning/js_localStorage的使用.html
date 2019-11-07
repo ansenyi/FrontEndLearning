@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-			console.log(localStorage);
-			localStorage.setItem("name","安森一");
-			localStorage.age='25';
-			localStorage.setItem("hobby",["读书","运动","吃东西"]);
-			console.log(localStorage);
-			console.log(localStorage.name,localStorage.age,localStorage.hobby);
-			console.log(localStorage.getItem("name"),localStorage.getItem("age"),localStorage.getItem("hobby"))
-			localStorage.removeItem("name");
-			console.log(localStorage.name);
-//			localStorage.clear();
-//			console.log(localStorage);
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        console.log(localStorage);
+        localStorage.setItem("name", "安森一");
+        localStorage.age = '25';
+        localStorage.setItem("hobby", ["读书", "运动", "吃东西"]);
+        console.log(localStorage);
+        console.log(localStorage.name, localStorage.age, localStorage.hobby);
+        console.log(localStorage.getItem("name"), localStorage.getItem("age"), localStorage.getItem("hobby"))
+        localStorage.removeItem("name");
+        console.log(localStorage.name);
+        let key = "age"
+        localStorage.removeItem(key) //删除数据
+        console.log(localStorage);
+        localStorage.clear(); //删除全部数据
+        console.log(localStorage);
+        // sessionStorage同理
+    </script>
+</body>
+
 </html>
