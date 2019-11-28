@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        function toPercent(num) {
+            let newNum = Math.round(num * 100 * Math.pow(10, 2)) / Math.pow(10, 2);
+            return newNum + "%";
+        }
+        console.log(toPercent(0.123456));
+    </script>
+</body>
+
+</html>
