@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .divClass {
+            width: 100px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="divClass" :style="{height:divHeight+'px',backgroundColor:divBackgroundColor}"></div>
+        <p>注意样式里的属性加引号和不加引号的区别！！！</p>
+        <div class="divClass" :style="{'height':divHeight+'px','background-color':divBackgroundColor}"></div>
+        <p :style="styleObj1">这是一个p</p>
+        <p :style="[styleObj1,styleObj2]">这是一个斜着的p</p>
+        <img src="../img/Vue.js 动态绑定class .png" alt="">
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data() {
+                return {
+                    divHeight: 100,
+                    divBackgroundColor: 'gold',
+                    styleObj1: {
+                        color: 'blue',
+                        'font-weight': 200,
+                        'font-size': '40px'
+                    },
+                    styleObj2: {
+                        'font-style': 'italic'
+                    }
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

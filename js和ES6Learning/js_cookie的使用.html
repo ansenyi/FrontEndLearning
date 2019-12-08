@@ -10,7 +10,8 @@
     <div>
         <pre>
 什么是cookie?
-	cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。
+    cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。
+    cookie：是记录在用户浏览器中的信息，通常情况下是以“键/值”的形式进行存储的，可设置过期的时间。
 cookie的作用
           服务器可以利用cookie包含信息的任意性来筛选并经常性维护这些信息，以判断在HTTP传输中的状态。
 		cookie最典型的应用是判定注册用户是否已 经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。
@@ -25,6 +26,7 @@ cookie的作用
 			</pre>
     </div>
     <script type="text/javascript">
+        //设置cookie
         document.cookie = "name=ansenyi";
         console.log(document.cookie);
         document.cookie = "age=25";
@@ -54,7 +56,9 @@ cookie的作用
                 var date = new Date(); //获取当前时间
                 var expiresDays = time; //将date设置为n天以后的时间
                 date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000); //格式化为cookie识别的时间
-                document.cookie = key + "=" + val + ";expires=" + date.toGMTString(); //设置cookie
+                document.cookie = key + "=" + encodeURI(val) + ";expires=" + date.toGMTString() + ";path=/"; //设置cookie
+                //如果不设置过期时间，则在浏览器关闭时，cookie自动过期或删除
+                //path=/：表示cookie对web页面所属网站的全部页面有效果，也可以自定义其它路径
             },
             get: function(key) { //获取cookie方法
                 /*获取cookie参数*/
@@ -70,10 +74,10 @@ cookie的作用
                 }
                 return tips;
             },
-            delete: function(key) { //删除cookie方法
+            delete: function(key) { //删除cookie方法：将cookie的有效期设置为过去时间
                 var date = new Date(); //获取当前时间
-                date.setTime(date.getTime() - 10000); //将date设置为过去的时间
-                document.cookie = key + "=v; expires =" + date.toGMTString(); //设置cookie
+                date.setTime(date.getTime() - 1); //将date设置为过去的时间,这里可以减任意大于0的整数
+                document.cookie = key + "=; expires =" + date.toGMTString() + ";path=/"; //设置cookie
             }
         };
         cookie.set("uesr", "安森一", 10); //设置为10天过期

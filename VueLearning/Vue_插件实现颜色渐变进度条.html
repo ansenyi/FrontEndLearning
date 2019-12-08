@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <svg-progress-bar :value="process" :options="options"></svg-progress-bar>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/svg-progress-bar.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                process: 90
+            },
+            // components: {
+            //     svgProgressBar
+            // }
+            computed: {
+                options: function() {
+                    return {
+                        type: "circle",
+                        radius: 130, //半径大小
+                        duration: 2000, //进度条的动画时间，单位ms
+                        circleWidth: 20, //圆环宽度
+                        pathColors: ['#eee', 'gold'], //圆环 底色和 上面的颜色
+                        gradientColor: ['yellow', '#f00'], //为啥不起作用？？？？
+                        gradientOpacity: [0.5, 0.5],
+                        circleLineCap: 'round', //进度条 形状  圆环 或者矩形
+                        text: function(value) {
+                            return '';
+                        },
+
+                    }
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html

@@ -15,15 +15,13 @@
         <li>item5</li>
     </ul>
     <script type="text/javascript">
+        //1、将类数组对象转换为真正数组：
         var arr = Array.from({
             0: 'name',
             1: 'sex',
             length: 5
         });
         console.log(arr); //改数组的长度就是上面的length， ["name", "sex", undefined, undefined, undefined]
-        var set = new Set(['an', 'sen', 'yi']);
-        console.log(set);
-        console.log(Array.from(set));
 
         var liarr = document.querySelectorAll('li');
         console.log(liarr);
@@ -31,8 +29,22 @@
         const items = Array.from(liarr).map(item => item.textContent);
         console.log(items);
         console.log('------------');
+        //2、将Set结构的数据转换为真正的数组：
+        var set = new Set(['an', 'sen', 'yi']);
+        console.log(set);
+        console.log(Array.from(set));
+        let arr1 = [12, 45, 97]
+        let set1 = new Set(arr1)
+        console.log(Array.from(set1)) // [ 12, 45, 97]
+            //Array.from还可以接受第二个参数， 作用类似于数组的map方法， 用来对每个元素进行处理， 将处理后的值放入返回的数组。 如下：
+        let arr2 = [12, 45, 97]
+        let set2 = new Set(arr2)
+        console.log(Array.from(set2, item => item + 1)) // [ 13, 46, 98]
+            //3、将字符串转换为数组：
         const str = "My name is ansenyi";
         console.log(Array.from(str)); //字符串转化为数组
+        //4、Array.from参数是一个真正的数组：
+        console.log(Array.from([12, 45, 47]))　　 //像这种情况，Array.from会返回一个一模一样的新数组
     </script>
 </body>
 

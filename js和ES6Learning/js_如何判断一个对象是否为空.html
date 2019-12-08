@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <p>所谓"空对象"，即不包括任何可枚举(自定义)的属性。简而言之，就是该对象没有属性可以通过for...in迭代</p>
+    </div>
+    <script>
+        var obj1 = {};
+        //1、将json对象转化为json字符串，再判断该字符串是否为"{}"
+        if (JSON.stringify(obj1) == "{}") {
+            //				console.log(JSON.stringify(obj1));
+            console.log("该对象为空");
+        }
+        //2、使用ES6的Object.keys()方法,返回一个数组
+        console.log(Object.keys(obj1).length); //length属性为 0，则对象为空
+        //3、Object.getOwnPropertyNames()方法，获取对象的属性列表，返回结果为数组
+        console.log(Object.getOwnPropertyNames(obj1).length);
+        //4、使用jQuery的isEmptyObject()方法
+        //jQuery.isEmptyObject()函数用于判断指定参数是否是一个空对象。
+        //jQuery.isEmptyObject()函数的返回值为Boolean类型，如果指定的参数是空对象，则返回true，否则返回false。
+        //原理如下
+        function isEmptyObject(obj) {
+            for (var item in obj) {
+                return false;
+            }
+            return true;
+        }
+        //变形后
+        function isEmptyObject1(e) {
+            var hasProp = false;
+            for (var item in e) {
+                hasProp = true;
+            }
+            return !hasProp;
+        }
+        console.log(isEmptyObject(obj1));
+    </script>
+</body>
+
+</html>

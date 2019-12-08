@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style>
-			#p1{
-			  width: 400px;
-			  margin: 0 auto;
-			  padding: 20px;
-			  font: 30px "微软雅黑";
-			  text-align: center;
-			  background: purple;
-			  color: white;
-			}
-		</style>
-	</head>
-	<body>
-		<div>
-			<p id="p1">这是一个段落。</p>
-			<p>方法定义：window.getComputedStyle(元素，[伪类])，第二个参数是可选的，通常会将其设为null；
-　　　　　　　   <br>返回值为一个对象，包含该元素的所有样式属性；</p>
-		</div>
-		<script>
-			var p1=document.getElementById("p1");
-			var p1Styles=window.getComputedStyle(p1,null);//该方法的第二个参数可省，或者为null
-			console.log(p1Styles.length);
-			for(let i in p1Styles){
-               console.log("The property " + i + " :" + p1Styles[i]);
-			}
-			console.log(p1Styles);
-			console.log(p1Styles.getPropertyValue('font-size'));
-			console.log(p1Styles.getPropertyValue('font-family'));
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #p1 {
+            width: 400px;
+            /* 相对于父元素水平居中 */
+            margin: 0 auto;
+            padding: 20px;
+            font: 30px "微软雅黑";
+            text-align: center;
+            background: purple;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="p1">这是一个段落。</p>
+        <p>方法定义：window.getComputedStyle(元素，[伪类])，第二个参数是可选的，通常会将其设为null； 　　　　　　　 <br>返回值为一个对象，包含该元素的所有样式属性；</p>
+    </div>
+    <script>
+        var p1 = document.getElementById("p1");
+        var p1Styles = window.getComputedStyle(p1, null); //该方法的第二个参数可省，或者为null
+        console.log(p1Styles.length);
+        for (let i in p1Styles) {
+            console.log("The property " + i + " :" + p1Styles[i]);
+        }
+        console.log(p1Styles);
+        console.log(p1Styles.getPropertyValue('font-size'));
+        console.log(p1Styles.getPropertyValue('font-family'));
+    </script>
+</body>
+
 </html>

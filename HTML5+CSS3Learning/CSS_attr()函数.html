@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        /* attr() 函数返回选择元素的属性值。 */
+        /* attr(attribute-name) */
+        
+        a:after {
+            /* content拼接字符串不需要+号 */
+            content: attr(href)"123456";
+            display: none;
+        }
+        
+        a:hover:after {
+            /* 鼠标悬浮到链接上显示 */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <p><a href="https://www.runoob.com">菜鸟教程</a></p>
+</body>
+
+</html>

@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		
-	</head>
-	<body>
-		<div id="app">
-			{{message}}   <br />
-			<input  v-model="message"/>
-			<!--v-for迭代整数 -->
-			<ul>
-    			<li v-for="n in 10">
-     			{{ n }}{{$index}}
-    			</li>
-  			</ul>
-		</div>
-		
-		<input type="button" value="显示消息" onclick="showMessage()" /><br />
-		  
-		<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
-		<script type="text/javascript" src="../js/vue.js"></script>
-		<script type="text/javascript">
-			var data={
-				
-			};
-			data.message="这是修改后的消息";
-			function showMessage(){
-				alert(data.message);
-			}
-			//document.getElementById("app").innerHTML=data.message;
-			//$("#app").html(data.message);
-			var app=new Vue({
-				//绑定视图
-				el:"#app",
-				//绑定数据
-				data:data
-			});
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        {{message}} <br />
+        <input v-model="message" />
+        <!--v-for迭代整数 -->
+        <ul>
+            <li v-for="(n,index) in 10">
+                {{ n }}--{{index}}
+            </li>
+            <li v-for="(n,index) of 10">
+                {{n}}--{{index}}
+            </li>
+        </ul>
+    </div>
+
+    <input type="button" value="显示消息" onclick="showMessage()" /><br />
+
+    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var data = {
+
+        };
+        data.message = "这是修改后的消息";
+
+        function showMessage() {
+            alert(data.message);
+        }
+        //document.getElementById("app").innerHTML=data.message;
+        //$("#app").html(data.message);
+        var app = new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data: data
+        });
+    </script>
+</body>
+
 </html>

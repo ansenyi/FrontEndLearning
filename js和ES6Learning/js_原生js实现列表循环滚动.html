@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>循环滚动信息栏</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #express li {
+            height: 25px;
+            border-bottom: dashed 1px #999;
+            line-height: 20px;
+            font-size: 12px;
+            list-style: none;
+        }
+        
+        #dome {
+            height: 260px;
+            overflow: hidden;
+            margin-top: 0px;
+        }
+        
+        #book_class {
+            width: 200px;
+            height: 265px;
+            border: 3px solid #999;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 70px;
+            border-radius: 5px 5px 5px 5px;
+        }
+        
+        #express {
+            margin-left: -30px;
+            margin-right: 10px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+        
+        #book_class div div ul li a {
+            text-decoration: none;
+            color: #333333;
+        }
+        
+        #book_class div div ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="book_class">
+        <div id="dome">
+            <div id="dome1">
+                <ul id="express">
+                    <li><a href="#">item1</a></li>
+                    <li><a href="#">item2</a></li>
+                    <li><a href="#">item3</a></li>
+                    <li><a href="#">item4</a></li>
+                    <li><a href="#">item5</a></li>
+                    <li><a href="#">item6</a></li>
+                    <li><a href="#">item7</a></li>
+                    <li><a href="#">item8</a></li>
+                    <li><a href="#">item9</a></li>
+                    <li><a href="#">item10</a></li>
+            </div>
+            <div id="dome2"></div>
+        </div>
+    </div>
+    <!----------防止html没有加载完，把javascript代码写在下面---------->
+    <script type="text/javascript">
+        var dome = document.getElementById("dome");
+        var dome1 = document.getElementById("dome1");
+        var dome2 = document.getElementById("dome2");
+        var speed = 10; //设置向上轮动的速度 
+        dome2.innerHTML = dome1.innerHTML; //复制节点 
+        function moveTop() {
+            if (dome1.offsetHeight - dome.scrollTop <= 0) {
+                dome.scrollTop = 0;
+            } else {
+                dome.scrollTop++;
+            }
+        }
+        var myFunction = setInterval(moveTop, speed);
+        dome.onmouseover = function() {
+            clearInterval(myFunction);
+        }
+        dome.onmouseout = function() {
+            myFunction = setInterval(moveTop, speed);
+        }
+    </script>
+</body>
+
+</html>

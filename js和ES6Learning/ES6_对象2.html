@@ -8,38 +8,38 @@
 
 <body>
     <script type="text/javascript">
-        /*class Point{
-                                                                                                                				constructor(x,y){
-                                                                                                                					this.x=x;
-                                                                                                                					this.y=y;
-                                                                                                                					
-                                                                                                                				}
-                                                                                                                			}
-                                                                                                                			class ColorPoint extends Point{
-                                                                                                                				constructor(x,y,color){
-                                                                                                                					super(x,y);
-                                                                                                                					this.color=color;
-                                                                                                                				}
-                                                                                                                			}
-                                                                                                                			var p=new ColorPoint(1,2,"red");
-                                                                                                                			console.log(p.x);
-                                                                                                                			console.log(p.y);
-                                                                                                                			console.log(p.color);
-                                                                                                                			console.log(p instanceof ColorPoint);
-                                                                                                                			console.log(p instanceof Point);*/
-        /*class A {
-          static hello() {
-            console.log('hello world');
-          }
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+
+            }
         }
-			
-        class B extends A {
+        class ColorPoint extends Point {
+            constructor(x, y, color) {
+                super(x, y);
+                this.color = color;
+            }
         }
-			
-        B.hello(); 
-        const arr=[1,2,3,4];
-        const [first,second]=arr;
-        console.log(second);*/
+        var p = new ColorPoint(1, 2, "red");
+        console.log(p.x);
+        console.log(p.y);
+        console.log(p.color);
+        console.log(p instanceof ColorPoint);
+        console.log(p instanceof Point);
+        class A {
+            static hello() {
+                console.log('hello world');
+            }
+        }
+
+        class B extends A {}
+
+        B.hello();
+        const arr = [1, 2, 3, 4];
+        const [first, second] = arr;
+        console.log(second);
+
         function getFullName({
             firstName,
             lastName

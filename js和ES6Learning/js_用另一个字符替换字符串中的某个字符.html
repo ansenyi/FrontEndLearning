@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        let testStr = "abCdEf123----abCdEf123";
+        //方法1（推荐）：使用字符串的replace()方法和正则表达式
+        console.log(testStr.replace(/a/g, 'A')); //字符串中所有的字符a被替换成A
+        //方法2：利用split() 和 join()方法
+        console.log(testStr.split("-").join("*")); //字符串中所有的字符-被替换成*
+        //方法3：
+        function strReplace(str) {
+            while (str.indexOf('b') > -1) {
+                str = str.replace('b', '999');
+            }
+            return str
+        }
+        console.log(strReplace(testStr)); //字符串中所有的字符b被替换成999
+        let dateStr = new Date().toLocaleDateString();
+        console.log(dateStr);
+        console.log(dateStr.replace(/\//g, '-'));
+        console.log(dateStr.split("/").join("-"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="main">
+        <p class="firstP">
+            <span>第一个span元素</span>
+            <span>第二个span元素</span>
+        </p>
+        <p class="secondP">
+            <span>第3个span元素</span>
+            <span>第4个span元素</span>
+        </p>
+    </div>
+    <script>
+        //经测试children方法在所有主流浏览器中都兼容，包括ie678，并且它也能实现firstElementChild的功能
+        //以后写js的时候，如果想获取到子元素的element节点，最好使用children方法
+        console.log(document.getElementsByClassName("secondP")[0].children[1]);
+    </script>
+</body>
+
+</html>

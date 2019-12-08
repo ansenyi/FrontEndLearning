@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            padding-top: 100px;
+        }
+        
+        .box {
+            margin: 50px auto;
+            width: 400px;
+            height: 400px;
+            border: 2px dashed red;
+        }
+        
+        .img-transform {
+            transform: rotate(89deg);
+            transform-origin: 50%50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <svg width="100%" height="100%" viewbox="0 0 160 160">
+           <!--这里viewBox也可以不设置-->
+           <defs>
+            <pattern id="fill-img" patternUnits="userSpaceOnUse" width="160" height="160">
+                <image class="img-transform" xlink:href="../img/fullColorfulCircle.png" x="0" y="0" width="160" height="160" />
+            </pattern>
+           </defs>
+           <!-- <circle r="62" cx="64" cy="64" stroke-width="4" stroke="#d3d3d3" fill="none" transform="rotate(0,64 64)"></circle> -->
+           <!--circle标签可以定义一个圆-->
+           <!--r属性设置圆的半径，此demo设置为svg宽和高的1/2,减去stroke-width的宽度-->
+           <!--cr和cy属性定义圆点的x和y坐标。如果省略cx和cy，圆的中心会被设置为(0, 0),此demo设置为svg宽和高的1/2处，-->
+           <!--stroke-width属性这里定义了图形轮廓的厚度-->
+           <!--stroke属性这里定义了圆形轮廓的颜色-->
+           <!--fill属性设置圆形是否填充-->
+           <!--transform属性这里定义圆旋转rotate（-89，64，64)，-89是旋转的度数，后两个64是定义旋转的中心点，这里定义了圆心位置
+           注意：经测试旋转-90度时，在ios手机上app里圆是旋转不过来的，所以设置-89度-->
+           <circle 
+           id="colorfulCircle" 
+           r="72" 
+           cx="80" 
+           cy="80" 
+           stroke-width="10" 
+           stroke="url(#fill-img)" 
+           stroke-linecap="round" 
+           transform="rotate(0,64 64)"
+           stroke-dasharray="0 389" 
+           fill="none" 
+           stroke-opacity="1">
+           </circle>
+           <!--这第二个圆形与第一个圆相似-->
+           <!--不同点，stroke通过url(线性渐变的id）把渐变链接到此，作为圆的轮廓颜色-->
+           <!--stroke-linecap属性定义进度条结尾处的样式，round为圆形，还可以为square方形-->
+           <!--stroke-dasharray用来创建虚线，第一个值表示虚线第一个线段的长度，第二个值表示线段后边第一个空隙的宽度，
+           这里设置时计算方式是，第二个值是圆周长（即2rπ），第一个值是（百分比x 圆周长），根据百分比的不同控制进度条长短-->
+           <!--stoken-opacity属性设置进度条圆心的透明度，当进度条值为0%时候，进度条也会显示一个小小点，此时可以设置stroke-opacity="0"-->
+       </svg>
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script> -->
+    <script type="text/javascript">
+        var sum = 0,
+            timer;
+        clearInterval(timer);
+        // timer = setInterval(function() {
+        //     sum += 1;
+        //     if (sum >= 290) {
+        //         sum = 290;
+        //         clearInterval(timer);
+        //     }
+        //     document.getElementById("colorfulCircle").setAttribute("stroke-dasharray", sum + " 389");
+        //     //             通过js让进度条有动态的效果
+        // }, 5);
+    </script>
+
+</body>
+
+</html>

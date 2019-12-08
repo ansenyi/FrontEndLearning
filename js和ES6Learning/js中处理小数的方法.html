@@ -10,6 +10,8 @@
     <script>
         //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。但是会有一些问题。
         console.log(1.705.toFixed(2)); // 1.71 正确
+        console.log(1.35.toFixed(1)); // 1.4 正确
+        console.log(5.35.toFixed(1)); // 5.3 错误（多么奇怪）
         console.log(1.305.toFixed(2)); // 1.30 错误
         console.log(1.35.toFixed(1)); // 1.4 正确
         console.log(1.335.toFixed(2)); //1.33 错误 
@@ -26,7 +28,7 @@
         //     return Number(des + '');
         // };
         //方法2
-        //四舍五入保留2位小数（不够位数，则用0替补）
+        //四舍五入保留num位小数（不够位数，则用0替补）
         Number.prototype.toFixed = function(num) {
             // return Math.round(this * Math.pow(10, num)) / Math.pow(10, num)
             let f = parseFloat(this);

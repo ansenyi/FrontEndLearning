@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .myinput {
+            /* 输入文本后文本的样式 */
+            font-size: 30px;
+            color: red;
+        }
+        /* 第一种方法 */
+        /* input::-webkit-input-placeholder{
+				color: green;
+			}
+			input::-moz-placeholder{
+				color: gold;
+			}
+			input:-ms-input-placeholder{
+				color: palegoldenrod;
+			} */
+        /* 第二种方法 */
+        
+        input::placeholder {
+            font-size: 14px;
+            color: #0f0;
+        }
+        /* input {
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0);
+            width: 500px;
+            outline: none;
+            &::placeholder {
+                color: #bbb;
+            }
+			//& 表示嵌套的上一级 
+            //这是sass的语法，代表上一级选择器 ,这里指外面的imput选择器
+    	}*/
+    </style>
+</head>
+
+<body>
+    <input type="text" class="myinput" placeholder="--这是一个文本框--" />
+</body>
+
+</html>
