@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        function fillTimeGap(time) {
+            time = parseInt(time || '0')
+            if (time < 10) {
+                return `0${time}`
+            } else {
+                return time
+            }
+        }
+        let commonMehods = {}
+            //获取n年前的日期
+        commonMehods.getYearsAgoDate = (n, timeFormat = 'yyyy-mm-dd', date = new Date()) => {
+            n = parseInt(n);
+            date.setFullYear(date.getFullYear() - n)
+            const y = date.getFullYear();
+            const m = date.getMonth() + 1
+            const d = date.getDate()
+            return timeFormat.replace('yyyy', y)
+                .replace('mm', fillTimeGap(m))
+                .replace('dd', fillTimeGap(d))
+        }
+
+        // 获取n月前的日期
+        commonMehods.getMonthsAgoDate = (n, timeFormat = 'yyyy-mm-dd', date = new Date()) => {
+            n = parseInt(n);
+            date.setMonth(date.getMonth() - n)
+            const y = date.getFullYear();
+            const m = date.getMonth() + 1
+            const d = date.getDate()
+            return timeFormat.replace('yyyy', y)
+                .replace('mm', fillTimeGap(m))
+                .replace('dd', fillTimeGap(d))
+        }
+
+        // 获取n天前的日期
+        commonMehods.getDaysAgoDate = (n, timeFormat = 'yyyy-mm-dd', date = new Date()) => {
+            date = (date instanceof Date) ? date : new Date(date)
+            n = parseInt(n);
+            const milliseconds = date.getTime() - 1000 * 60 * 60 * 24 * n;
+            const newDate = new Date(milliseconds);
+            const y = newDate.getFullYear();
+            const m = newDate.getMonth() + 1
+            const d = newDate.getDate()
+            return timeFormat.replace('yyyy', y)
+                .replace('mm', fillTimeGap(m))
+                .replace('dd', fillTimeGap(d))
+        }
+        console.log("现在的日期：", new Date());
+
+        console.log("一年前的日期：", commonMehods.getYearsAgoDate(1));
+        console.log("一个月前的日期：", commonMehods.getMonthsAgoDate(1));
+        console.log("10天前的日期：", commonMehods.getDaysAgoDate(10));
+        console.log("1周前的日期：", commonMehods.getDaysAgoDate(7 * 1));
+        console.log("2000-01-01的1年前的日期：", commonMehods.getYearsAgoDate(1, "yyyy-mm-dd", new Date("2000-01-01")));
+        console.log("2000-01-01的5天前的日期：", commonMehods.getDaysAgoDate(5, "yyyy-mm-dd", new Date("2000-01-01")));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        function commonFunc1() {
+            //普通函数：this指的是window对象
+            console.log("func1-----------", this);
+
+        }
+        commonFunc1();
+        let commonObject = {};
+        commonObject.commonFunc1 = function() {
+            //普通函数作为对象方法调用，this代指当前对象---commonObject
+            console.log("commonObject.commonFunc1----", this);
+        }
+        commonObject.commonFunc1();
+        console.log("**************************************************");
+
+        let arrowObject = {}
+        arrowObject.objectFunc1 = (n) => {
+
+            //箭头函数作为对象方法调用，this指的是window对象
+            console.log("objectFunc1", this);
+            commonFunc1();
+            this.commonFunc1();
+
+            //在对象的一个方法里调用该对象的另一个方法
+            arrowObject.objectFunc2();
+        }
+        arrowObject.objectFunc2 = () => {
+            console.log("arrowObject.objectFunc2");
+        }
+        arrowObject.objectFunc1();
+    </script>
+</body>
+
+</html>

@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style type="text/css">
-			.center-in-center {
-			  width: 100px;
-			  height: 100px;
-			  background-color:gold;
-			  position: absolute;
-			  top: 50%;   /*以父级盒子的高度为准*/
-			  left: 50%;  /*以父级盒子的宽度为准*/
-			  transform: translate(-50%, -50%); /*以自己为准*/
-			}
-		</style>
-	</head>
-	<body>
-		  <div class="center-in-center">测试十二个字提交成功状态</div>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .center-in-center {
+            width: 300px;
+            height: 300px;
+            background-color: gold;
+            position: absolute;
+            top: 50%;
+            /*以父级盒子的高度为准*/
+            left: 50%;
+            /*以父级盒子的宽度为准*/
+            transform: translate(-50%, -50%);
+            /*以自己为准*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-in-center">
+        Position的属性值有：<br> 1.Absolute：绝对定位，是相对于最近的且不是static(position属性的默认值)定位的父元素来定位；
+        <br> 2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动；
+        <br> 3.Relative：相对定位，是相对于其原本的位置来定位的；
+        <br> 4.Static：默认值，没有定位；
+        <br> 5.Inherit：继承父元素的position值。
+    </div>
+</body>
+
 </html>

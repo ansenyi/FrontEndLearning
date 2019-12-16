@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- JS 控制不能输入特殊字符 -->
+        不允许输入特殊字符：<input type="text" onkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'')">
+        <br> 只允许输入数字：
+        <input type="text" onkeyup="value=value.replace(/[^0-9]/g,'')" onpaste="value=value.replace(/[^0-9]/g,'')" oncontextmenu="value=value.replace(/[^0-9]/g,'')">
+        <br>只允许输入数字和小数点：
+        <input type="text" onkeyup="value=value.replace(/[^\0-9\.]/g,'')" onpaste="value=value.replace(/[^\0-9\.]/g,'')" oncontextmenu="value=value.replace(/[^\0-9\.]/g,'')">
+        <br>只允许输入英文字母：
+        <input type="text" onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z]/g,'')" oncontextmenu="value=value.replace(/[^\a-\z\A-\Z]/g,'')">
+        <br>只允许输入英文字母和数字：
+        <input onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')" oncontextmenu="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')">
+        <br>只允许输入中文：
+        <input onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" oncontextmenu="value=value.replace(/[^\u4E00-\u9FA5]/g,'')">
+        <br>只能输入中文、英文、数字：
+        <input onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')">
+
+
+    </div>
+
+    <script>
+        function filterSpecialSign(s) {
+            var pattern = new RegExp(
+                "[%--`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]"
+            ); //格式 RegExp("[在中间定义特殊过滤字符]")
+            var rs = "";
+            for (var i = 0; i < s.length; i++) {
+                rs = rs + s.substr(i, 1).replace(pattern, "");
+            }
+            return rs;
+        }
+
+        console.log("过滤后的字符串：", filterSpecialSign("12=-*/45/!~?78"));
+
+        function processSpelChar() {
+            var code;
+            var character;
+            if (document.all) {
+                code = window.event.keyCode;
+            } else {
+                code = arguments.callee.caller.arguments[0].which;
+            }
+            var character = String.fromCharCode(code);
+            var txt = new RegExp(/["'<>%;)(&+]/);
+            if (txt.test(character)) {
+                if (document.all) {
+                    window.event.returnValue = false;
+                } else {
+                    arguments.callee.caller.arguments[0].preventDefault();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

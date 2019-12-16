@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <!-- include Vue 2.x -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@^2"></script>
+    <!-- include vue-treeselect & its styles. you can change the version tag to better suit your needs. -->
+    <script src="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.min.css">
+    <style>
+        .vue-treeselect {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <treeselect v-model="value" :multiple="true" :options="options" placeholder="请选择内容---" :always-open="alwaysOpen" @select="selectChange" />
+        <!-- :clearable="clearable"
+      :searchable="searchable"
+      :disabled="disabled"
+      :open-on-click="openOnClick"
+      :open-on-focus="openOnFocus"
+      :clear-on-select="clearOnSelect"
+      :close-on-select="closeOnSelect"
+      :always-open="alwaysOpen"
+      :append-to-body="appendToBody"
+      :options="options"
+      :limit="3"
+      :max-height="200" -->
+    </div>
+</body>
+<script>
+    // register the component
+    Vue.component('treeselect', VueTreeselect.Treeselect)
+
+    new Vue({
+        el: '#app',
+        data: {
+            // define the default value
+            value: null,
+            alwaysOpen: true,
+            // define options
+            options: [{
+                id: 'a',
+                label: 'a',
+                children: [{
+                    id: 'aa',
+                    label: 'Item--aa',
+                }, {
+                    id: 'ab',
+                    label: 'Item--ab',
+                }],
+            }, {
+                id: 'b',
+                label: 'b',
+            }, {
+                id: 'c',
+                label: 'c',
+            }],
+        },
+        methods: {
+            selectChange(param) {
+                console.log("------------", param);
+            }
+        },
+    })
+</script>
+
+</html>
