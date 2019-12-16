@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 标签名只支持小写，不区分大小写 -->
+        <v-fast></v-fast>
+        <vbus></vbus>
+        <vBus></vBus>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var fast = {
+            template: '<div> 我是全局组件1,滴滴快车</div>'
+        };
+        var bus = {
+            template: '<div> 我是全局组件2,{{name}}</div>',
+            data() {
+                return {
+                    name: "公交车"
+                }
+            }
+        };
+        Vue.component("vFast", fast) //注册全局组件
+        Vue.component("vbus", bus)
+            //当组件名为全小写字母时，用的时候可以直接用；当有大写字母时，将大写字母写成小写，前面加“-”。
+        new Vue({
+            //绑定视图
+            el: "#app",
+            //绑定数据
+            data() {
+                return {
+                    currentView: "bus"
+                }
+            },
+            components: {},
+            created() {}
+        });
+    </script>
+</body>
+
+</html>
