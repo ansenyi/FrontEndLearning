@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>散点图line</title>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="width: 1000px;height: 600px;margin-top: 100px;"></div>
+    <script src="../js/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('container'));
+        var data = [
+            { tech: '技术1', num: 5 },
+            { tech: '技术2', num: 15 },
+            { tech: '技术3', num: 10 },
+            { tech: '技术4', num: 10 },
+            { tech: '技术5', num: 8 }
+        ];
+        var xData = ['技术1', '技术2', '技术3', '技术4',
+            '技术5'];
+
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    // axis: 'x',
+                    label: {
+                        //标注x和y显示两个数值
+                        // show: false,
+                        backgroundColor: '#666',
+                        borderWidth: 1,
+                        shadowBlur: 0,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        lineHeight: 22,
+                    },
+                    crossStyle: {
+                        //触发线y轴的样式
+                        color: '#A3B7CE',
+                        type: 'solid', // solid deshed dotted
+                        // width: 1,
+                    },
+                },
+                backgroundColor: '#030508',
+                textStyle: {
+                    fontSize: 12,
+                    // lineHeight: 62,
+                },
+                padding: 10,
+                formatter: function (params) {
+                    console.log('formater--params:', params)
+                    let spanFontColorStyle = ['<span style="color:#0196FF;">']
+                    let dataRow1 = ''
+                    dataRow1 =
+                        spanFontColorStyle[0] +
+                        ' PE值: ' +
+                        '</span>' +
+                        (typeof params[0].data[1] == 'number' ? params[0].data[1].toFixed(2) : '--') +
+                        '<br />'
+
+                    return params[0].axisValue + ' ' + params[0].data[2] + '<br />' + dataRow1
+                },
+            },
+            xAxis: {
+                data: xData,
+            },
+            color: ['red'],
+            yAxis: {
+                // name: '业务方向',
+                // boundaryGap: ['5%', '0%'],
+                // nameTextStyle: {
+                //     align: 'right',
+                //     fontSize: 15,
+                //     color: '#666',
+                //     fontWeight: 'bold'
+                // },
+                // interval: 1,
+                // splitNumber: yData.length,
+                // scale: true,
+                // axisLine: {
+                //     show: false
+                // },
+                // axisTick: {
+                //     show: false
+                // },
+                // axisLabel: {
+                //     show: true,
+                //     formatter: function (idx) {
+                //         console.log(idx); //
+                //         return yData[idx];
+                //     }
+                // },
+                splitLine: {
+                    show: false,
+                }
+            },
+            // series: data.map((item, i) => {
+            //     return {
+            //         type: 'scatter',
+            //         data: [
+            //             [
+            //                 item.tech,
+            //                 item.num
+            //             ]
+            //         ]
+            //     }
+            // })
+            series: [
+                {
+                    type: 'scatter',
+                    data: [
+                        [
+                            '技术1', 5
+                        ],
+                        [
+                            '技术2', 15
+                        ],
+                    ]
+                }
+            ]
+
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

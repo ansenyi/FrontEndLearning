@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* 父容器的高度必须是一个可以计算出来的固定高度。 */
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 16px);
+        }
+        /* .header {
+            flex: 0 0 100px;
+            background-color: aqua;
+        }
+        
+        .mainContent {
+            flex: auto;
+            background-color: gold;
+        }
+        
+        .footer {
+            flex: 0 0 200px;
+            background-color: pink;
+        } */
+        /* 两种写法效果相同 */
+        
+        .header {
+            height: 100px;
+            background-color: aqua;
+        }
+        
+        .mainContent {
+            flex: 1;
+            background-color: gold;
+        }
+        
+        .footer {
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">第一个div</div>
+        <div class="mainContent">第二个div</div>
+        <div class="footer">第三个div</div>
+    </div>
+</body>
+
+</html>

@@ -26,8 +26,9 @@
             }
         }
         var b = new B();
-        //			Object.keys() //返回的可枚举的自有属性 
-        //			Obejct.getOwnProtertyNames() // 返回的自身属性，包括不可以枚举属性，但是得不到原型链上的属性，得不到Symbols属性
+        //Object.keys() //返回的可枚举的自有属性 
+        //Object.values() //获取所有的value值
+        //Obejct.getOwnProtertyNames() // 返回的自身属性，包括不可以枚举属性，但是得不到原型链上的属性，得不到Symbols属性
         console.log(Object.keys(b));
         console.log(Object.getOwnPropertyNames(b));
         console.log(Object.getOwnPropertyDescriptor(b));
@@ -58,9 +59,9 @@
         }
         let testStr = '身高';
         console.log("读取对象的某个值", myObject['身高'], myObject.身高, myObject[testStr]) //两种方法：对象['属性名']或者对象.属性名
-            //方法2：Object.keys()
+        //方法2：Object.keys()
         console.log("遍历对象的方法2：**********")
-        Object.prototype.pro1 = function() {}
+        Object.prototype.pro1 = function () { }
         Object.defineProperty(myObject, 'country', {
             Enumerable: true, //可枚举
             value: 'ccc'
@@ -70,12 +71,12 @@
             value: null
         })
         myObject.country = 'china';
-        Object.keys(myObject).forEach(function(index) {
+        Object.keys(myObject).forEach(function (index) {
             console.log(index, myObject[index])
         });
         //方法2：Objcet.getOwnPropertyNames()  输出对象自身的可枚举和不可枚举属性的数组,不输出原型链上的属性
         console.log("遍历对象的方法3：**********")
-        Object.getOwnPropertyNames(myObject).forEach(function(index) {
+        Object.getOwnPropertyNames(myObject).forEach(function (index) {
             console.log(index, myObject[index])
         });
 
@@ -94,6 +95,15 @@
         eval("objAddP.ppp" + key1 + "='" + value1 + "'"); //添加属性名为 pppsex的属性
         console.log("第二种方法加属性后的对象",
             objAddP);
+
+        let object1 = {
+            name: "ansenyi",
+            age: 25
+        };
+        let object2 = object1;
+        object2.height = 180;
+        console.log("object1,object2:", object1, object2);//两个对象是相同的
+
     </script>
 </body>
 

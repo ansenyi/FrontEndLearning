@@ -18,7 +18,7 @@
             return null
         }
 
-        //重点关注的方法，中文不会出现乱码
+        //重点关注的方法，中文不会出现乱码，公司项目中用到的方法
         function getUrlParam3(name) {
             return Array.from(new URLSearchParams(location.search.replace(/^\?/, ''))).reduce(function(acc, cur) {
                 acc[cur[0]] = cur[1]
@@ -53,8 +53,11 @@
         var url1 = window.location.href;
         var url2 = self.location.href;
         var url3 = document.URL;
-        var url4 = document.location;
-        console.log("当前的url地址为：", url1, url2, url3, url4);
+        var url4 = document.location.href;
+        console.log("当前的url地址为：url1-------------", url1);
+        console.log("当前的url地址为：url2-------------", url2);
+        console.log("当前的url地址为：url3-------------", url3);
+        console.log("当前的url地址为：url4-------------", url4);
         console.log(url2);
         console.log(url3);
         console.log(url4);

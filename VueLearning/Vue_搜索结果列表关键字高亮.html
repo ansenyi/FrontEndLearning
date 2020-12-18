@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    input {
+            width: 198px;
+            height: 30px;
+            font-size: 18px;
+        }
+        
+        .blueHighLight {
+            color: lightblue;
+        }
+        
+        .search-result-list {
+            position: absolute;
+            width: 200px;
+            border: 1px solid #eee;
+            background-color: #fff;
+            top: 27px;
+            padding-left: 0px;
+            z-index: 11;
+        }
+        
+        .search-result-list li {
+            line-height: 30px;
+            list-style: none;
+        }
+        
+        .search-result-list li:hover {
+            background-color: pink;
+            cursor: pointer;
+        }
+        
+        .active {
+            background-color: pink;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="keyword" @keyup="search()" @keydown.down="selectResultItemDown" @keydown.up="selectResultItemUp" @keydown.enter="setKeywordEnter()" @focus="searchResultList1CurrentIndex = 0" />
+        <ul class="search-result-list" v-if="searchResultList.length>0">
+            <template v-for="(n,i) in searchResultList">
+                <li :key="i" :class="[searchResultList1CurrentIndex == i ? 'active' : '']" @click="setKeyword1(n)"
+                    :title="n.name">
+                    <span v-html="n.nameStr"></span>
+                </li>
+            </template>
+        </ul>
+        <ul class="search-result-list" v-else-if="noResult">
+            <li class="noData" style="text-align: center;">未查询到相应结果</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src=" ../js/vue.js "></script>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    keyword: "",
+                    searchResultList: [],
+                    searchResultList1CurrentIndex: 0,
+                    noResult: false,
+                    searchList: [{
+                        name: "安森一"
+                    }, {
+                        name: "安森二"
+                    }, {
+                        name: "安森3"
+                    }, {
+                        name: "安占想"
+                    }, {
+                        name: "安占详"
+                    }, {
+                        name: "安1"
+                    }, {
+                        name: "森2"
+                    }, {
+                        name: "森3"
+                    }, {
+                        name: "森森"
+                    }]
+                }
+            },
+            methods: {
+                search() {
+                    this.searchResultList = [];
+                    if (this.keyword == "") {
+                        return;
+                    }
+                    // 匹配关键字正则
+                    let replaceReg = new RegExp(
+                        this.keyword,
+                        "g"
+                    );
+                    // 高亮替换v-html值
+                    let replaceString =
+                        '<span class=" blueHighLight ">' +
+                        this.keyword +
+                        "</span>";
+                    this.searchList.forEach(item => {
+                        if (item.name.indexOf(this.keyword) > -1) {
+                            this.searchResultList.push(item);
+                        }
+                    });
+                    if (this.searchResultList.length > 0) {
+                        this.searchResultList.forEach(item => {
+                            item.nameStr = item.name.replace(replaceReg, replaceString);
+                        });
+                    } else {
+                        this.noResult = true;
+                    }
+
+                },
+                setKeyword1(item) {
+                    console.log("name-----------", item);
+                    this.keyword = item.name;
+                    this.searchResultList = [];
+                    this.noResult = false;
+                },
+                selectResultItemDown() {
+                    console.log("selectResultItemDown------");
+                    if (
+                        this.searchResultList1CurrentIndex ===
+                        this.searchResultList.length - 1
+                    ) {
+                        this.searchResultList1CurrentIndex = 0;
+                    } else {
+                        this.searchResultList1CurrentIndex++;
+                    }
+                },
+                selectResultItemUp() {
+                    console.log("selectResultItemUp------");
+                    if (this.searchResultList1CurrentIndex === 0) {
+                        this.searchResultList1CurrentIndex =
+                            this.searchResultList.length - 1;
+                    } else {
+                        this.searchResultList1CurrentIndex--;
+                    }
+                },
+                setKeywordEnter() {
+                    console.log("setKeywordEnter---你所按下的keyCode", event.keyCode);
+                    this.searchResultList.forEach((item, index) => {
+                        if (this.searchResultList1CurrentIndex == index) {
+                            this.keyword = item.name;
+                            this.searchResultList = [];
+                            this.noResult = false;
+                            this.searchResultList1CurrentIndex = 1;
+                        }
+                    });
+                },
+            },
+            created() {},
+        });
+    </script>
+</body>
+
+</html>

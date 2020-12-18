@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>循环滚动信息栏</title>
+    <title>原生js实现列表循环滚动</title>
     <style type="text/css">
         body {
             margin: 0px;
@@ -76,7 +76,7 @@
         var dome = document.getElementById("dome");
         var dome1 = document.getElementById("dome1");
         var dome2 = document.getElementById("dome2");
-        var speed = 10; //设置向上轮动的速度 
+        var speed = 50; //设置向上轮动的速度 
         dome2.innerHTML = dome1.innerHTML; //复制节点 
         function moveTop() {
             if (dome1.offsetHeight - dome.scrollTop <= 0) {

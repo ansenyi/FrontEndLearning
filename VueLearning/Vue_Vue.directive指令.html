@@ -1,58 +1,118 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<div id="app1">
-			<p v-upper-text="msg"></p>
-			<p v-lower-text="msg"></p>
-		</div>
-		<div id="app2">
-			<p v-upper-text="msg">{{msg}}</p>
-			<p v-lower-text="msg"></p>
-		</div>
-		<script type="text/javascript" src="../js/vue.min.js"></script>
-		<script type="text/javascript">
-			///注册全局指令
-			Vue.directive('upper-text',function(el,binding){
-				console.log(el);
-				console.log(binding);
-				el.textContent=binding.value.toUpperCase();
-			});
-			new Vue({
-				el:'#app1',
-				data:{
-					msg:'My name is Ansenyi！'
-				},
-				methods:{
-					
-				},
-				directives:{ //注册局部指令
-					'lower-text':function(el,binding){
-						el.textContent=binding.value.toLowerCase();
-						el.style.color='red';
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<div id="app1">
+		<p v-upper-text="msg"></p>
+		<p v-lower-text="msg"></p>
+		<input type="text" v-positive-integer placeholder="只支持正整数"><br>
+		<input type="text" v-number-positive2 placeholder="只支持正数，最多两位小数"><br>
+		<input type="text" v-number100 />
+	</div>
+	<div id="app2">
+		<p v-upper-text="msg">{{msg}}</p>
+		<p v-lower-text="msg"></p>
+	</div>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript">
+		///注册全局指令
+		Vue.directive('upper-text', function (el, binding) {
+			console.log(el);
+			console.log(binding);
+			el.textContent = binding.value.toUpperCase();
+		});
+		new Vue({
+			el: '#app1',
+			data: {
+				msg: 'My name is Ansenyi！',
+				testNum: ''
+			},
+			methods: {
+				loadNumber(event) {
+					var el = event.currentTarget;
+					var elValue = el.value;
+					console.log("elValue---------", elValue);
+					var reg = /^((?!0)\d{1,2}|100)$/;
+					if (!elValue.match(reg)) {
+						this.testNum = "";
+						console.log("b")
+						return false;
+					} else {
+						return true;
 					}
+
 				}
-			});
-			new Vue({
-				el:'#app2',
-				data:{
-					msg:'My name is Ansenyi！'
+
+			},
+			directives: { //注册局部指令
+				'lower-text': function (el, binding) {
+					el.textContent = binding.value.toLowerCase();
+					el.style.color = 'red';
 				},
-				methods:{
-					
+				positiveInteger: {
+					bind: function (el) {
+						el.handler = function () {
+							el.value = Number(el.value.replace(/\D+/, ""));   //只支持正整数
+						};
+						el.addEventListener("input", el.handler);
+					},
+					unbind: function (el) {
+						el.removeEventListener("input", el.handler);
+					},
 				},
-				directives:{ //注册局部指令
-					'lower-text':function(el,binding){
-						el.textContent=binding.value.toLowerCase();
-						el.style.color='green';
-						el.style.fontWeight='bold';
-						el.style.fontSize='30px';
-					}
+				//支持正数，最多2位小数
+				numberPositive2: {
+					bind: function (el) {
+						el.handler = function () {
+							el.value = el.value.match(/^\d*(\.?\d{0,2})/g)[0];
+						};
+						el.addEventListener("input", el.handler);
+					},
+					unbind: function (el) {
+						el.removeEventListener("input", el.handler);
+					},
+				},
+				//支持0-100
+				number100: {
+					bind: function (el) {
+						el.handler = function () {
+							// let reg = /^((?!0)\d{1,2}|100)$/;
+							let reg = /^(\d{1,2}|100)$/;
+							if (!el.value.match(reg)) {
+								el.value = "";
+							}
+						};
+						el.addEventListener("input", el.handler);
+					},
+					unbind: function (el) {
+						el.removeEventListener("input", el.handler);
+					},
+				},
+			}
+		});
+		new Vue({
+			el: '#app2',
+			data: {
+				msg: 'My name is Ansenyi！'
+			},
+			methods: {
+
+			},
+			directives: { //注册局部指令
+				'lower-text': function (el, binding) {
+					el.textContent = binding.value.toLowerCase();
+					el.style.color = 'green';
+					el.style.fontWeight = 'bold';
+					el.style.fontSize = '30px';
 				}
-			});
-		</script>
-	</body>
+			}
+		});
+	</script>
+</body>
+
 </html>

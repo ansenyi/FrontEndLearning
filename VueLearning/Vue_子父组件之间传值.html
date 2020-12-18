@@ -8,17 +8,18 @@
 
 <body>
     <div id="fatherComponent">
+        <input type="text" v-model="fatherMsg">
         <son-component1 :fathermsg='fatherMsg'>
         </son-component1>
         <son-component2 v-on:func='showFatherData'>
         </son-component2>
     </div>
     <template id="template2">
-		    <div style="background-color: gold;">
-				<h1>这是子组件2。</h1>
-				<button @click="myfunc">这是子组件2的按钮</button>
-			</div>
-		</template>
+        <div style="background-color: gold;">
+            <h1>这是子组件2。</h1>
+            <button @click="myfunc">这是子组件2的按钮</button>
+        </div>
+    </template>
     <script type="text/javascript" src="../js/vue.js"></script>
     <script type="text/javascript">
         let sonComponent2 = {

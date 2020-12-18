@@ -16,15 +16,15 @@
     <script type="text/javascript">
         function Person() {
             this.name = "安森一";
-            this.showMe = function() {
+            this.showMe = function () {
                 console.log("名字叫安森一");
             }
         }
         Person.prototype.name = "安森二";
-        Person.prototype.showMe = function() {
+        Person.prototype.showMe = function () {
             console.log("名字叫安森二");
         }
-        Person.prototype.sayMe = function() {
+        Person.prototype.sayMe = function () {
             console.log("名字叫安森三");
         }
         var one = new Person();
@@ -32,6 +32,20 @@
         one.showMe(); //名字叫安森一
         one.sayMe(); //名字叫安森三
         Person.prototype.showMe(); //名字叫安森二
+
+        var obj1 = {
+            a: 1,
+            b: 2,
+            c: 100,
+        };
+        var obj2 = {
+            c: 3,
+            d: 4
+        };
+        var assignObj = Object.assign(obj1, obj2);
+        console.log('assignObj', assignObj);
+        console.log('obj1', obj1);
+        console.log('obj2', obj2);
     </script>
 </body>
 

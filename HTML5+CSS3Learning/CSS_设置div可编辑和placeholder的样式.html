@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .divArea {
+            width: 200px;
+            height: 100px;
+            background-color: bisque;
+        }
+
+        .divArea:empty::before {
+            /* color: red;     设置placeholder的文本颜色 */
+            content: attr(placeholder);
+        }
+
+        /* input {
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0);
+            width: 500px;
+            outline: none;
+            &::placeholder {
+                color: #bbb;
+            }
+			//& 表示嵌套的上一级 
+            //这是sass的语法，代表上一级选择器 ,这里指外面的imput选择器
+    	}*/
+    </style>
+</head>
+
+<body>
+    <div class="divArea" contenteditable placeholder="这是一个可以输入内容的div"></div>
+</body>
+
+</html>

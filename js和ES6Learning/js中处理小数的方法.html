@@ -29,7 +29,7 @@
         // };
         //方法2
         //四舍五入保留num位小数（不够位数，则用0替补）
-        Number.prototype.toFixed = function(num) {
+        Number.prototype.toFixed = function (num) {
             // return Math.round(this * Math.pow(10, num)) / Math.pow(10, num)
             let f = parseFloat(this);
             if (isNaN(f)) {
@@ -60,17 +60,17 @@
         console.log(1.3333335.toFixed(6)); //1.333334 正确
         //参数num表示保留的小数位
         //去尾法
-        Number.prototype.toFloor = function(num) {
+        Number.prototype.toFloor = function (num) {
             return Math.floor(this * Math.pow(10, num)) / Math.pow(10, num);
         };
 
         //进一法
-        Number.prototype.toCeil = function(num) {
+        Number.prototype.toCeil = function (num) {
             return Math.ceil(this * Math.pow(10, num)) / Math.pow(10, num);
         };
 
         //四舍五入法
-        Number.prototype.toRound = function(num) {
+        Number.prototype.toRound = function (num) {
             return Math.round(this * Math.pow(10, num)) / Math.pow(10, num);
             // return Math.round(this * 100) / 100;
         };
@@ -93,6 +93,24 @@
             }
             return s_x;
         }
+        let testNum = 215500000;
+        console.log("keepTwoDecimalFull------------", testNum / 100000000, keepTwoDecimalFull(2.155));
+
+        //四舍五入保留2位小数,变成百分比（不够位数，则用0替补） 
+        function keepTwoDecimalFullPercent(num) {
+            var result = Math.round(num * 10000) / 100;
+            var s_x = result.toString();
+            var pos_decimal = s_x.indexOf('.');
+            if (pos_decimal < 0) {
+                pos_decimal = s_x.length;
+                s_x += '.';
+            }
+            while (s_x.length <= pos_decimal + 2) {
+                s_x += '0';
+            }
+            return s_x + "%";
+        }
+        console.warn("将小数转化成百分数：", keepTwoDecimalFullPercent(0.0925));
 
         let num1 = 12.334,
             num10 = -12.334;
@@ -101,8 +119,9 @@
         let num2 = 12.334,
             num20 = -12.334,
             num3 = 12.338,
-            num30 = -12.338;
-        console.log(num2.toRound(2), num20.toRound(2), num3.toRound(2), num30.toRound(2));
+            num30 = -12.338,
+            numT = 2.155
+        console.log(num2.toRound(2), num20.toRound(2), num3.toRound(2), num30.toRound(2), numT.toRound(2));
         let num4 = 0.1990;
         console.log(keepTwoDecimalFull(num4));
         console.log(num4.toRound(2).toFixed(2));

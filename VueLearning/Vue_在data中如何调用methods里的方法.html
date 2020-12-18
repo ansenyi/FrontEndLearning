@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="example">
+        a={{a}},b={{getBValue()}},相乘后的结果为{{a*b}}
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data() {
+                console.log("this-----------", this, this.a);
+
+                let _this = this
+                return {
+                    a: 10,
+                    b: _this.getBValue(),
+                    c: this.a //undefined
+                }
+            },
+            methods: {
+                getBValue() {
+                    return 100;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

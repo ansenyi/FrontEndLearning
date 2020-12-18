@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取地址中的参数</title>
+</head>
+
+<body>
+    <!-- <script src="../js/jquery-3.2.1.js"></script> -->
+    <script type="text/javascript">
+        let phone = '15140265630';
+        // 方法1（ 字符串的截取）：
+        let showPhone1 = phone.substr(0, 3) + '****' + phone.substr(7);
+        // 方法2（ 正则表达式）：
+        let showPhone2 = phone.replace(/^(\d{3})\d{4}(\d+)/, "$1****$2");
+        let showPhone3 = phone.replace(/^(\d{3})\d*(\d{4})$/, "$1****$2");
+        console.log(showPhone1, showPhone2, showPhone3);
+    </script>
+</body>
+
+</html

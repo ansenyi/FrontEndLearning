@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        function calcMaxValue1(rangeNum, n) {
+            let maxValue = 0;
+            for (let i = 0; i <= rangeNum; i++) {
+                if (i % n == 0) {
+                    maxValue = i
+                }
+            }
+            return maxValue;
+        }
+        console.log(calcMaxValue1(100, 6)); //96
+    </script>
+</body>
+
+</html>

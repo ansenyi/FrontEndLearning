@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [1, 3, 5, 7, 9],
+            arr2 = [2, 4, 5, 7, 9],
+            arr3 = ["a", "b", "b", "c", "c"];
+        let arrResult = [arr1, arr2, arr3];
+        console.log(arrResult);
+        //定义两个数组
+        var array = ["20111230", "20120104", "20120105", "20120106", "20120109", "20120201", "20120202", "20120207",
+            "20120208"
+        ];
+        var array1 = ["20120131", "20120201", "20120202", "20120203", "20120206", "20120207", "20120208"];
+        //构建带array,array1两个参数的函数
+        function uq(array, array1) {
+            //将array数组转换成set对象
+            let setObj = new Set(array)
+                //循环数组array1，并将值通过add插入set对象中,此时重复数据并不会插入其中
+            for (let i = 0; i < array1.length; i++) {
+                setObj.add(array1[i]);
+            }
+            //使用Array.from()方法将set对象转换成数组，并使用sort()方法排序
+            return Array.from(setObj).sort();
+        }
+
+        //查看输出结果
+        console.log(uq(array, array1)); // [1, "1", 2, 3, 4, "5", "6", "一", "二"]
+    </script>
+</body>
+
+</html>
